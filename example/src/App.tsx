@@ -1,14 +1,14 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import Asiapay from 'react-native-asiapay';
+// import Asiapay from 'react-native-asiapay';
 
 export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    Asiapay.multiply(3, 7).then(setResult);
-  }, []);
+  // const paySDK = Asiapay.init('sandbox');
+  // React.useEffect(() => {
+  //   paySDK.alipay(100, 'hkd', 'test', '');
+  // }, []);
 
   return (
     <View style={styles.container}>
