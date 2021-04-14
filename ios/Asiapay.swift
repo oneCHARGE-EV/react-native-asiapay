@@ -1,5 +1,5 @@
 //import Material
- import AP_PaySDK
+import AP_PaySDK
 
 @objc(Asiapay)
 class Asiapay: NSObject {
@@ -21,8 +21,8 @@ class Asiapay: NSObject {
     @objc(setup:)
     func setup(environment: String) -> Void {
         self.environment = environment
+        print("---------- init paysdk")
 //        self.paySDK.delegate = self
-        print("init paysdk")
     }
 
     @objc(multiply:withB:withResolver:withRejecter:)

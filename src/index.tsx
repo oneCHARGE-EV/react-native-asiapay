@@ -4,7 +4,7 @@ const { Asiapay } = NativeModules;
 
 type AsiapayType = {
   multiply(a: number, b: number): Promise<number>;
-  init(environment: string): AsiapayType;
+  setup(environment: string): void;
   alipay(amount: number, currency: string, orderRef: string, remark: string): void;
 };
 
