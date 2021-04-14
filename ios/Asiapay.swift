@@ -16,9 +16,9 @@ class Asiapay: NSObject {
 //    }
 
     var environment: String = ""
-     var paySDK = PaySDK.shared
+    var paySDK = PaySDK.shared
 
-    @objc(init:)
+    @objc(setup:)
     func setup(environment: String) -> Void {
         self.environment = environment
 //        self.paySDK.delegate = self

@@ -2,7 +2,7 @@
 
 @interface RCT_EXTERN_MODULE(Asiapay, NSObject)
 
-RCT_EXTERN_METHOD(init: (NSString) environment)
+RCT_EXTERN_METHOD(setup: (NSString) environment)
 RCT_EXTERN_METHOD(alipay: (float)amount
                   withCurrency: (NSString)currency
                   withOrderRef: (NSString)orderRef

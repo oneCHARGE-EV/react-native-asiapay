@@ -14,8 +14,9 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/onecharge-ev/react-native-asiapay.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
+  s.vendored_frameworks = "*.framework"
 
   s.dependency "React-Core"
-  s.dependency 'Material'
-  s.dependency "AP_PaySDK", "~> 2.3.3"
+  # s.dependency 'Material'
+  # s.dependency "AP_PaySDK", "~> 2.3.3"
 end

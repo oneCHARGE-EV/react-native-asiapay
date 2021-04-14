@@ -1,6 +1,4 @@
 PODS:
-  - AP_PaySDK (2.3.6):
-    - Material
   - boost-for-react-native (1.63.0)
   - CocoaAsyncSocket (7.6.5)
   - CocoaLibEvent (1.0.0)
@@ -69,13 +67,6 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - Material (3.1.8):
-    - Material/Core (= 3.1.8)
-  - Material/Core (3.1.8):
-    - Motion (~> 3.1.1)
-  - Motion (3.1.3):
-    - Motion/Core (= 3.1.3)
-  - Motion/Core (3.1.3)
   - OpenSSL-Universal (1.0.2.20):
     - OpenSSL-Universal/Static (= 1.0.2.20)
   - OpenSSL-Universal/Static (1.0.2.20)
@@ -246,8 +237,6 @@ PODS:
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
   - react-native-asiapay (0.1.5):
-    - AP_PaySDK (~> 2.3.3)
-    - Material
     - React-Core
   - React-RCTActionSheet (0.63.4):
     - React-Core/RCTActionSheetHeaders (= 0.63.4)
@@ -365,7 +354,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - AP_PaySDK
     - boost-for-react-native
     - CocoaAsyncSocket
     - CocoaLibEvent
@@ -376,8 +364,6 @@ SPEC REPOS:
     - Flipper-PeerTalk
     - Flipper-RSocket
     - FlipperKit
-    - Material
-    - Motion
     - OpenSSL-Universal
     - YogaKit
 
@@ -438,7 +424,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  AP_PaySDK: 1996ba5e1802b000c707e33196540a2ee690e78f
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
@@ -454,8 +439,6 @@ SPEC CHECKSUMS:
   FlipperKit: ab353d41aea8aae2ea6daaf813e67496642f3d7d
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
-  Material: a2a3f400a3b549d53ef89e56c58c4535b29db387
-  Motion: cf1e060e489f6661126374d5c60dbd2ed991605c
   OpenSSL-Universal: ff34003318d5e1163e9529b08470708e389ffcdd
   RCTRequired: 082f10cd3f905d6c124597fd1c14f6f2655ff65e
   RCTTypeSafety: 8c9c544ecbf20337d069e4ae7fd9a377aadf504b
@@ -467,7 +450,7 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
-  react-native-asiapay: 675716321862a89ee28dddb5a4adb6b1c89cac6c
+  react-native-asiapay: 112ae3863be39ca0e017fae30a46d49760b9e710
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
   React-RCTBlob: a97d378b527740cc667e03ebfa183a75231ab0f0

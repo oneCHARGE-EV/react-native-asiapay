@@ -401,11 +401,15 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AsiapayExample/Pods-AsiapayExample-frameworks.sh",
-				"${PODS_ROOT}/AP_PaySDK/AP_PaySDK.framework",
+				"${PODS_ROOT}/../../../AP_PaySDK.framework",
+				"${PODS_ROOT}/../../../Material.framework",
+				"${PODS_ROOT}/../../../Motion.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AP_PaySDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Material.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Motion.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -419,14 +423,10 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-AsiapayExample/Pods-AsiapayExample-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/Material/com.cosmicmind.material.icons.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/Material/com.cosmicmind.material.fonts.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/com.cosmicmind.material.icons.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/com.cosmicmind.material.fonts.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
