@@ -1,28 +1,22 @@
 package com.reactnativeasiapay
 
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactContextBaseJavaModule
-import com.facebook.react.bridge.ReactMethod
-import com.facebook.react.bridge.Promise
+import android.util.Log
+import com.asiapay.sdk.PaySDK
+import com.asiapay.sdk.integration.*
+import com.facebook.react.bridge.*
 
-class AsiapayModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
   private val currencyMap: HashMap<String, EnvBase.Currency> = HashMap<String, EnvBase.Currency>()
 
-  private val reactContext: ReactApplicationContext? = null
-  private var paySDK: PaySDK? = null
-  private var payData: PayData? = null
+  private var paySDK: PaySDK = PaySDK(reactContext)
+  private var payData: PayData = PayData()
 
-  fun AsiapayModule(reactContext: ReactApplicationContext?) {
-    super(reactContext)
-    paySDK = PaySDK(reactContext)
-    payData = PayData()
-    this.reactContext = reactContext
+  init {
     setCurrencyHashMap()
   }
 
-  @Override
-  fun getName(): String? {
+  override fun getName(): String {
     return "Asiapay"
   }
 
@@ -36,7 +30,7 @@ class AsiapayModule(reactContext: ReactApplicationContext) : ReactContextBaseJav
 
   // Only Alipay , wechat pay and octupus
   @ReactMethod
-  fun init(envType: String) {
+  fun setup(envType: String) {
     val receivedEnvType: String = envType.toUpperCase()
     if (envType.equals("PRODUCTION")) {
       payData.setEnvType(EnvBase.EnvType.PRODUCTION)
@@ -48,7 +42,7 @@ class AsiapayModule(reactContext: ReactApplicationContext) : ReactContextBaseJav
   @ReactMethod
   fun aliPay(amount: String?, currency: String, orderRef: String?, merchantId: String?, remark: String?) {
     val receivedString: String = currency.toUpperCase()
-    val selectedCurrency: EnvBase.Currency = currencyMap.get(receivedString)
+    val selectedCurrency: EnvBase.Currency = currencyMap[receivedString] ?: throw error("No such currency")
     payData = PayData()
     payData.setChannel(EnvBase.PayChannel.DIRECT)
     payData.setPayGate(EnvBase.PayGate.PAYDOLLAR)
@@ -64,13 +58,11 @@ class AsiapayModule(reactContext: ReactApplicationContext) : ReactContextBaseJav
     paySDK.setRequestData(payData)
     paySDK.process()
     paySDK.responseHandler(object : PaymentResponse() {
-      @Override
-      fun getResponse(payResult: PayResult) {
+      override fun getResponse(payResult: PayResult) {
         Log.d("TAG", "payResult: " + payResult.getSuccessMsg())
       }
 
-      @Override
-      fun onError(data: Data) {
+      override fun onError(data: Data) {
         Log.d("TAG", "error returned : " + data.getError())
       }
     })
@@ -124,13 +116,11 @@ class AsiapayModule(reactContext: ReactApplicationContext) : ReactContextBaseJav
     paySDK.setRequestData(payData)
     paySDK.process()
     paySDK.responseHandler(object : PaymentResponse() {
-      @Override
-      fun getResponse(payResult: PayResult?) {
+      override fun getResponse(payResult: PayResult?) {
         //payment Result
       }
 
-      @Override
-      fun onError(data: Data?) {
+      override fun onError(data: Data?) {
         //errror
       }
     })

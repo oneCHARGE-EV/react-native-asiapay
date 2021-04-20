@@ -7,7 +7,7 @@ export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
 
   React.useEffect(() => {
-    Asiapay.multiply(3, 7).then(setResult);
+    Asiapay.setup('sandbox');
   }, []);
 
   return (
