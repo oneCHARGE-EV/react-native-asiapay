@@ -1,18 +1,24 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-// import Asiapay from 'react-native-asiapay';
+import { StyleSheet, View, Text, Button } from 'react-native';
+import Asiapay from 'react-native-asiapay';
 
 export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
-  // const paySDK = Asiapay.init('sandbox');
-  // React.useEffect(() => {
-  //   paySDK.alipay(100, 'hkd', 'test', '');
-  // }, []);
+
+  React.useEffect(() => {
+    Asiapay.setup('sandbox', '88149885');
+  }, []);
 
   return (
     <View style={styles.container}>
       <Text>Result: {result}</Text>
+      <Button
+        title="Test me"
+        onPress={() => {
+          Asiapay.alipay("10", "HKD", Date.now().toString(), "Test");
+        }}
+      />
     </View>
   );
 }
