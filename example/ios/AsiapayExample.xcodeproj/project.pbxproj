@@ -16,8 +16,8 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* AsiapayExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AsiapayExampleTests.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		BC4D957526158877008F72F5 /* paysdk.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC4D957426158877008F72F5 /* paysdk.plist */; };
 		BC9B0A2F26148E5B00A2A9BD /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9B0A2E26148E5B00A2A9BD /* Test.swift */; };
+		BCF3C27426386E120056AF21 /* paysdk.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCF3C27326386E120056AF21 /* paysdk.plist */; };
 		D59B7A26979911FBADE94627 /* libPods-AsiapayExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBC437DBF19EB785B3AD094 /* libPods-AsiapayExample.a */; };
 /* End PBXBuildFile section */
 
@@ -54,9 +54,9 @@
 		47F7ED3B7971BE374F7B8635 /* Pods-AsiapayExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AsiapayExample.debug.xcconfig"; path = "Target Support Files/Pods-AsiapayExample/Pods-AsiapayExample.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = AsiapayExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BBC437DBF19EB785B3AD094 /* libPods-AsiapayExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AsiapayExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC4D957426158877008F72F5 /* paysdk.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = paysdk.plist; sourceTree = "<group>"; };
 		BC9B0A2D26148E5B00A2A9BD /* AsiapayExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AsiapayExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		BC9B0A2E26148E5B00A2A9BD /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		BCF3C27326386E120056AF21 /* paysdk.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = paysdk.plist; sourceTree = "<group>"; };
 		E00ACF0FDA8BF921659E2F9A /* Pods-AsiapayExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AsiapayExample.release.xcconfig"; path = "Target Support Files/Pods-AsiapayExample/Pods-AsiapayExample.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -124,7 +124,7 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				BC9B0A2E26148E5B00A2A9BD /* Test.swift */,
 				BC9B0A2D26148E5B00A2A9BD /* AsiapayExample-Bridging-Header.h */,
-				BC4D957426158877008F72F5 /* paysdk.plist */,
+				BCF3C27326386E120056AF21 /* paysdk.plist */,
 			);
 			name = AsiapayExample;
 			sourceTree = "<group>";
@@ -322,7 +322,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				BC4D957526158877008F72F5 /* paysdk.plist in Resources */,
+				BCF3C27426386E120056AF21 /* paysdk.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,7 +584,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.reactnativeasiapay;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onecharge.ios;
 				PRODUCT_NAME = AsiapayExample;
 				SWIFT_OBJC_BRIDGING_HEADER = "AsiapayExample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -607,7 +607,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.reactnativeasiapay;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onecharge.ios;
 				PRODUCT_NAME = AsiapayExample;
 				SWIFT_OBJC_BRIDGING_HEADER = "AsiapayExample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

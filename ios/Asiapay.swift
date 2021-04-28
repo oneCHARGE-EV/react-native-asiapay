@@ -4,7 +4,8 @@
 @objc(Asiapay)
 class Asiapay: NSObject, PaySDKDelegate {
     func paymentResult(result: PayResult) {
-        print(result)
+        print(result.successCode!)
+        print(result.errMsg!)
     }
 
     func transQueryResults(result: TransQueryResults) {
@@ -14,10 +15,10 @@ class Asiapay: NSObject, PaySDKDelegate {
     func payMethodOptions(method: PaymentOptionsDetail) {
         print(method)
     }
-    
+
     func showProgress() {
     }
-    
+
     func hideProgress() {
     }
 
@@ -35,23 +36,47 @@ class Asiapay: NSObject, PaySDKDelegate {
         print("init paysdk \(environment) \(self.merchantId)")
     }
 
-    @objc(multiply:withB:withResolver:withRejecter:)
-    func multiply(a: Float, b: Float, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
-        resolve(a*b)
-    }
-
     @objc(alipay:withCurrency:withOrderRef:withRemark:)
     func alipay(amount: String, currency: String, orderRef: String, remark: String) -> Void {
-        paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT, envType: self.environment, amount: amount, payGate: PayGate.PAYDOLLAR, currCode: getCurrencyCode(currencyCode: currency), payType: payType.NORMAL_PAYMENT, orderRef: orderRef, payMethod: "ALIPAYHKAPP", lang: Language.ENGLISH, merchantId: self.merchantId, remark: remark, payRef: "", resultpage: "F", extraData: [:])
+        paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
+                                        envType: self.environment,
+                                        amount: amount,
+                                        payGate: PayGate.PAYDOLLAR,
+                                        currCode: getCurrencyCode(currencyCode: currency),
+                                        payType: payType.NORMAL_PAYMENT,
+                                        orderRef: orderRef,
+                                        payMethod: "ALIPAYHKAPP",
+                                        lang: Language.ENGLISH,
+                                        merchantId: self.merchantId,
+                                        remark: remark,
+                                        payRef: "",
+                                        resultpage: "F",
+                                        extraData: [:])
         paySDK.process()
-        print(self.environment)
-        print(amount)
     }
 
-    
+    @objc(octopus:withOrderRef:withRemark:)
+    func octopus(amount: String, orderRef: String, remark: String) -> Void {
+        paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
+                                        envType: self.environment,
+                                        amount: amount,
+                                        payGate: PayGate.PAYDOLLAR,
+                                        currCode: CurrencyCode.HKD,
+                                        payType: payType.NORMAL_PAYMENT,
+                                        orderRef: orderRef,
+                                        payMethod: "OCTOPUS",
+                                        lang: Language.ENGLISH,
+                                        merchantId: self.merchantId,
+                                        remark: remark,
+                                        payRef: "",
+                                        resultpage: "F",
+                                        extraData: [:])
+        paySDK.process()
+    }
+
     func getCurrencyCode(currencyCode: String) -> CurrencyCode {
         let payCurrencyCode: CurrencyCode;
-        
+
         switch currencyCode {
         case "HKD":
             payCurrencyCode = CurrencyCode.HKD
@@ -108,7 +133,7 @@ class Asiapay: NSObject, PaySDKDelegate {
         default:
             payCurrencyCode = CurrencyCode.HKD
         }
-        
+
         return payCurrencyCode
     }
 

@@ -16,7 +16,7 @@ export default function App() {
       <Button
         title="Test me"
         onPress={() => {
-          Asiapay.alipay("10", "HKD", Date.now().toString(), "Test");
+          Asiapay.alipay('10', 'HKD', Date.now().toString(), 'Test');
         }}
       />
     </View>
