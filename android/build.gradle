@@ -33,9 +33,9 @@ android {
     targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
     versionCode 1
     versionName "1.0"
-    
+
   }
-  
+
   buildTypes {
     release {
       minifyEnabled false
@@ -119,6 +119,10 @@ repositories {
                     "Ensure you have you installed React Native as a dependency in your project and try again."
     )
   }
+
+  flatDir {
+    dirs 'libs'
+  }
 }
 
 def kotlin_version = getExtOrDefault('kotlinVersion')
@@ -127,4 +131,24 @@ dependencies {
   // noinspection GradleDynamicVersion
   api 'com.facebook.react:react-native:+'
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+  //SDKPAY
+
+  implementation(name: 'PaySDK-2.2.7', ext: 'aar')
+  implementation(name: 'alipaySdk-15.6.2-20190416165036', ext: 'aar')
+
+  //wechat
+  implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+
+  implementation 'com.google.code.gson:gson:2.3.1'
+  implementation 'com.google.android.gms:play-services-ads:11.8.0'
+  implementation 'com.google.android.gms:play-services-location:11.8.0'
+  implementation 'com.google.android.material:material:1.2.0-alpha04'
+  implementation 'com.android.volley:volley:1.1.1'
+  implementation 'org.bouncycastle:bcprov-jdk15on:1.60'
+  implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
+  implementation 'com.fasterxml.jackson.core:jackson-core:2.7.3'
+  implementation 'com.fasterxml.jackson.core:jackson-annotations:2.7.3'
+  implementation 'com.fasterxml.jackson.core:jackson-databind:2.7.3'
+  implementation 'org.greenrobot:eventbus:3.0.0'
 }
