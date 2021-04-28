@@ -14,12 +14,6 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     return "Asiapay"
   }
 
-  @ReactMethod
-  fun sampleMethod(stringArgument: String, numberArgument: Int, callback: Callback) {
-    // TODO: Implement some actually useful functionality
-    callback.invoke("Received numberArgument: $numberArgument stringArgument: $stringArgument")
-  }
-
   // Only Alipay , wechat pay and octupus
   @ReactMethod
   fun setup(envType: String, mId: String) {
@@ -63,8 +57,6 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
 
   @ReactMethod
   fun wechat(amount: String?, orderRef: String?, payMethod: String?, remark: String?) {
-    // Toast.makeText(this, "okay", Toast.LENGTH_SHORT).show();
-    val paySDK = PaySDK(reactContext)
     val payData = PayData()
     payData.envType = environment
     payData.channel = EnvBase.PayChannel.DIRECT
@@ -92,6 +84,35 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     })
   }
 
+  @ReactMethod
+  fun octopus(String amount, String orderRef, String remark) {
+    val payData = PayData()
+    payData.envType = environment
+    payData.channel = EnvBase.PayChannel.DIRECT
+    payData.setPayGate(EnvBase.PayGate.PAYDOLLAR)
+    payData.setCurrCode(EnvBase.Currency.HKD)
+    payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT)
+    payData.setLang(EnvBase.Language.ENGLISH)
+    payData.amount = amount
+    payData.payMethod = "OCTOPUS"
+    payData.merchantId = merchantId!!
+    payData.orderRef = orderRef
+    payData.remark = remark
+    payData.activity = currentActivity
+
+    paySDK.requestData = payData
+    paySDK.process()
+
+    paySDK.responseHandler(object : PaymentResponse() {
+      override fun getResponse(payResult: PayResult) {
+        Log.d("TAG", "payResult: " + payResult.getSuccessMsg())
+      }
+
+      override fun onError(data: Data) {
+        Log.d("TAG", "error returned : " + data.getError())
+      }
+    })
+  }
   /*   @ReactMethod
     public void octupus(String amount, String merchantId, String orderRef, String remark) {
         PayData payData = new PayData();
