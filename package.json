@@ -34,7 +34,9 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "asiapay",
+    "paydollar"
   ],
   "repository": "https://github.com/onecharge-ev/react-native-asiapay",
   "author": "oneCHARGE <kahou526@gmail.com> (https://github.com/onecharge-ev)",
