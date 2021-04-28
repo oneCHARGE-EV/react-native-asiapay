@@ -7,8 +7,8 @@ RCT_EXTERN_METHOD(alipay: (NSString)amount
                   withCurrency: (NSString)currency
                   withOrderRef: (NSString)orderRef
                   withRemark: (NSString)remark)
-RCT_EXTERN_METHOD(multiply:(float)a withB:(float)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(octopus: (NSString)amount
+                  withOrderRef: (NSString)orderRef
+                  withRemark: (NSString)remark)
 
 @end
