@@ -133,9 +133,9 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
   //SDKPAY
-
-  implementation(name: 'PaySDK-2.2.7', ext: 'aar')
-  implementation(name: 'alipaySdk-15.6.2-20190416165036', ext: 'aar')
+  implementation fileTree(dir: "libs", include: ["*.aar"])
+  // implementation(name: 'PaySDK-2.2.7', ext: 'aar')
+  // implementation(name: 'alipaySdk-15.6.2-20190416165036', ext: 'aar')
 
   //wechat
   implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'

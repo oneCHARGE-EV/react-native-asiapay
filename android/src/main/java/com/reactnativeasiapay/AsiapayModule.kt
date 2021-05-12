@@ -85,7 +85,7 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
   }
 
   @ReactMethod
-  fun octopus(String amount, String orderRef, String remark) {
+  fun octopus(amount: String?, orderRef: String?, remark: String?) {
     val payData = PayData()
     payData.envType = environment
     payData.channel = EnvBase.PayChannel.DIRECT
