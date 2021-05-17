@@ -1,6 +1,6 @@
 {
   "name": "react-native-asiapay",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Asiapay react native library",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -13,6 +13,7 @@
     "android",
     "ios",
     "cpp",
+    "*.framework",
     "react-native-asiapay.podspec",
     "!lib/typescript/example",
     "!android/build",
