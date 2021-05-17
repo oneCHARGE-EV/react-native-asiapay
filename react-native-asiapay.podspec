@@ -13,6 +13,8 @@ Pod::Spec.new do |s|
   s.platforms    = { :ios => "11.0" }
   s.source       = { :git => "https://github.com/onecharge-ev/react-native-asiapay.git", :tag => "#{s.version}" }
 
+  s.swift_version = "5.3.2"
+
   s.source_files = "ios/**/*.{h,m,mm,swift}"
   s.vendored_frameworks = "*.framework"
 
