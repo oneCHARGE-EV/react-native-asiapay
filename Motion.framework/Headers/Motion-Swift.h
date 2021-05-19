@@ -362,7 +362,7 @@ SWIFT_PROTOCOL_NAMED("MotionViewControllerDelegate")
 - (void)motionWithMotion:(MotionTransition * _Nonnull)motion didCancelTransitionTo:(UIViewController * _Nonnull)viewController;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, MotionViewOrderStrategy, "MotionViewOrderStrategy", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, MotionViewOrderStrategy, "MotionViewOrderStrategy", open) {
   MotionViewOrderStrategyAuto = 0,
   MotionViewOrderStrategySourceViewOnTop = 1,
   MotionViewOrderStrategyDestinationViewOnTop = 2,
@@ -772,7 +772,7 @@ SWIFT_PROTOCOL_NAMED("MotionViewControllerDelegate")
 - (void)motionWithMotion:(MotionTransition * _Nonnull)motion didCancelTransitionTo:(UIViewController * _Nonnull)viewController;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, MotionViewOrderStrategy, "MotionViewOrderStrategy", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, MotionViewOrderStrategy, "MotionViewOrderStrategy", open) {
   MotionViewOrderStrategyAuto = 0,
   MotionViewOrderStrategySourceViewOnTop = 1,
   MotionViewOrderStrategyDestinationViewOnTop = 2,
