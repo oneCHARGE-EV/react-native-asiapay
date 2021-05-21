@@ -51,7 +51,7 @@ class Asiapay: NSObject, PaySDKDelegate {
                                         remark: remark,
                                         payRef: "",
                                         resultpage: "F",
-                                        extraData: [:])
+                                        extraData: ["":""])
         paySDK.process()
     }
 
@@ -70,7 +70,7 @@ class Asiapay: NSObject, PaySDKDelegate {
                                         remark: remark,
                                         payRef: "",
                                         resultpage: "F",
-                                        extraData: [:])
+                                        extraData: ["":""])
         paySDK.process()
     }
 
