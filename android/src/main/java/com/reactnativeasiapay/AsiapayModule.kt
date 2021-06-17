@@ -19,7 +19,7 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
   fun setup(envType: String, mId: String) {
     val receivedEnvType: String = envType.toUpperCase()
     merchantId = mId
-    if (envType == "PRODUCTION") {
+    if (envType == "Production") {
       environment = EnvBase.EnvType.PRODUCTION
     }
   }

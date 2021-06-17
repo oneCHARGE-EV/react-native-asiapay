@@ -9,8 +9,8 @@ type AsiapayType = {
     currency: string,
     orderRef: string,
     remark: string
-  ): void;
-  octopus(amount: string, orderRef: string, remark: string): void;
+  ): Promise<Map<string, string>>;
+  octopus(amount: string, orderRef: string, remark: string): Promise<Map<string, string>>;
 };
 
 export default Asiapay as AsiapayType;
