@@ -21,16 +21,16 @@ class Asiapay: NSObject, PaySDKDelegate {
 
     @objc(alipay:withCurrency:withOrderRef:withRemark:withResolve:withReject:)
     func alipay(amount: String, currency: String, orderRef: String, remark: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) -> Void {
-        
+
         makePayment(method: "ALIPAYHKAPP", amount: amount, currency: currency, orderRef: orderRef, remark: remark, resolve: resolve, reject: reject)
     }
 
     @objc(octopus:withOrderRef:withRemark:withResolve:withReject:)
     func octopus(amount: String, orderRef: String, remark: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) -> Void {
-        
+
         makePayment(method: "OCTOPUS", amount: amount, currency: "HKD", orderRef: orderRef, remark: remark, resolve: resolve, reject: reject)
     }
-    
+
     func makePayment(method: String, amount: String, currency: String, orderRef: String, remark: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) -> Void {
         print("Pay \(method), order ref \(orderRef)")
         self.currentResolve = resolve
@@ -118,9 +118,9 @@ class Asiapay: NSObject, PaySDKDelegate {
     func paymentResult(result: PayResult) {
         let dictResult = self.toDict(result: result)
         if (result.successCode != "0" && self.currentReject != nil) {
-            self.currentReject!("\(result.prc ?? "")-\(result.src ?? "")", result.errMsg, nil)
+            self.currentReject!("\(result.prc ?? ""):\(result.src ?? "")", result.errMsg, nil)
         }
-        
+
         if (result.successCode == "0" && self.currentResolve != nil) {
             self.currentResolve!(dictResult)
         }
@@ -164,7 +164,7 @@ class Asiapay: NSObject, PaySDKDelegate {
         let jsonStr = String(data: jsonData, encoding: String.Encoding.utf8)!
         return jsonStr
     }
-    
+
     func toDict(result: PayResult) -> [String: String?] {
         return [
             "amount":result.amount,
