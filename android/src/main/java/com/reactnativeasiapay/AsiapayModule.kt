@@ -42,7 +42,6 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
   }
 
   private fun makePayment(method: String?, amount: String?, currency: String, orderRef: String?, remark: String?, promise: Promise) {
-    Log.d("test", "Payment method ${method}")
     val payData = PayData()
     payData.envType = environment
     payData.channel = EnvBase.PayChannel.DIRECT
@@ -61,7 +60,6 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     paySDK.process()
     paySDK.responseHandler(object : PaymentResponse() {
       override fun getResponse(payResult: PayResult) {
-        Log.d("TAG", "payResult: " + payResult.successMsg)
         if (payResult.successCode == "0") {
           val gson = Gson()
           promise.resolve(gson.toJson(payResult))
@@ -71,7 +69,6 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
       }
 
       override fun onError(data: Data) {
-        Log.d("TAG", "error returned : " + data.error)
         promise.reject("payment error", data.message + data.error)
       }
     })

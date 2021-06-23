@@ -124,7 +124,7 @@ class Asiapay: NSObject, PaySDKDelegate {
         if (result.successCode == "0" && self.currentResolve != nil) {
             self.currentResolve!(dictResult)
         }
-        print(self.toJson(result: result))
+
         self.currentReject = nil
         self.currentResolve = nil
     }
