@@ -29,7 +29,7 @@
 			<string>alisdkdemo</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>alisdkdemo</string>
+				<string>onecharge</string>
 			</array>
 		</dict>
 	</array>

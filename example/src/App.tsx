@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button, Linking } from 'react-native';
 import Asiapay from 'react-native-asiapay';
 
 export default function App() {
@@ -8,6 +8,14 @@ export default function App() {
 
   React.useEffect(() => {
     Asiapay.setup('Production', '88624174');
+
+    const getUrlAsync = async () => {
+      // Get the deep link used to open the app
+      const initialUrl = await Linking.getInitialURL();
+      console.log(initialUrl);
+    };
+
+    getUrlAsync();
   }, []);
 
   return (
@@ -17,13 +25,13 @@ export default function App() {
         title="Test Alipay"
         onPress={() => {
           Asiapay.alipay('1', 'HKD', Date.now().toString(), 'Test')
-          .then(s => {
-            console.log(s);
-          })
-          .catch(({ code, message }) => {
-            debugger
-            console.log(code, message)
-          });
+            .then((s) => {
+              console.log(s);
+            })
+            .catch(({ code, message }) => {
+              debugger;
+              console.log(code, message);
+            });
         }}
       />
       <Button

@@ -1,6 +1,6 @@
 {
   "name": "react-native-asiapay",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "Asiapay react native library",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
