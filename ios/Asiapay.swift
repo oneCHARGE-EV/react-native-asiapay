@@ -47,7 +47,7 @@ class Asiapay: NSObject, PaySDKDelegate {
                                         merchantId: self.merchantId,
                                         remark: remark,
                                         payRef: "",
-                                        resultpage: "F",
+                                        resultpage: "F", showCloseButton: true,
                                         extraData: ["":""])
         paySDK.process()
     }
