@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
 // swift-module-flags: -target arm64-apple-ios8.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Motion
 import Foundation
 import MetalKit
@@ -137,11 +137,11 @@ public enum MotionAnimationKeyPath : Swift.String {
   case shadowOffset
   case shadowOpacity
   case shadowRadius
+  public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
-  public init?(rawValue: Swift.String)
 }
 extension CABasicAnimation {
   convenience public init(keyPath: Motion.MotionAnimationKeyPath)
@@ -363,17 +363,17 @@ public enum MotionSnapshotType {
   case layerRender
   case noSnapshot
   public static func == (a: Motion.MotionSnapshotType, b: Motion.MotionSnapshotType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 @objc(MotionViewOrderStrategy) public enum MotionViewOrderStrategy : Swift.Int {
   case auto
   case sourceViewOnTop
   case destinationViewOnTop
-  public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
@@ -391,8 +391,8 @@ public enum MotionSnapshotType {
 }
 public typealias MotionCancelBlock = (Swift.Bool) -> Swift.Void
 @objc @_inheritsConvenienceInitializers public class Motion : ObjectiveC.NSObject {
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 extension Motion {
   public class func async(_ execute: @escaping () -> Swift.Void)
@@ -409,8 +409,8 @@ public enum MotionTransitionState : Swift.Int {
   case starting
   case animating
   case completing
-  public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
@@ -544,10 +544,10 @@ public enum MotionCoordinateSpace {
   case global
   case local
   public static func == (a: Motion.MotionCoordinateSpace, b: Motion.MotionCoordinateSpace) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
-  public func hash(into hasher: inout Swift.Hasher)
 }
 public enum MotionTransitionAnimationType {
   public enum Direction {
@@ -556,10 +556,10 @@ public enum MotionTransitionAnimationType {
     case up
     case down
     public static func == (a: Motion.MotionTransitionAnimationType.Direction, b: Motion.MotionTransitionAnimationType.Direction) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   case none
   case auto
