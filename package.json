@@ -1,5 +1,5 @@
 {
-  "name": "react-native-asiapay",
+  "name": "react-native-ap",
   "version": "0.2.1",
   "description": "Asiapay react native library",
   "main": "lib/commonjs/index",
