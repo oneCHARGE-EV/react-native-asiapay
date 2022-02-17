@@ -1,6 +1,6 @@
 {
   "name": "react-native-asiapay",
-  "version": "0.1.20",
+  "version": "0.2.1",
   "description": "Asiapay react native library",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -32,13 +32,7 @@
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods"
   },
-  "keywords": [
-    "react-native",
-    "ios",
-    "android",
-    "asiapay",
-    "paydollar"
-  ],
+  "keywords": [],
   "repository": "https://github.com/onecharge-ev/react-native-asiapay",
   "author": "oneCHARGE <kahou526@gmail.com> (https://github.com/onecharge-ev)",
   "license": "MIT",
