@@ -12,11 +12,16 @@ npm install react-native-asiapay
 yarn add react-native-asiapay
 ```
 
-# Requirements 
+# Requirements
 
 React Native 0.60.0+
 
-# iOS installation 
+# PaySDK version
+
+__iOS:__ 2.4.1
+__Android:__ 2.2.7
+
+# iOS installation
 
 `pod install`
 
