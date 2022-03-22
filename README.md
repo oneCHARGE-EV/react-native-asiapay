@@ -8,20 +8,47 @@ Asiapay react native library
 npm install react-native-asiapay
 ```
 
+```sh
+yarn add react-native-asiapay
+```
+
+# Requirements 
+
+React Native 0.60.0+
+
+# iOS installation 
+
+`pod install`
+
+# Android installation
+
+No configuration is needed, React Native will auto link the library
+
+# Add pay sdk public key file
+
+__Android__
+
+Put your public key file in `android/app/src/main/assets/paysdk.properties`
+
+__iOS__
+
+Put your public key file in `android/app/src/main/assets/paysdk.properties`
+
 ## Usage
 
+### JS Code
 ```js
 import Asiapay from "react-native-asiapay";
 
-// ...
+// Config environment and merchant id at the beginning of your app
+Asiapay.setup('Production' | 'Sandbox', 'merchant id');
 
-const result = await Asiapay.multiply(3, 7);
+// Make payment
+Asiapay.alipay('price', 'HKD', 'transaction id', 'Remark')
+.then(s => {
+  // Successfully capture payment from Alipay
+})
+.catch(({ code, message }) => {
+  // Failed with error
+});
 ```
-
-## Contributing
-
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
-
-## License
-
-MIT
