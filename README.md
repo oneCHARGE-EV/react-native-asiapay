@@ -11,7 +11,7 @@ Android SDK 17+
 
 # PaySDK version
 
-__iOS:__ 2.4.1
+__iOS:__ 2.6.02
 __Android:__ 2.2.7
 
 # Installation

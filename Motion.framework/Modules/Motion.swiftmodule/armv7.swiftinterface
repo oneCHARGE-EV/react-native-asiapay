@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
-// swift-module-flags: -target arm64-apple-ios9.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name Motion
+// swift-module-flags: -target armv7-apple-ios9.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Motion
 import Foundation
 import MetalKit
 @_exported import Motion
@@ -145,7 +145,7 @@ public enum MotionAnimationKeyPath : Swift.String {
   }
 }
 extension QuartzCore.CABasicAnimation {
-  public convenience init(keyPath: Motion.MotionAnimationKeyPath)
+  convenience public init(keyPath: Motion.MotionAnimationKeyPath)
 }
 public struct MotionCAAnimation {
 }
@@ -235,15 +235,15 @@ public protocol MotionAnimator : AnyObject {
   func apply(state: Motion.MotionTargetState, to view: UIKit.UIView)
 }
 extension QuartzCore.CAMediaTimingFunction {
-  public static var linear: QuartzCore.CAMediaTimingFunction
-  public static var easeIn: QuartzCore.CAMediaTimingFunction
-  public static var easeOut: QuartzCore.CAMediaTimingFunction
-  public static var easeInOut: QuartzCore.CAMediaTimingFunction
-  public static var standard: QuartzCore.CAMediaTimingFunction
-  public static var deceleration: QuartzCore.CAMediaTimingFunction
-  public static var acceleration: QuartzCore.CAMediaTimingFunction
-  public static var sharp: QuartzCore.CAMediaTimingFunction
-  public static var easeOutBack: QuartzCore.CAMediaTimingFunction
+  public static let linear: QuartzCore.CAMediaTimingFunction
+  public static let easeIn: QuartzCore.CAMediaTimingFunction
+  public static let easeOut: QuartzCore.CAMediaTimingFunction
+  public static let easeInOut: QuartzCore.CAMediaTimingFunction
+  public static let standard: QuartzCore.CAMediaTimingFunction
+  public static let deceleration: QuartzCore.CAMediaTimingFunction
+  public static let acceleration: QuartzCore.CAMediaTimingFunction
+  public static let sharp: QuartzCore.CAMediaTimingFunction
+  public static let easeOutBack: QuartzCore.CAMediaTimingFunction
 }
 public struct MotionAnimationState {
   public var position: CoreGraphics.CGPoint?
@@ -417,7 +417,7 @@ public enum MotionTransitionState : Swift.Int {
   }
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class MotionTransition : ObjectiveC.NSObject {
-  public static var shared: Motion.MotionTransition
+  public static let shared: Motion.MotionTransition
   public var isUserInteractionEnabled: Swift.Bool
   public var viewOrderStrategy: Motion.MotionViewOrderStrategy
   public var state: Motion.MotionTransitionState {
@@ -672,3 +672,18 @@ extension UIKit.UIView {
   @_Concurrency.MainActor(unsafe) public func transition(_ modifiers: Motion.MotionModifier...)
   @_Concurrency.MainActor(unsafe) public func transition(_ modifiers: [Motion.MotionModifier])
 }
+extension Motion.MotionAnimationKeyPath : Swift.Equatable {}
+extension Motion.MotionAnimationKeyPath : Swift.Hashable {}
+extension Motion.MotionAnimationKeyPath : Swift.RawRepresentable {}
+extension Motion.MotionSnapshotType : Swift.Equatable {}
+extension Motion.MotionSnapshotType : Swift.Hashable {}
+extension Motion.MotionViewOrderStrategy : Swift.Equatable {}
+extension Motion.MotionViewOrderStrategy : Swift.Hashable {}
+extension Motion.MotionViewOrderStrategy : Swift.RawRepresentable {}
+extension Motion.MotionTransitionState : Swift.Equatable {}
+extension Motion.MotionTransitionState : Swift.Hashable {}
+extension Motion.MotionTransitionState : Swift.RawRepresentable {}
+extension Motion.MotionCoordinateSpace : Swift.Equatable {}
+extension Motion.MotionCoordinateSpace : Swift.Hashable {}
+extension Motion.MotionTransitionAnimationType.Direction : Swift.Equatable {}
+extension Motion.MotionTransitionAnimationType.Direction : Swift.Hashable {}
