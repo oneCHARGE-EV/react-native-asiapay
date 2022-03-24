@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5 effective-4.2 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-compiler-version: Apple Swift version 5.3.2 effective-4.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -O -module-name AP_PaySDK
 @_exported import AP_PaySDK
 import AdSupport
@@ -19,17 +19,15 @@ import Swift
 import SystemConfiguration
 import UIKit
 import WebKit
-import _Concurrency
 @objc open class ToolbarCustomization : AP_PaySDK.Customization, AP_PaySDK.PaySDKToolbarCustomization {
   @objc override dynamic public init()
-  @objc public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int, _ backgroundColor: Swift.String, _ headerText: Swift.String, _ rightBarButtonText: Swift.String)
+  @objc public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int, _ backgroundColor: Swift.String, _ headerText: Swift.String)
   @objc public func setBackgroundColor(_ hexColorCode: Swift.String) throws
   @objc public func setHeaderText(_ headerText: Swift.String) throws
-  @objc public func setRightBarButtonText(_ rightBarButtonText: Swift.String) throws
   @objc public func getBackgroundColor() -> Swift.String
   @objc public func getHeaderText() -> Swift.String
-  @objc public func getRightBarButtonText() -> Swift.String
   @objc deinit
+  @objc override public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int)
 }
 @objc(TransQueryResults) public class TransQueryResults : ObjectiveC.NSObject {
   @objc public var detail: [AP_PaySDK.TransQueryResult]?
@@ -38,6 +36,7 @@ import _Concurrency
   @objc public class func modelsFromDictionaryArray(array: Foundation.NSArray) -> [AP_PaySDK.TransQueryResults]
   @objc required public init?(dictionary: Foundation.NSDictionary)
   @objc deinit
+  @objc override dynamic public init()
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc open class PayResult : ObjectiveC.NSObject {
   @objc public var amount: Swift.String!
@@ -60,14 +59,12 @@ import _Concurrency
 @objc open class ButtonCustomization : AP_PaySDK.Customization, AP_PaySDK.PaySDKButtonCustomization {
   @objc override dynamic public init()
   @objc public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int, _ backgroundColor: Swift.String, _ cornerRadius: Swift.Int)
-  @objc public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int, _ backgroundColor: Swift.String, _ cornerRadius: Swift.Int, _ buttonName: Swift.String)
   @objc public func setBackgroundColor(_ hexColorCode: Swift.String) throws
   @objc public func setCornerRadius(_ cornerRadius: Swift.Int) throws
-  @objc public func setButtonName(_ buttonName: Swift.String) throws
   @objc public func getBackgroundColor() -> Swift.String
   @objc public func getCornerRadius() -> Swift.Int
-  @objc public func getButtonName() -> Swift.String
   @objc deinit
+  @objc override public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int)
 }
 @objc @_inheritsConvenienceInitializers @available(iOS 11.0, *)
 open class ThreeDSParams : ObjectiveC.NSObject {
@@ -133,8 +130,8 @@ open class ThreeDSParams : ObjectiveC.NSObject {
   case RUSSIAN
   case SPANISH
   case VIETNAMESE
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -154,8 +151,8 @@ open class ThreeDSParams : ObjectiveC.NSObject {
   case WECHATAPP
   case THREEDS2
   case CIMBCLICKS
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -163,8 +160,8 @@ open class ThreeDSParams : ObjectiveC.NSObject {
 @objc public enum payType : Swift.Int {
   case NORMAL_PAYMENT
   case HOLD_PAYMENT
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -172,8 +169,8 @@ open class ThreeDSParams : ObjectiveC.NSObject {
 public enum Action : Swift.String {
   case TX_QUERY
   case PAYMENT_METHOD
-  public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
   public var rawValue: Swift.String {
     get
   }
@@ -182,8 +179,8 @@ public enum Action : Swift.String {
   case PAYDOLLAR
   case PESOPAY
   case SIAMPAY
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -193,8 +190,8 @@ public enum Action : Swift.String {
   case DIRECT
   case EASYPAYMENTFORM
   case NONE
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -202,8 +199,8 @@ public enum Action : Swift.String {
 @objc public enum EnvType : Swift.Int {
   case SANDBOX
   case PRODUCTION
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -235,8 +232,8 @@ public enum Action : Swift.String {
   case LKR
   case KWD
   case NZD
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -250,8 +247,8 @@ public enum Action : Swift.String {
   case Checkout
   case Book
   case Subscribe
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -260,8 +257,8 @@ public enum Action : Swift.String {
   case White
   case WhiteOutline
   case Black
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -270,20 +267,16 @@ public enum Action : Swift.String {
   @objc public var methods: AP_PaySDK.Methods!
   @objc deinit
 }
-extension UIKit.UIColor {
+extension UIColor {
   @objc convenience dynamic public init?(hex: Swift.String)
 }
-extension Foundation.URL {
+extension URL {
   public var queryParameters: [Swift.String : Swift.String]? {
     get
   }
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OrderId) open class OrderId : ObjectiveC.NSObject {
   @objc public init(orderId: Swift.String)
-  @objc deinit
-}
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(PresentViewController) open class PresentViewController : ObjectiveC.NSObject {
-  @objc public init(presentViewController: UIKit.UIViewController)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(CardDetails) open class CardDetails : ObjectiveC.NSObject {
@@ -315,6 +308,7 @@ infix operator >>> : DefaultPrecedence
   @objc public func getSDKVersion() -> Swift.String
   @objc public func query(action: Swift.String)
   @objc public func process()
+  @objc public func invalidateToken()
   @objc public func processOrder(url: Foundation.URL)
   @objc deinit
 }
@@ -328,8 +322,8 @@ infix operator >>> : DefaultPrecedence
   @objc optional func setMerchantInfoScreen() -> UIKit.UIViewController?
   @objc optional func setMerchantInfo() -> Swift.String?
 }
-extension UIKit.UIButton {
-  @objc @_Concurrency.MainActor(unsafe) dynamic public func setApplePayButton(btnType: AP_PaySDK.ApplePayButtonType, btnStyle: AP_PaySDK.ApplePayButtonStyle, inView: UIKit.UIView)
+extension UIButton {
+  @objc dynamic public func setApplePayButton(btnType: AP_PaySDK.ApplePayButtonType, btnStyle: AP_PaySDK.ApplePayButtonStyle, inView: UIKit.UIView)
 }
 @objc public enum PaySDKButtonType : Swift.Int {
   case SUBMIT
@@ -337,8 +331,8 @@ extension UIKit.UIButton {
   case NEXT
   case CANCEL
   case RESEND
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -354,18 +348,14 @@ extension UIKit.UIButton {
 @objc public protocol PaySDKButtonCustomization : AP_PaySDK.PaySDKCustomization {
   @objc func setBackgroundColor(_ hexColorCode: Swift.String) throws
   @objc func setCornerRadius(_ cornerRadius: Swift.Int) throws
-  @objc func setButtonName(_ buttonName: Swift.String) throws
   @objc func getBackgroundColor() -> Swift.String
   @objc func getCornerRadius() -> Swift.Int
-  @objc func getButtonName() -> Swift.String
 }
 @objc public protocol PaySDKToolbarCustomization : AP_PaySDK.PaySDKCustomization {
   @objc func setBackgroundColor(_ hexColorCode: Swift.String) throws
   @objc func setHeaderText(_ headerText: Swift.String) throws
-  @objc func setRightBarButtonText(_ rightBarButtonText: Swift.String) throws
   @objc func getBackgroundColor() -> Swift.String
   @objc func getHeaderText() -> Swift.String
-  @objc func getRightBarButtonText() -> Swift.String
 }
 @objc public protocol PaySDKLabelCustomization : AP_PaySDK.PaySDKCustomization {
   @objc func setHeadingTextColor(_ hexColorCode: Swift.String) throws
@@ -430,6 +420,7 @@ extension UIKit.UIButton {
   @objc required public init?(dictionary: Foundation.NSDictionary)
   @objc public func dictionaryRepresentation() -> Foundation.NSDictionary
   @objc deinit
+  @objc override dynamic public init()
 }
 @objc open class TextBoxCustomization : AP_PaySDK.Customization, AP_PaySDK.PaySDKTextBoxCustomization {
   @objc override dynamic public init()
@@ -440,6 +431,7 @@ extension UIKit.UIButton {
   @objc public func setBorderColor(_ hexColorCode: Swift.String) throws
   @objc public func getBorderWidth() -> Swift.Int
   @objc public func getBorderColor() -> Swift.String
+  @objc override public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int)
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class Cards : ObjectiveC.NSObject {
@@ -454,6 +446,7 @@ extension UIKit.UIButton {
   @objc public func getHeadingTextColor() -> Swift.String
   @objc public func getHeadingTextFontName() -> Swift.String
   @objc public func getHeadingTextFontSize() -> Swift.Int
+  @objc override public init(_ textFontName: Swift.String, _ textColor: Swift.String, _ textFontSize: Swift.Int)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc open class Customization : ObjectiveC.NSObject, AP_PaySDK.PaySDKCustomization {
@@ -468,11 +461,10 @@ extension UIKit.UIButton {
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(PayData) open class PayData : ObjectiveC.NSObject {
-  @objc public var presentController: AP_PaySDK.PresentViewController?
   @objc public var cardDetails: AP_PaySDK.CardDetails?
   @objc public var callBackParam: AP_PaySDK.CallBackParam?
   @objc public var threeDSParams: AP_PaySDK.ThreeDSParams?
-  @objc public init(channelType: AP_PaySDK.PayChannel, envType: AP_PaySDK.EnvType, amount: Swift.String, payGate: AP_PaySDK.PayGate, currCode: AP_PaySDK.CurrencyCode, payType: AP_PaySDK.payType, orderRef: Swift.String, payMethod: Swift.String, lang: AP_PaySDK.Language, merchantId: Swift.String, remark: Swift.String, payRef: Swift.String, resultpage: Swift.String, showCloseButton: Swift.Bool, showToolbar: Swift.Bool, webViewClosePrompt: Swift.String, extraData: [Swift.String : Any]?)
+  @objc public init(channelType: AP_PaySDK.PayChannel, envType: AP_PaySDK.EnvType, amount: Swift.String, payGate: AP_PaySDK.PayGate, currCode: AP_PaySDK.CurrencyCode, payType: AP_PaySDK.payType, orderRef: Swift.String, payMethod: Swift.String, lang: AP_PaySDK.Language, merchantId: Swift.String, remark: Swift.String, payRef: Swift.String, resultpage: Swift.String, showCloseButton: Swift.Bool, extraData: [Swift.String : Any]?)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(CallBackParam) open class CallBackParam : ObjectiveC.NSObject {
