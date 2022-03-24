@@ -29,7 +29,16 @@ yarn add react-native-asiapay
 
 ## Android installation
 
-No configuration is needed, React Native will auto link the library
+Add `flatDir { dirs "$rootDir/../node_modules/react-native-asiapay/android/libs" }` to `android/build.gradle`
+
+Inside 
+```
+allprojects {
+    repositories {
+      ....
+    }
+}
+```
 
 ## Add pay sdk public key file
 
