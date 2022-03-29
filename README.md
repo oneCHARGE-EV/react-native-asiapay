@@ -25,7 +25,9 @@ yarn add react-native-asiapay
 ```
 ## iOS installation
 
-`pod install`
+1. `pod install`
+2. Add `#import <AP_PaySDK/AP_PaySDK.h>` to your `AppDelegate.m`
+3. Add `[[PaySDK shared] processOrderWithUrl:url];` to `- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options`
 
 ## Android installation
 
