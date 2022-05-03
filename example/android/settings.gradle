@@ -2,5 +2,5 @@ rootProject.name = 'AsiapayExample'
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'
 
-include ':reactnativeasiapay'
-project(':reactnativeasiapay').projectDir = new File(rootProject.projectDir, '../../android')
+// include ':reactnativeasiapay'
+// project(':reactnativeasiapay').projectDir = new File(rootProject.projectDir, '../../android')

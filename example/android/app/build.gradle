@@ -204,7 +204,7 @@ dependencies {
         implementation jscFlavor
     }
 
-    implementation project(':reactnativeasiapay')
+    implementation (project(':react-native-asiapay'))
 }
 
 // Run this once to be able to run the application with BUCK

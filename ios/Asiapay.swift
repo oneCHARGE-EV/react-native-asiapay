@@ -30,17 +30,28 @@ class Asiapay: NSObject, PaySDKDelegate {
 
         makePayment(method: "OCTOPUS", amount: amount, currency: "HKD", orderRef: orderRef, remark: remark, resolve: resolve, reject: reject)
     }
+    
+    @objc(creditCard:withCurrency:withMethod:withOrderRef:withRemark:withCardDetails:withExtraData:withPayType:withResolve:withReject:)
+    func creditCard(amount: String, currency: String, method: String, orderRef: String, remark: String, cardDetails: [String: String]?, extraData: [String: Any], payType: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) -> Void {
+        var card: CardDetails? = nil
+        if (cardDetails != nil) {
+            card = CardDetails(cardHolderName: cardDetails!["cardHolder"]!, cardNo: cardDetails!["cardNo"]!, expMonth: cardDetails!["month"]!, expYear: cardDetails!["year"]!, securityCode: cardDetails!["cvc"]!)
+        }
+        
+        makePayment(method: method, amount: amount, currency: currency, orderRef: orderRef, remark: remark, resolve: resolve, reject: reject, extraData: extraData, payType: getPayType(payTypeStr: payType), cardDetails: card)
+    }
 
-    func makePayment(method: String, amount: String, currency: String, orderRef: String, remark: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) -> Void {
+    func makePayment(method: String, amount: String, currency: String, orderRef: String, remark: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock, extraData: [String : Any] = ["": ""], payType: payType = payType.NORMAL_PAYMENT, cardDetails: CardDetails? = nil) -> Void {
         print("Pay \(method), order ref \(orderRef)")
         self.currentResolve = resolve
         self.currentReject = reject
+
         paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
                                         envType: self.environment,
                                         amount: amount,
                                         payGate: PayGate.PAYDOLLAR,
                                         currCode: getCurrencyCode(currencyCode: currency),
-                                        payType: payType.NORMAL_PAYMENT,
+                                        payType: payType,
                                         orderRef: orderRef,
                                         payMethod: method,
                                         lang: Language.ENGLISH,
@@ -48,7 +59,11 @@ class Asiapay: NSObject, PaySDKDelegate {
                                         remark: remark,
                                         payRef: "",
                                         resultpage: "F", showCloseButton: true,
-                                        extraData: ["":""])
+                                        extraData: extraData)
+        if let unwrappedCard = cardDetails {
+            paySDK.paymentDetails.cardDetails = unwrappedCard
+        }
+        
         paySDK.process()
     }
 
@@ -114,9 +129,18 @@ class Asiapay: NSObject, PaySDKDelegate {
 
         return payCurrencyCode
     }
+    
+    func getPayType(payTypeStr: String) -> payType {
+        if (payTypeStr == "N") {
+            return payType.NORMAL_PAYMENT
+        }
+        return payType.HOLD_PAYMENT
+    }
 
     func paymentResult(result: PayResult) {
+        print(result)
         let dictResult = self.toDict(result: result)
+        print(dictResult)
         if (result.successCode != "0" && self.currentReject != nil) {
             self.currentReject!("\(result.prc ?? ""):\(result.src ?? "")", result.errMsg, nil)
         }

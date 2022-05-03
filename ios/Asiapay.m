@@ -14,5 +14,15 @@ RCT_EXTERN_METHOD(octopus: (NSString)amount
                   withRemark: (NSString)remark
                   withResolve: (RCTPromiseResolveBlock)resolve
                   withReject: (RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(creditCard: (NSString)amount
+                  withCurrency: (NSString)currency
+                  withMethod: (NSString)method
+                  withOrderRef: (NSString)orderRef
+                  withRemark: (NSString)remark
+                  withCardDetails: (NSDictionary)cardDetails
+                  withExtraData: (NSDictionary)extraData
+                  withPayType: (NSString)payType
+                  withResolve: (RCTPromiseResolveBlock)resolve
+                  withReject: (RCTPromiseRejectBlock)reject)
 
 @end

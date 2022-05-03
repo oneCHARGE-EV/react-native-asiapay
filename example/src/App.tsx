@@ -7,7 +7,7 @@ export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
 
   React.useEffect(() => {
-    Asiapay.setup('Production', '88624174');
+    Asiapay.setup('Sandbox', '88149885');
   }, []);
 
   return (
@@ -17,19 +17,50 @@ export default function App() {
         title="Test Alipay"
         onPress={() => {
           Asiapay.alipay('1', 'HKD', Date.now().toString(), 'Test')
-          .then(s => {
-            console.log(s);
-          })
-          .catch(({ code, message }) => {
-            debugger
-            console.log(code, message)
-          });
+            .then((s) => {
+              console.log(s);
+            })
+            .catch(({ code, message }) => {
+              console.log(code, message);
+            });
         }}
       />
       <Button
         title="Test Octopus"
         onPress={() => {
           Asiapay.octopus('10', Date.now().toString(), 'Test');
+        }}
+      />
+      <Button
+        title="Test Credit Card"
+        onPress={() => {
+          Asiapay.creditCard(
+            '1',
+            'HKD',
+            'VISA',
+            Date.now().toString(),
+            'Test',
+            {
+              cardNo: '4335900000140045',
+              month: '7',
+              year: '2030',
+              cardHolder: 'testing card',
+              cvc: '123',
+            },
+            {
+              addNewMember: true,
+              memberPay_service: 'T',
+              memberPay_memberId: 'm2',
+              memberId: 'm2',
+            },
+            'H'
+          )
+            .then((s) => {
+              console.log(s);
+            })
+            .catch(({ code, message }) => {
+              console.log(code, message);
+            });
         }}
       />
     </View>
