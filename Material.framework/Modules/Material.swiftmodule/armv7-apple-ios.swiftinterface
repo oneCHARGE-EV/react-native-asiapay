@@ -1,0 +1,4011 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
+// swift-module-flags: -target armv7-apple-ios9.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Material
+import Accelerate
+import Foundation
+@_exported import Material
+import Motion
+import Swift
+import UIKit
+import _Concurrency
+public struct Screen {
+  public static var bounds: CoreGraphics.CGRect {
+    get
+  }
+  public static var width: CoreGraphics.CGFloat {
+    get
+  }
+  public static var height: CoreGraphics.CGFloat {
+    get
+  }
+  public static var scale: CoreGraphics.CGFloat {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class RadioButton : Material.BaseIconLayerButton {
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) override public init(image: UIKit.UIImage?, tintColor: UIKit.UIColor? = nil)
+  @_Concurrency.MainActor(unsafe) override public init(title: Swift.String?, titleColor: UIKit.UIColor? = nil)
+  @objc deinit
+}
+extension Foundation.NSMutableAttributedString {
+  open func updateAttribute(_ name: Foundation.NSAttributedString.Key, value: Any, range: Foundation.NSRange)
+  open func updateAttributes(_ attrs: [Foundation.NSAttributedString.Key : Any], range: Foundation.NSRange)
+  open func removeAttributes(_ attrs: [Foundation.NSAttributedString.Key], range: Foundation.NSRange)
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var bottomNavigationController: Material.BottomNavigationController? {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class BottomNavigationController : UIKit.UITabBarController, Material.Themeable {
+  @_Concurrency.MainActor(unsafe) open var isSwipeEnabled: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var interactiveSwipeGesture: UIKit.UIPanGestureRecognizer? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc dynamic public init()
+  @_Concurrency.MainActor(unsafe) public init(viewControllers: [UIKit.UIViewController])
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func prepare()
+  @_Concurrency.MainActor(unsafe) open func apply(theme: Material.Theme)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class CollectionView : UIKit.UICollectionView {
+  @_Concurrency.MainActor(unsafe) open var contentEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var contentEdgeInsets: Material.EdgeInsets {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var scrollDirection: UIKit.UICollectionView.ScrollDirection {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var interimSpacePreset: Material.InterimSpacePreset {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var interimSpace: Material.InterimSpace {
+    @objc get
+    @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect, collectionViewLayout layout: UIKit.UICollectionViewLayout)
+  @_Concurrency.MainActor(unsafe) public init(collectionViewLayout layout: UIKit.UICollectionViewLayout)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public init(frame: CoreGraphics.CGRect)
+  @objc dynamic public init()
+  @_Concurrency.MainActor(unsafe) open func prepare()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(CollectionViewCell) @_Concurrency.MainActor(unsafe) open class CollectionViewCell : UIKit.UICollectionViewCell, Material.Pulseable {
+  @_Concurrency.MainActor(unsafe) final public let visualLayer: QuartzCore.CAShapeLayer
+  @_Concurrency.MainActor(unsafe) open var pulseAnimation: Material.PulseAnimation {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var pulseColor: UIKit.UIColor {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var pulseOpacity: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var image: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentsRect: CoreGraphics.CGRect {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentsCenter: CoreGraphics.CGRect {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentsScale: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentsGravity: QuartzCore.CALayerContentsGravity {
+    @objc get
+    @objc set(value)
+  }
+  @IBInspectable @_Concurrency.MainActor(unsafe) @objc override dynamic open var backgroundColor: UIKit.UIColor? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func pulse(point: CoreGraphics.CGPoint? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesEnded(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesCancelled(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) open func prepare()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class CollectionViewLayout : UIKit.UICollectionViewLayout {
+  @_Concurrency.MainActor(unsafe) public var offset: CoreGraphics.CGPoint
+  @_Concurrency.MainActor(unsafe) public var itemSize: CoreGraphics.CGSize
+  @_Concurrency.MainActor(unsafe) public var contentEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var contentEdgeInsets: UIKit.UIEdgeInsets
+  @_Concurrency.MainActor(unsafe) public var contentSize: CoreGraphics.CGSize {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var layoutItems: [(UIKit.UICollectionViewLayoutAttributes, Foundation.NSIndexPath)] {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var dataSourceItems: [Material.DataSourceItem]? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var scrollDirection: UIKit.UICollectionView.ScrollDirection
+  @_Concurrency.MainActor(unsafe) public var interimSpacePreset: Material.InterimSpacePreset {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var interimSpace: Material.InterimSpace
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var collectionViewContentSize: CoreGraphics.CGSize {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @objc override dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension Material.CollectionViewLayout {
+  @_Concurrency.MainActor(unsafe) public func indexPathsOfItems(in rect: CoreGraphics.CGRect) -> [Foundation.NSIndexPath]
+}
+extension Material.CollectionViewLayout {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutAttributesForItem(at indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewLayoutAttributes?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutAttributesForElements(in rect: CoreGraphics.CGRect) -> [UIKit.UICollectionViewLayoutAttributes]?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func shouldInvalidateLayout(forBoundsChange newBounds: CoreGraphics.CGRect) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func targetContentOffset(forProposedContentOffset proposedContentOffset: CoreGraphics.CGPoint) -> CoreGraphics.CGPoint
+}
+@_inheritsConvenienceInitializers @objc(CollectionReusableView) @_Concurrency.MainActor(unsafe) open class CollectionReusableView : UIKit.UICollectionReusableView, Material.Pulseable {
+  @_Concurrency.MainActor(unsafe) final public let visualLayer: QuartzCore.CAShapeLayer
+  @_Concurrency.MainActor(unsafe) open var pulseAnimation: Material.PulseAnimation {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var pulseColor: UIKit.UIColor {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var pulseOpacity: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var image: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentsRect: CoreGraphics.CGRect {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentsCenter: CoreGraphics.CGRect {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentsScale: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentsGravity: QuartzCore.CALayerContentsGravity {
+    @objc get
+    @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var contentEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentEdgeInsets: UIKit.UIEdgeInsets {
+    @objc get
+    @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var interimSpacePreset: Material.InterimSpacePreset {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var interimSpace: Material.InterimSpace {
+    @objc get
+    @objc set(value)
+  }
+  @IBInspectable @_Concurrency.MainActor(unsafe) @objc override dynamic open var backgroundColor: UIKit.UIColor? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func pulse(point: CoreGraphics.CGPoint? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesEnded(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesCancelled(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) open func prepare()
+  @objc deinit
+}
+public struct DataSourceItem {
+  public var data: Any?
+  public var width: CoreGraphics.CGFloat?
+  public var height: CoreGraphics.CGFloat?
+  public init(data: Any? = nil, width: CoreGraphics.CGFloat? = nil, height: CoreGraphics.CGFloat? = nil)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class CheckButton : Material.BaseIconLayerButton {
+  @_Concurrency.MainActor(unsafe) open var checkmarkColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) override open func apply(theme: Material.Theme)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) override public init(image: UIKit.UIImage?, tintColor: UIKit.UIColor? = nil)
+  @_Concurrency.MainActor(unsafe) override public init(title: Swift.String?, titleColor: UIKit.UIColor? = nil)
+  @objc deinit
+}
+public protocol FontType {
+  static func regular(with size: CoreGraphics.CGFloat) -> UIKit.UIFont
+  static func medium(with size: CoreGraphics.CGFloat) -> UIKit.UIFont
+  static func bold(with size: CoreGraphics.CGFloat) -> UIKit.UIFont
+}
+public struct Font {
+  public static let pointSize: CoreGraphics.CGFloat
+  public static func systemFont(ofSize size: CoreGraphics.CGFloat) -> UIKit.UIFont
+  public static func boldSystemFont(ofSize size: CoreGraphics.CGFloat) -> UIKit.UIFont
+  public static func italicSystemFont(ofSize size: CoreGraphics.CGFloat) -> UIKit.UIFont
+  public static func loadFontIfNeeded(name: Swift.String)
+}
+public struct RobotoFont : Material.FontType {
+  public static var pointSize: CoreGraphics.CGFloat {
+    get
+  }
+  public static var thin: UIKit.UIFont {
+    get
+  }
+  public static var light: UIKit.UIFont {
+    get
+  }
+  public static var regular: UIKit.UIFont {
+    get
+  }
+  public static var medium: UIKit.UIFont {
+    get
+  }
+  public static var bold: UIKit.UIFont {
+    get
+  }
+  public static func thin(with size: CoreGraphics.CGFloat) -> UIKit.UIFont
+  public static func light(with size: CoreGraphics.CGFloat) -> UIKit.UIFont
+  public static func regular(with size: CoreGraphics.CGFloat) -> UIKit.UIFont
+  public static func medium(with size: CoreGraphics.CGFloat) -> UIKit.UIFont
+  public static func bold(with size: CoreGraphics.CGFloat) -> UIKit.UIFont
+}
+public typealias LayoutRelation = UIKit.NSLayoutConstraint.Relation
+@objc(DynamicFontTypeDelegate) public protocol DynamicFontTypeDelegate {
+  @objc func dynamicFontType(dynamicFontType: Material.DynamicFontType)
+}
+@_inheritsConvenienceInitializers @objc(DynamicFontType) open class DynamicFontType : ObjectiveC.NSObject {
+  weak open var delegate: Material.DynamicFontTypeDelegate?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class NavigationBar : UIKit.UINavigationBar, Material.Themeable {
+  @_Concurrency.MainActor(unsafe) open var willLayout: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var intrinsicContentSize: CoreGraphics.CGSize {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) open var contentEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentEdgeInsets: Material.EdgeInsets {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var interimSpacePreset: Material.InterimSpacePreset {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var interimSpace: Material.InterimSpace {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var backButtonImage: UIKit.UIImage? {
+    @objc get
+    @objc set(value)
+  }
+  @IBInspectable @_Concurrency.MainActor(unsafe) @objc override dynamic open var backgroundColor: UIKit.UIColor? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func sizeThatFits(_ size: CoreGraphics.CGSize) -> CoreGraphics.CGSize
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func prepare()
+  @_Concurrency.MainActor(unsafe) open func apply(theme: Material.Theme)
+  @objc deinit
+}
+extension Material.NavigationController {
+  @_Concurrency.MainActor(unsafe) open var statusBarStyle: UIKit.UIStatusBarStyle {
+    get
+    set(value)
+  }
+}
+@objc @_Concurrency.MainActor(unsafe) open class NavigationController : UIKit.UINavigationController {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(rootViewController: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) public init(rootViewController: UIKit.UIViewController, navigationBarClass: Swift.AnyClass?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func prepare()
+  @_Concurrency.MainActor(unsafe) open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func setNavigationBarHidden(_ hidden: Swift.Bool, animated: Swift.Bool)
+  @objc deinit
+}
+extension Material.NavigationController : UIKit.UINavigationBarDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationBar(_ navigationBar: UIKit.UINavigationBar, shouldPush item: UIKit.UINavigationItem) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationBar(_ navigationBar: UIKit.UINavigationBar, didPop item: UIKit.UINavigationItem)
+}
+extension Material.NavigationController : UIKit.UIGestureRecognizerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldReceive touch: UIKit.UITouch) -> Swift.Bool
+}
+extension UIKit.UINavigationItem {
+  @_Concurrency.MainActor(unsafe) open var contentViewAlignment: Material.ContentViewAlignment {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var contentView: UIKit.UIView {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var backButton: Material.IconButton {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var titleLabel: UIKit.UILabel {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var detailLabel: UIKit.UILabel {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var leftViews: [UIKit.UIView] {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var rightViews: [UIKit.UIView] {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var centerViews: [UIKit.UIView] {
+    get
+    set(value)
+  }
+}
+@objc(NavigationDrawerPosition) public enum NavigationDrawerPosition : Swift.Int {
+  case left
+  case right
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var navigationDrawerController: Material.NavigationDrawerController? {
+    get
+  }
+}
+@objc(NavigationDrawerControllerDelegate) public protocol NavigationDrawerControllerDelegate {
+  @objc optional func navigationDrawerController(navigationDrawerController: Material.NavigationDrawerController, willOpen position: Material.NavigationDrawerPosition)
+  @objc optional func navigationDrawerController(navigationDrawerController: Material.NavigationDrawerController, didOpen position: Material.NavigationDrawerPosition)
+  @objc optional func navigationDrawerController(navigationDrawerController: Material.NavigationDrawerController, willClose position: Material.NavigationDrawerPosition)
+  @objc optional func navigationDrawerController(navigationDrawerController: Material.NavigationDrawerController, didClose position: Material.NavigationDrawerPosition)
+  @objc optional func navigationDrawerController(navigationDrawerController: Material.NavigationDrawerController, didBeginPanAt point: CoreGraphics.CGPoint, position: Material.NavigationDrawerPosition)
+  @objc optional func navigationDrawerController(navigationDrawerController: Material.NavigationDrawerController, didChangePanAt point: CoreGraphics.CGPoint, position: Material.NavigationDrawerPosition)
+  @objc optional func navigationDrawerController(navigationDrawerController: Material.NavigationDrawerController, didEndPanAt point: CoreGraphics.CGPoint, position: Material.NavigationDrawerPosition)
+  @objc optional func navigationDrawerController(navigationDrawerController: Material.NavigationDrawerController, didTapAt point: CoreGraphics.CGPoint, position: Material.NavigationDrawerPosition)
+  @objc optional func navigationDrawerController(navigationDrawerController: Material.NavigationDrawerController, statusBar isHidden: Swift.Bool)
+}
+@objc(NavigationDrawerController) @objcMembers @_Concurrency.MainActor(unsafe) open class NavigationDrawerController : Material.TransitionController {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var leftThreshold: CoreGraphics.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var rightThreshold: CoreGraphics.CGFloat
+  @objc @_Concurrency.MainActor(unsafe) weak open var delegate: Material.NavigationDrawerControllerDelegate?
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var animationDuration: Swift.Double
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isEnabled: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isLeftViewEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isLeftPanGestureEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isLeftTapGestureEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isRightViewEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isRightPanGestureEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isRightTapGestureEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isHiddenStatusBarEnabled: Swift.Bool
+  @_Concurrency.MainActor(unsafe) open var depthPreset: Material.DepthPreset
+  @objc @_Concurrency.MainActor(unsafe) open var leftView: UIKit.UIView? {
+    get
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var rightView: UIKit.UIView? {
+    get
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var isOpened: Swift.Bool {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var isLeftViewOpened: Swift.Bool {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var isRightViewOpened: Swift.Bool {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var contentViewController: UIKit.UIViewController {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var leftViewController: UIKit.UIViewController? {
+    get
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var rightViewController: UIKit.UIViewController? {
+    get
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var leftViewWidth: CoreGraphics.CGFloat {
+    get
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var rightViewWidth: CoreGraphics.CGFloat {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc @_Concurrency.MainActor(unsafe) public init(rootViewController: UIKit.UIViewController, leftViewController: UIKit.UIViewController? = nil, rightViewController: UIKit.UIViewController? = nil)
+  @objc @_Concurrency.MainActor(unsafe) override open func transition(to viewController: UIKit.UIViewController, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+  @objc @_Concurrency.MainActor(unsafe) override open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillTransition(to size: CoreGraphics.CGSize, with coordinator: UIKit.UIViewControllerTransitionCoordinator)
+  @objc @_Concurrency.MainActor(unsafe) override open func prepare()
+  @objc @_Concurrency.MainActor(unsafe) open func setLeftViewWidth(width: CoreGraphics.CGFloat, isHidden: Swift.Bool, animated: Swift.Bool, duration: Foundation.TimeInterval = 0.5)
+  @objc @_Concurrency.MainActor(unsafe) open func setRightViewWidth(width: CoreGraphics.CGFloat, isHidden: Swift.Bool, animated: Swift.Bool, duration: Foundation.TimeInterval = 0.5)
+  @objc @_Concurrency.MainActor(unsafe) open func toggleLeftView(velocity: CoreGraphics.CGFloat = 0)
+  @objc @_Concurrency.MainActor(unsafe) open func toggleRightView(velocity: CoreGraphics.CGFloat = 0)
+  @objc @_Concurrency.MainActor(unsafe) open func openLeftView(velocity: CoreGraphics.CGFloat = 0)
+  @objc @_Concurrency.MainActor(unsafe) open func openRightView(velocity: CoreGraphics.CGFloat = 0)
+  @objc @_Concurrency.MainActor(unsafe) open func closeLeftView(velocity: CoreGraphics.CGFloat = 0)
+  @objc @_Concurrency.MainActor(unsafe) open func closeRightView(velocity: CoreGraphics.CGFloat = 0)
+  @objc deinit
+}
+extension Material.NavigationDrawerController : UIKit.UIGestureRecognizerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldReceive touch: UIKit.UITouch) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class CardCollectionViewCell : Material.CollectionViewCell {
+  @_Concurrency.MainActor(unsafe) open var card: Material.Card? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+@objc(DisplayStyle) public enum DisplayStyle : Swift.Int {
+  case partial
+  case full
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class TransitionController : Material.ViewController {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isUserInteractionEnabled: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var isTransitioning: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var childForStatusBarStyle: UIKit.UIViewController? {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var childForStatusBarHidden: UIKit.UIViewController? {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var childForHomeIndicatorAutoHidden: UIKit.UIViewController? {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var childForScreenEdgesDeferringSystemGestures: UIKit.UIViewController? {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) final public let container: UIKit.UIView
+  @_Concurrency.MainActor(unsafe) open var rootViewController: UIKit.UIViewController! {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) public init(rootViewController: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var shouldAutomaticallyForwardAppearanceMethods: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) open func transition(to viewController: UIKit.UIViewController, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @objc deinit
+}
+@objc(SnackbarStatus) public enum SnackbarStatus : Swift.Int {
+  case visible
+  case hidden
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class Snackbar : Material.Bar {
+  @_Concurrency.MainActor(unsafe) open var text: Swift.String? {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var attributedText: Foundation.NSAttributedString? {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) final public let textLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var intrinsicContentSize: CoreGraphics.CGSize {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) open var status: Material.SnackbarStatus {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func hitTest(_ point: CoreGraphics.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+@objc(SnackbarControllerDelegate) public protocol SnackbarControllerDelegate {
+  @objc optional func snackbarController(snackbarController: Material.SnackbarController, willShow snackbar: Material.Snackbar)
+  @objc optional func snackbarController(snackbarController: Material.SnackbarController, didShow snackbar: Material.Snackbar)
+  @objc optional func snackbarController(snackbarController: Material.SnackbarController, willHide snackbar: Material.Snackbar)
+  @objc optional func snackbarController(snackbarController: Material.SnackbarController, didHide snackbar: Material.Snackbar)
+}
+@objc(SnackbarAlignment) public enum SnackbarAlignment : Swift.Int {
+  case top
+  case bottom
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var snackbarController: Material.SnackbarController? {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class SnackbarController : Material.TransitionController {
+  @_Concurrency.MainActor(unsafe) final public let snackbar: Material.Snackbar
+  @_Concurrency.MainActor(unsafe) open var isAnimating: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) weak open var delegate: Material.SnackbarControllerDelegate?
+  @_Concurrency.MainActor(unsafe) open var snackbarAlignment: Material.SnackbarAlignment
+  @_Concurrency.MainActor(unsafe) open var snackbarEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var snackbarEdgeInsets: UIKit.UIEdgeInsets {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var automaticallyAdjustSnackbarLayoutEdgeInsets: Swift.Bool
+  @discardableResult
+  @_Concurrency.MainActor(unsafe) open func animate(snackbar status: Material.SnackbarStatus, delay: Foundation.TimeInterval = 0, animations: ((Material.Snackbar) -> Swift.Void)? = nil, completion: ((Material.Snackbar) -> Swift.Void)? = nil) -> Motion.MotionCancelBlock?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillTransition(to size: CoreGraphics.CGSize, with coordinator: UIKit.UIViewControllerTransitionCoordinator)
+  @_Concurrency.MainActor(unsafe) override open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func reload()
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) override public init(rootViewController: UIKit.UIViewController)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class CheckButtonGroup : Material.BaseButtonGroup<Material.CheckButton> {
+  @_Concurrency.MainActor(unsafe) convenience public init(titles: [Swift.String])
+  @_Concurrency.MainActor(unsafe) open var selecetedButtons: [Material.CheckButton] {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var selectedIndices: [Swift.Int] {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) override open func didTap(button: Material.CheckButton, at index: Swift.Int)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var statusBarController: Material.StatusBarController? {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class StatusBarController : Material.TransitionController {
+  @_Concurrency.MainActor(unsafe) open var displayStyle: Material.DisplayStyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var statusBarStyle: UIKit.UIStatusBarStyle {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var isStatusBarHidden: Swift.Bool {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var statusBarOffsetAdjustment: CoreGraphics.CGFloat {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var shouldHideStatusBarOnRotation: Swift.Bool
+  @_Concurrency.MainActor(unsafe) final public let statusBar: UIKit.UIView
+  @_Concurrency.MainActor(unsafe) override open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) override open func apply(theme: Material.Theme)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) override public init(rootViewController: UIKit.UIViewController)
+  @objc deinit
+}
+@objc(SwitchState) public enum SwitchState : Swift.Int {
+  case on
+  case off
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum SwitchSize {
+  case small
+  case medium
+  case large
+  case custom(width: CoreGraphics.CGFloat, height: CoreGraphics.CGFloat)
+}
+@objc(SwitchDelegate) public protocol SwitchDelegate {
+  @objc func switchDidChangeState(control: Material.Switch, state: Material.SwitchState)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class Switch : UIKit.UIControl, Material.Themeable {
+  @_Concurrency.MainActor(unsafe) open var willLayout: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var trackThickness: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var buttonDiameter: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) weak open var delegate: Material.SwitchDelegate?
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isBounceable: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var buttonOnColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var buttonOffColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var buttonOnImage: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var buttonOffImage: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var trackOnColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var trackOffColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var buttonOnDisabledColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var trackOnDisabledColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var buttonOffDisabledColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var trackOffDisabledColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var buttonOnDisabledImage: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var buttonOffDisabledImage: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var track: UIKit.UIView {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var button: Material.FABButton {
+    get
+  }
+  @IBInspectable @_Concurrency.MainActor(unsafe) @objc override dynamic open var isEnabled: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var isOn: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var switchState: Material.SwitchState {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var switchSize: Material.SwitchSize {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var intrinsicContentSize: CoreGraphics.CGSize {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) public init(state: Material.SwitchState = .off, size: Material.SwitchSize = .medium)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func reload()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func willMove(toSuperview newSuperview: UIKit.UIView?)
+  @_Concurrency.MainActor(unsafe) open func toggle(completion: ((Material.Switch) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) open func prepare()
+  @_Concurrency.MainActor(unsafe) open func apply(theme: Material.Theme)
+  @objc deinit
+}
+extension Material.Switch {
+  @_Concurrency.MainActor(unsafe) open func setSwitchState(state: Material.SwitchState, animated: Swift.Bool = true, completion: ((Material.Switch) -> Swift.Void)? = nil)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class TabItem : Material.FlatButton {
+  @_Concurrency.MainActor(unsafe) @objc override open var image: UIKit.UIImage? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) override public init(image: UIKit.UIImage?, tintColor: UIKit.UIColor? = nil)
+  @_Concurrency.MainActor(unsafe) override public init(title: Swift.String?, titleColor: UIKit.UIColor? = nil)
+  @objc deinit
+}
+extension Material.TabItem {
+  @_Concurrency.MainActor(unsafe) open func getTabItemColor(for state: Material.TabItemState) -> UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) open func setTabItemColor(_ color: UIKit.UIColor, for state: Material.TabItemState)
+  @_Concurrency.MainActor(unsafe) open func getTabItemImage(for state: Material.TabItemState) -> UIKit.UIImage?
+  @_Concurrency.MainActor(unsafe) open func setTabItemImage(_ image: UIKit.UIImage?, for state: Material.TabItemState)
+}
+@objc(TabItemState) public enum TabItemState : Swift.Int {
+  case normal
+  case highlighted
+  case selected
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(TabItemLineState) public enum TabItemLineState : Swift.Int {
+  case selected
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(TabBarLineAlignment) public enum TabBarLineAlignment : Swift.Int {
+  case top
+  case bottom
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(TabBarDelegate) public protocol TabBarDelegate {
+  @objc optional func tabBar(tabBar: Material.TabBar, shouldSelect tabItem: Material.TabItem) -> Swift.Bool
+  @objc optional func tabBar(tabBar: Material.TabBar, willSelect tabItem: Material.TabItem)
+  @objc optional func tabBar(tabBar: Material.TabBar, didSelect tabItem: Material.TabItem)
+}
+@objc(TabBarStyle) public enum TabBarStyle : Swift.Int {
+  case auto
+  case nonScrollable
+  case scrollable
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum TabBarCenteringStyle {
+  case never
+  case auto
+  case always
+  public static func == (a: Material.TabBarCenteringStyle, b: Material.TabBarCenteringStyle) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum TabBarLineStyle {
+  case auto
+  case fixed(CoreGraphics.CGFloat)
+  case custom((Material.TabItem) -> CoreGraphics.CGFloat)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class TabBar : Material.Bar {
+  @_Concurrency.MainActor(unsafe) open var tabBarStyle: Material.TabBarStyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var tabBarCenteringStyle: Material.TabBarCenteringStyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var tabBarLineStyle: Material.TabBarLineStyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public let scrollView: UIKit.UIScrollView
+  @_Concurrency.MainActor(unsafe) open var isScrollBounceEnabled: Swift.Bool {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) weak open var delegate: Material.TabBarDelegate?
+  @_Concurrency.MainActor(unsafe) open var selectedTabItem: Material.TabItem? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var tabItemsContentEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var tabItemsContentEdgeInsets: Material.EdgeInsets {
+    @objc get
+    @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var tabItemsInterimSpacePreset: Material.InterimSpacePreset {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var tabItemsInterimSpace: Material.InterimSpace {
+    @objc get
+    @objc set(value)
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var tabItems: [Material.TabItem] {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) final public let line: UIKit.UIView
+  @objc @_Concurrency.MainActor(unsafe) open var lineAlignment: Material.TabBarLineAlignment {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var lineHeight: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @objc @_Concurrency.MainActor(unsafe) open var lineColor: UIKit.UIColor {
+    @objc get
+    @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+extension Material.TabBar {
+  @_Concurrency.MainActor(unsafe) open func getTabItemColor(for state: Material.TabItemState) -> UIKit.UIColor?
+  @_Concurrency.MainActor(unsafe) open func setTabItemsColor(_ color: UIKit.UIColor, for state: Material.TabItemState)
+  @_Concurrency.MainActor(unsafe) open func getLineColor(for state: Material.TabItemLineState) -> UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) open func setLineColor(_ color: UIKit.UIColor, for state: Material.TabItemLineState)
+}
+extension Material.TabBar {
+  @objc @_Concurrency.MainActor(unsafe) dynamic open func select(at index: Swift.Int, completion: ((Material.TabItem) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) open func animate(to tabItem: Material.TabItem, completion: ((Material.TabItem) -> Swift.Void)? = nil)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class TableViewCell : UIKit.UITableViewCell, Material.Pulseable {
+  @_Concurrency.MainActor(unsafe) final public let visualLayer: QuartzCore.CAShapeLayer
+  @_Concurrency.MainActor(unsafe) open var pulseAnimation: Material.PulseAnimation {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var pulseColor: UIKit.UIColor {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var pulseOpacity: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @IBInspectable @_Concurrency.MainActor(unsafe) @objc override dynamic open var backgroundColor: UIKit.UIColor? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String!)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func pulse(point: CoreGraphics.CGPoint? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesEnded(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesCancelled(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) open func prepare()
+  @objc deinit
+}
+public enum EditorPlaceholderAnimation {
+  case `default`
+  case hidden
+  public static func == (a: Material.EditorPlaceholderAnimation, b: Material.EditorPlaceholderAnimation) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class Editor : Material.View, Material.Themeable {
+  @_Concurrency.MainActor(unsafe) final public let textView: Material.TextView
+  @_Concurrency.MainActor(unsafe) open var isEditing: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var isEmpty: Swift.Bool {
+    get
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var placeholderLabel: UIKit.UILabel {
+    @objc get
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isPlaceholderAnimated: Swift.Bool
+  @_Concurrency.MainActor(unsafe) open var placeholderAnimation: Material.EditorPlaceholderAnimation {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var placeholderNormalColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var placeholderActiveColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var placeholderActiveScale: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var placeholderVerticalOffset: CoreGraphics.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var placeholderHorizontalOffset: CoreGraphics.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var dividerNormalHeight: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var dividerActiveHeight: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var dividerNormalColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var dividerActiveColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) final public let detailLabel: UIKit.UILabel
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var detail: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var detailColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var detailVerticalOffset: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func apply(theme: Material.Theme)
+  @discardableResult
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func becomeFirstResponder() -> Swift.Bool
+  @discardableResult
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func resignFirstResponder() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+}
+extension Material.Editor {
+  @_Concurrency.MainActor(unsafe) public var text: Swift.String! {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) public var font: UIKit.UIFont? {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) public var placeholder: Swift.String? {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) public var textAlignment: UIKit.NSTextAlignment {
+    get
+    set(value)
+  }
+}
+@objc(TextFieldPlaceholderAnimation) public enum TextFieldPlaceholderAnimation : Swift.Int {
+  case `default`
+  case hidden
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(TextFieldDelegate) public protocol TextFieldDelegate : UIKit.UITextFieldDelegate {
+  @objc optional func textField(textField: Material.TextField, didChange text: Swift.String?)
+  @objc optional func textField(textField: Material.TextField, willClear text: Swift.String?)
+  @objc optional func textField(textField: Material.TextField, didClear text: Swift.String?)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class TextField : UIKit.UITextField, Material.Themeable {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var intrinsicContentSize: CoreGraphics.CGSize {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isPlaceholderAnimated: Swift.Bool
+  @_Concurrency.MainActor(unsafe) open var placeholderAnimation: Material.TextFieldPlaceholderAnimation {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var isEmpty: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var text: Swift.String? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var leftView: UIKit.UIView? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var leftViewWidth: CoreGraphics.CGFloat {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var leftViewOffset: CoreGraphics.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var leftViewNormalColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var leftViewActiveColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var dividerNormalHeight: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var dividerActiveHeight: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var dividerNormalColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var dividerActiveColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @IBInspectable @_Concurrency.MainActor(unsafe) @objc override dynamic open var font: UIKit.UIFont? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @IBInspectable @_Concurrency.MainActor(unsafe) @objc override dynamic open var placeholder: Swift.String? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var isSecureTextEntry: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) final public let placeholderLabel: UIKit.UILabel
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var placeholderNormalColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var placeholderActiveColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var placeholderVerticalOffset: CoreGraphics.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var placeholderHorizontalOffset: CoreGraphics.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var placeholderActiveScale: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) final public let detailLabel: UIKit.UILabel
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var detail: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var detailColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var detailVerticalOffset: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var textAlignment: UIKit.NSTextAlignment {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var clearIconButton: Material.IconButton? {
+    get
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isClearIconButtonEnabled: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isClearIconButtonAutoHandled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var visibilityIconButton: Material.IconButton? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var visibilityIconOn: UIKit.UIImage? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var visibilityIconOff: UIKit.UIImage? {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isVisibilityIconButtonEnabled: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isVisibilityIconButtonAutoHandled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isPlaceholderUppercasedWhenEditing: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func becomeFirstResponder() -> Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) open var textInsets: Material.EdgeInsets
+  @_Concurrency.MainActor(unsafe) open var textInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func textRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func editingRect(forBounds bounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
+  @_Concurrency.MainActor(unsafe) open func prepare()
+  @_Concurrency.MainActor(unsafe) open func apply(theme: Material.Theme)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class ErrorTextField : Material.TextField {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) final public let errorLabel: UIKit.UILabel
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var error: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var errorColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var errorVerticalOffset: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var isErrorRevealed: Swift.Bool {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) override open func apply(theme: Material.Theme)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+@objc(TextStorageDelegate) public protocol TextStorageDelegate : UIKit.NSTextStorageDelegate {
+  @objc optional func textStorage(textStorage: Material.TextStorage, willProcessEditing text: Swift.String, range: Foundation.NSRange)
+  @objc optional func textStorage(textStorage: Material.TextStorage, didProcessEditing text: Swift.String, result: Foundation.NSTextCheckingResult?, flags: Foundation.NSRegularExpression.MatchingFlags, stop: Swift.UnsafeMutablePointer<ObjectiveC.ObjCBool>)
+}
+@objc open class TextStorage : UIKit.NSTextStorage {
+  final public let storage: Foundation.NSMutableAttributedString
+  open var expression: Foundation.NSRegularExpression?
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension Material.TextStorage {
+  @objc override dynamic open var string: Swift.String {
+    @objc get
+  }
+  @objc override dynamic open func processEditing()
+  @objc override dynamic open func attributes(at location: Swift.Int, effectiveRange range: Foundation.NSRangePointer?) -> [Foundation.NSAttributedString.Key : Any]
+  @objc override dynamic open func replaceCharacters(in range: Foundation.NSRange, with str: Swift.String)
+  @objc override dynamic open func setAttributes(_ attrs: [Foundation.NSAttributedString.Key : Any]?, range: Foundation.NSRange)
+  @objc override dynamic open func addAttribute(_ name: Foundation.NSAttributedString.Key, value: Any, range: Foundation.NSRange)
+  @objc override dynamic open func removeAttribute(_ name: Foundation.NSAttributedString.Key, range: Foundation.NSRange)
+}
+@objc(TextViewDelegate) public protocol TextViewDelegate : UIKit.UITextViewDelegate {
+  @objc optional func textView(textView: Material.TextView, willShowKeyboard value: Foundation.NSValue)
+  @objc optional func textView(textView: Material.TextView, willHideKeyboard value: Foundation.NSValue)
+  @objc optional func textView(textView: Material.TextView, didShowKeyboard value: Foundation.NSValue)
+  @objc optional func textView(textView: Material.TextView, didHideKeyboard value: Foundation.NSValue)
+  @objc optional func textView(textView: Material.TextView, willProcessEditing textStorage: Material.TextStorage, text: Swift.String, range: Foundation.NSRange)
+  @objc optional func textView(textView: Material.TextView, didProcessEditing textStorage: Material.TextStorage, text: Swift.String, range: Foundation.NSRange)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class TextView : UIKit.UITextView, Material.Themeable {
+  @_Concurrency.MainActor(unsafe) open var isEmpty: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var isEditing: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var isKeyboardHidden: Swift.Bool {
+    get
+  }
+  @IBInspectable @_Concurrency.MainActor(unsafe) @objc override dynamic open var backgroundColor: UIKit.UIColor? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @IBInspectable @_Concurrency.MainActor(unsafe) @objc override dynamic open var font: UIKit.UIFont? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var placeholder: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) final public let placeholderLabel: UIKit.UILabel
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var placeholderColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var textContainerInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var textContainerInsets: Material.EdgeInsets {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var textAlignment: UIKit.NSTextAlignment {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) open var pattern: Swift.String {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var text: Swift.String! {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var string: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var matches: [Swift.String] {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var uniqueMatches: [Swift.String] {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect, textContainer: UIKit.NSTextContainer?)
+  @_Concurrency.MainActor(unsafe) convenience public init(textContainer: UIKit.NSTextContainer?)
+  @objc convenience dynamic public init()
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var contentSize: CoreGraphics.CGSize {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var isHeightChangeAnimated: Swift.Bool
+  @_Concurrency.MainActor(unsafe) open var preferredMaxLayoutHeight: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var intrinsicContentSize: CoreGraphics.CGSize {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func insertText(_ text: Swift.String)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func paste(_ sender: Any?)
+  @_Concurrency.MainActor(unsafe) open func apply(theme: Material.Theme)
+}
+extension Material.TextView : Material.TextStorageDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func textStorage(textStorage: Material.TextStorage, willProcessEditing text: Swift.String, range: Foundation.NSRange)
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func textStorage(textStorage: Material.TextStorage, didProcessEditing text: Swift.String, result: Foundation.NSTextCheckingResult?, flags: Foundation.NSRegularExpression.MatchingFlags, stop: Swift.UnsafeMutablePointer<ObjectiveC.ObjCBool>)
+}
+extension UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic open var shadowColor: UIKit.UIColor? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic open var borderColor: UIKit.UIColor? {
+    @objc get
+    @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var heightPreset: Material.HeightPreset {
+    get
+    set(value)
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic open var shapePreset: Material.ShapePreset {
+    @objc get
+    @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var depthPreset: Material.DepthPreset {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var depth: Material.Depth {
+    get
+    set(value)
+  }
+  @IBInspectable @objc @_Concurrency.MainActor(unsafe) dynamic open var isShadowPathAutoSizing: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic open var cornerRadiusPreset: Material.CornerRadiusPreset {
+    @objc get
+    @objc set(value)
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic open var borderWidthPreset: Material.BorderWidthPreset {
+    @objc get
+    @objc set(value)
+  }
+}
+public typealias LayoutAttribute = UIKit.NSLayoutConstraint.Attribute
+@objc(FABMenuItemTitleLabelPosition) public enum FABMenuItemTitleLabelPosition : Swift.Int {
+  case left
+  case right
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(FABMenuDirection) public enum FABMenuDirection : Swift.Int {
+  case up
+  case down
+  case left
+  case right
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class FABMenuItem : Material.View {
+  @_Concurrency.MainActor(unsafe) final public let titleLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) open var titleLabelPosition: Material.FABMenuItemTitleLabelPosition
+  @_Concurrency.MainActor(unsafe) final public let fabButton: Material.FABButton
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) open var title: Swift.String? {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+extension Material.FABMenuItem {
+  @_Concurrency.MainActor(unsafe) open func showTitleLabel()
+  @_Concurrency.MainActor(unsafe) open func hideTitleLabel()
+}
+@objc(FABMenuDelegate) public protocol FABMenuDelegate {
+  @objc optional func fabMenuShouldOpen(fabMenu: Material.FABMenu) -> Swift.Bool
+  @objc optional func fabMenuWillOpen(fabMenu: Material.FABMenu)
+  @objc optional func fabMenuDidOpen(fabMenu: Material.FABMenu)
+  @objc optional func fabMenuShouldClose(fabMenu: Material.FABMenu) -> Swift.Bool
+  @objc optional func fabMenuWillClose(fabMenu: Material.FABMenu)
+  @objc optional func fabMenuDidClose(fabMenu: Material.FABMenu)
+  @objc optional func fabMenu(fabMenu: Material.FABMenu, tappedAt point: CoreGraphics.CGPoint, isOutside: Swift.Bool)
+}
+@_inheritsConvenienceInitializers @objc(FABMenu) @_Concurrency.MainActor(unsafe) open class FABMenu : Material.View {
+  @_Concurrency.MainActor(unsafe) open var fabMenuDirection: Material.FABMenuDirection {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var fabButton: Material.FABButton? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var handleFABButtonCallback: ((UIKit.UIButton) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) open var fabMenuItemSize: CoreGraphics.CGSize {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var interimSpacePreset: Material.InterimSpacePreset {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var interimSpace: Material.InterimSpace {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var isOpened: Swift.Bool {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var isEnabled: Swift.Bool {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) weak open var delegate: Material.FABMenuDelegate?
+  @_Concurrency.MainActor(unsafe) open var fabMenuItems: [Material.FABMenuItem] {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+extension Material.FABMenu {
+  @_Concurrency.MainActor(unsafe) open func open(duration: Foundation.TimeInterval = 0.15, delay: Foundation.TimeInterval = 0, usingSpringWithDamping: CoreGraphics.CGFloat = 0.5, initialSpringVelocity: CoreGraphics.CGFloat = 0, options: UIKit.UIView.AnimationOptions = [], animations: ((UIKit.UIView) -> Swift.Void)? = nil, completion: ((UIKit.UIView) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) open func open(isTriggeredByUserInteraction: Swift.Bool, duration: Foundation.TimeInterval = 0.15, delay: Foundation.TimeInterval = 0, usingSpringWithDamping: CoreGraphics.CGFloat = 0.5, initialSpringVelocity: CoreGraphics.CGFloat = 0, options: UIKit.UIView.AnimationOptions = [], animations: ((UIKit.UIView) -> Swift.Void)? = nil, completion: ((UIKit.UIView) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) open func close(duration: Foundation.TimeInterval = 0.15, delay: Foundation.TimeInterval = 0, usingSpringWithDamping: CoreGraphics.CGFloat = 0.5, initialSpringVelocity: CoreGraphics.CGFloat = 0, options: UIKit.UIView.AnimationOptions = [], animations: ((UIKit.UIView) -> Swift.Void)? = nil, completion: ((UIKit.UIView) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) open func close(isTriggeredByUserInteraction: Swift.Bool, duration: Foundation.TimeInterval = 0.15, delay: Foundation.TimeInterval = 0, usingSpringWithDamping: CoreGraphics.CGFloat = 0.5, initialSpringVelocity: CoreGraphics.CGFloat = 0, options: UIKit.UIView.AnimationOptions = [], animations: ((UIKit.UIView) -> Swift.Void)? = nil, completion: ((UIKit.UIView) -> Swift.Void)? = nil)
+}
+extension Material.FABMenu {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func hitTest(_ point: CoreGraphics.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
+}
+extension QuartzCore.CALayer {
+  @objc @IBInspectable dynamic open var x: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable dynamic open var y: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable dynamic open var width: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable dynamic open var height: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  open var heightPreset: Material.HeightPreset {
+    get
+    set(value)
+  }
+  open var shapePreset: Material.ShapePreset {
+    get
+    set(value)
+  }
+  open var depthPreset: Material.DepthPreset {
+    get
+    set(value)
+  }
+  open var depth: Material.Depth {
+    get
+    set(value)
+  }
+  @objc @IBInspectable dynamic open var isShadowPathAutoSizing: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  open var cornerRadiusPreset: Material.CornerRadiusPreset {
+    get
+    set(value)
+  }
+  open var borderWidthPreset: Material.BorderWidthPreset {
+    get
+    set(value)
+  }
+}
+extension QuartzCore.CALayer {
+  open func layoutShape()
+  open func layoutShadowPath()
+}
+extension Swift.String {
+  public var trimmed: Swift.String {
+    get
+  }
+  public var lines: [Swift.String] {
+    get
+  }
+  public var firstLine: Swift.String? {
+    get
+  }
+  public var lastLine: Swift.String? {
+    get
+  }
+  public func replaceNewLineCharater(separator: Swift.String = " ") -> Swift.String
+  public func replacePunctuationCharacters(separator: Swift.String = "") -> Swift.String
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class BaseButtonGroup<T> : Material.View where T : Material.Button {
+  @_Concurrency.MainActor(unsafe) open var buttons: [T] {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) convenience public init(buttons: [T])
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var intrinsicContentSize: CoreGraphics.CGSize {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func sizeThatFits(_ size: CoreGraphics.CGSize) -> CoreGraphics.CGSize
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func didTap(button: T, at index: Swift.Int)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class Card : Material.PulseView {
+  @_Concurrency.MainActor(unsafe) final public let container: UIKit.UIView
+  @IBInspectable @_Concurrency.MainActor(unsafe) @objc override dynamic open var cornerRadiusPreset: Material.CornerRadiusPreset {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var cornerRadius: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var shapePreset: Material.ShapePreset {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @IBInspectable @_Concurrency.MainActor(unsafe) @objc override dynamic open var backgroundColor: UIKit.UIColor? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var toolbar: Material.Toolbar? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var toolbarEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var toolbarEdgeInsets: UIKit.UIEdgeInsets {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentView: UIKit.UIView? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var contentViewEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentViewEdgeInsets: UIKit.UIEdgeInsets {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var bottomBar: Material.Bar? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var bottomBarEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var bottomBarEdgeInsets: UIKit.UIEdgeInsets {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) convenience public init?(toolbar: Material.Toolbar?, contentView: UIKit.UIView?, bottomBar: Material.Bar?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func reload()
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @discardableResult
+  @_Concurrency.MainActor(unsafe) open func prepare(view: UIKit.UIView, with insets: Material.EdgeInsets, from top: CoreGraphics.CGFloat) -> CoreGraphics.CGFloat
+  @objc deinit
+}
+extension UIKit.UIFont {
+  open func stringSize(string: Swift.String, constrainedTo width: CoreGraphics.CGFloat) -> CoreGraphics.CGSize
+}
+@objc(ImageFormat) public enum ImageFormat : Swift.Int {
+  case png
+  case jpeg
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension UIKit.UIImage {
+  open var width: CoreGraphics.CGFloat {
+    get
+  }
+  open var height: CoreGraphics.CGFloat {
+    get
+  }
+}
+extension UIKit.UIImage {
+  open func resize(toWidth w: CoreGraphics.CGFloat) -> UIKit.UIImage?
+  open func resize(toHeight h: CoreGraphics.CGFloat) -> UIKit.UIImage?
+}
+extension UIKit.UIImage {
+  open func tint(with color: UIKit.UIColor) -> UIKit.UIImage?
+}
+extension UIKit.UIImage {
+  open class func image(with color: UIKit.UIColor, size: CoreGraphics.CGSize) -> UIKit.UIImage?
+}
+extension UIKit.UIImage {
+  open func crop(toWidth tw: CoreGraphics.CGFloat, toHeight th: CoreGraphics.CGFloat) -> UIKit.UIImage?
+}
+extension UIKit.UIImage {
+  open class func clear(size: CoreGraphics.CGSize = CGSize(width: 16, height: 16)) -> UIKit.UIImage?
+}
+extension UIKit.UIImage {
+  open class func contentsOfURL(url: Foundation.URL, completion: @escaping ((UIKit.UIImage?, Swift.Error?) -> Swift.Void))
+}
+extension UIKit.UIImage {
+  open func adjustOrientation() -> UIKit.UIImage?
+}
+extension UIKit.UIImage {
+  open func blur(radius: CoreGraphics.CGFloat = 0, tintColor: UIKit.UIColor? = nil, saturationDeltaFactor: CoreGraphics.CGFloat = 0) -> UIKit.UIImage?
+}
+extension Swift.Array where Element : Swift.Equatable {
+  public func slice(start: Swift.Int, end: Swift.Int?) -> [Element]
+}
+extension UIKit.UIWindow {
+  @_Concurrency.MainActor(unsafe) open func capture() -> UIKit.UIImage?
+}
+@objc(ChipBarAlignment) public enum ChipBarAlignment : Swift.Int {
+  case top
+  case bottom
+  case hidden
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var chipBarController: Material.ChipBarController? {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class ChipBarController : Material.TransitionController {
+  @_Concurrency.MainActor(unsafe) open var displayStyle: Material.DisplayStyle {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) final public let chipBar: Material.ChipBar
+  @_Concurrency.MainActor(unsafe) open var chipBarAlignment: Material.ChipBarAlignment {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) override open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) override public init(rootViewController: UIKit.UIViewController)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class PulseView : Material.View, Material.Pulseable {
+  @_Concurrency.MainActor(unsafe) open var pulseAnimation: Material.PulseAnimation {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var pulseColor: UIKit.UIColor {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var pulseOpacity: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open func pulse(point: CoreGraphics.CGPoint? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesEnded(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesCancelled(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class BaseIconLayerButton : Material.Button {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var isSelected: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var isEnabled: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open func setIconColor(_ color: UIKit.UIColor, for state: UIKit.UIControl.State)
+  @_Concurrency.MainActor(unsafe) open func iconColor(for state: UIKit.UIControl.State) -> UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) open var isAnimating: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open func setSelected(_ isSelected: Swift.Bool, animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open var iconSize: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var iconEdgeInsets: UIKit.UIEdgeInsets {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) override open func apply(theme: Material.Theme)
+  @_Concurrency.MainActor(unsafe) open var selectedPulseColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) open var normalPulseColor: UIKit.UIColor
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) override public init(image: UIKit.UIImage?, tintColor: UIKit.UIColor? = nil)
+  @_Concurrency.MainActor(unsafe) override public init(title: Swift.String?, titleColor: UIKit.UIColor? = nil)
+  @objc deinit
+}
+extension Motion.MotionAnimation {
+  public static func shadow(offset: Material.Offset) -> Motion.MotionAnimation
+  public static func depth(_ preset: Material.DepthPreset) -> Motion.MotionAnimation
+  public static func depth(_ depth: Material.Depth) -> Motion.MotionAnimation
+}
+@objc(PulseAnimation) public enum PulseAnimation : Swift.Int {
+  case none
+  case center
+  case centerWithBacking
+  case centerRadialBeyondBounds
+  case radialBeyondBounds
+  case backing
+  case point
+  case pointWithBacking
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public protocol Pulseable {
+  var pulseAnimation: Material.PulseAnimation { get set }
+  var pulseColor: UIKit.UIColor { get set }
+  var pulseOpacity: CoreGraphics.CGFloat { get set }
+}
+public struct Pulse {
+  public var animation: Material.PulseAnimation
+  public var color: UIKit.UIColor
+  public var opacity: CoreGraphics.CGFloat
+  public init(pulseView: UIKit.UIView?, pulseLayer: QuartzCore.CALayer?)
+  public mutating func expand(point: CoreGraphics.CGPoint)
+  public mutating func contract()
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class RadioButtonGroup : Material.BaseButtonGroup<Material.RadioButton> {
+  @_Concurrency.MainActor(unsafe) convenience public init(titles: [Swift.String])
+  @_Concurrency.MainActor(unsafe) open var selectedButton: Material.RadioButton? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var selectedIndex: Swift.Int {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) override open func didTap(button: Material.RadioButton, at index: Swift.Int)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+public protocol Themeable : AnyObject {
+  func apply(theme: Material.Theme)
+  var isThemingEnabled: Swift.Bool { get set }
+}
+public struct Theme : Swift.Hashable {
+  public var primary: UIKit.UIColor
+  public var secondary: UIKit.UIColor
+  public var background: UIKit.UIColor
+  public var surface: UIKit.UIColor
+  public var error: UIKit.UIColor
+  public var onPrimary: UIKit.UIColor
+  public var onSecondary: UIKit.UIColor
+  public var onBackground: UIKit.UIColor
+  public var onSurface: UIKit.UIColor
+  public var onError: UIKit.UIColor
+  public static var isEnabled: Swift.Bool
+  public static var font: Material.FontType.Type
+  public init()
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: Material.Theme, b: Material.Theme) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension Material.Theme {
+  public static var current: Material.Theme {
+    get
+  }
+  public static var light: Material.Theme
+  public static var dark: Material.Theme
+}
+extension Material.Theme {
+  public static func apply(theme: Material.Theme)
+  public static func apply(theme: Material.Theme, to view: UIKit.UIView)
+  public static func apply(theme: Material.Theme, to viewController: UIKit.UIViewController)
+  public static func applying(theme: Material.Theme, for execute: () -> Swift.Void)
+}
+extension Material.Themeable where Self : ObjectiveC.NSObject {
+  public static var isThemingEnabled: Swift.Bool {
+    get
+    set(value)
+  }
+  public var isThemingEnabled: Swift.Bool {
+    get
+    set(value)
+  }
+}
+@objc(ToolbarAlignment) public enum ToolbarAlignment : Swift.Int {
+  case top
+  case bottom
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var toolbarController: Material.ToolbarController? {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(ToolbarController) @_Concurrency.MainActor(unsafe) open class ToolbarController : Material.StatusBarController {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) final public let toolbar: Material.Toolbar
+  @_Concurrency.MainActor(unsafe) open var toolbarAlignment: Material.ToolbarAlignment {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) override open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) override public init(rootViewController: UIKit.UIViewController)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class DialogController<T> : UIKit.UIViewController where T : Material.DialogView {
+  @_Concurrency.MainActor(unsafe) final public let dialogView: T
+  @_Concurrency.MainActor(unsafe) open var isCancelable: Swift.Bool
+  @_Concurrency.MainActor(unsafe) open var didCancelHandler: (() -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) open var shouldDismissHandler: ((T, Material.Button?) -> Swift.Bool)?
+  @_Concurrency.MainActor(unsafe) open var didTapPositiveButtonHandler: (() -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) open var didTapNegativeButtonHandler: (() -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) open var didTapNeutralButtonHandler: (() -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) open var willAppear: (() -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) open var didDisappear: (() -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func dismiss(isAnimated: Swift.Bool = true)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class DialogView : Material.View, Material.Themeable {
+  @_Concurrency.MainActor(unsafe) final public let titleArea: UIKit.UIView
+  @_Concurrency.MainActor(unsafe) final public let buttonArea: UIKit.UIView
+  @_Concurrency.MainActor(unsafe) final public let contentArea: UIKit.UIView
+  @_Concurrency.MainActor(unsafe) final public let scrollView: UIKit.UIScrollView
+  @_Concurrency.MainActor(unsafe) final public let titleLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) final public let detailsLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) final public let neutralButton: Material.FlatButton
+  @_Concurrency.MainActor(unsafe) final public let positiveButton: Material.FlatButton
+  @_Concurrency.MainActor(unsafe) final public let negativeButton: Material.FlatButton
+  @_Concurrency.MainActor(unsafe) open var maxSize: CoreGraphics.CGSize {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var intrinsicContentSize: CoreGraphics.CGSize {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func sizeThatFits(_ size: CoreGraphics.CGSize) -> CoreGraphics.CGSize
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func titleAreaSizeThatFits(width: CoreGraphics.CGFloat) -> CoreGraphics.CGSize
+  @_Concurrency.MainActor(unsafe) open func buttonAreaSizeThatFits(width: CoreGraphics.CGFloat) -> CoreGraphics.CGSize
+  @_Concurrency.MainActor(unsafe) open func contentAreaSizeThatFits(width: CoreGraphics.CGFloat) -> CoreGraphics.CGSize
+  @_Concurrency.MainActor(unsafe) open func apply(theme: Material.Theme)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class TableView : UIKit.UITableView {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect, style: UIKit.UITableView.Style)
+  @_Concurrency.MainActor(unsafe) @objc convenience dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) open func prepare()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class ImageCard : Material.Card {
+  @_Concurrency.MainActor(unsafe) open var displayStyle: Material.DisplayStyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var imageViewEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var imageViewEdgeInsets: UIKit.UIEdgeInsets {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var imageView: UIKit.UIImageView? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var toolbarAlignment: Material.ToolbarAlignment {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) override open func reload()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+public protocol TableViewDelegate : UIKit.UITableViewDelegate {
+}
+public protocol TableViewDataSource : UIKit.UITableViewDataSource {
+  var dataSourceItems: [Material.DataSourceItem] { get }
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var tableViewController: Material.TableViewController? {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class TableViewController : Material.ViewController {
+  @_Concurrency.MainActor(unsafe) final public let tableView: Material.TableView
+  @_Concurrency.MainActor(unsafe) open var dataSourceItems: [Material.DataSourceItem]
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension Material.TableViewController : Material.TableViewDelegate {
+}
+extension Material.TableViewController : Material.TableViewDataSource {
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+}
+@objc public protocol DialogDelegate {
+  @objc optional func dialogDidCancel(_ dialog: Material.Dialog)
+  @objc optional func dialogWillAppear(_ dialog: Material.Dialog)
+  @objc optional func dialogDidDisappear(_ dialog: Material.Dialog)
+  @objc optional func dialog(_ dialog: Material.Dialog, shouldDismiss button: Material.Button?) -> Swift.Bool
+  @objc optional func dialog(_ dialog: Material.Dialog, didTapPositive button: Material.Button)
+  @objc optional func dialog(_ dialog: Material.Dialog, didTapNegative button: Material.Button)
+  @objc optional func dialog(_ dialog: Material.Dialog, didTapNeutral button: Material.Button)
+}
+@objc @_inheritsConvenienceInitializers open class Dialog : ObjectiveC.NSObject {
+  final public let controller: Material.DialogController<Material.DialogView>
+  weak open var delegate: Material.DialogDelegate?
+  @objc override dynamic public init()
+  @discardableResult
+  open func title(_ text: Swift.String?) -> Material.Dialog
+  @discardableResult
+  open func details(_ text: Swift.String?) -> Material.Dialog
+  @discardableResult
+  open func positive(_ title: Swift.String?, handler: (() -> Swift.Void)?) -> Material.Dialog
+  @discardableResult
+  open func negative(_ title: Swift.String?, handler: (() -> Swift.Void)?) -> Material.Dialog
+  @discardableResult
+  open func neutral(_ title: Swift.String?, handler: (() -> Swift.Void)?) -> Material.Dialog
+  @discardableResult
+  open func isCancelable(_ value: Swift.Bool, handler: (() -> Swift.Void)? = nil) -> Material.Dialog
+  @discardableResult
+  open func shouldDismiss(handler: ((Material.DialogView, Material.Button?) -> Swift.Bool)?) -> Material.Dialog
+  @discardableResult
+  open func willAppear(handler: (() -> Swift.Void)?) -> Material.Dialog
+  @discardableResult
+  open func didDisappear(handler: (() -> Swift.Void)?) -> Material.Dialog
+  @discardableResult
+  open func delegate(_ delegate: Material.DialogDelegate) -> Material.Dialog
+  @discardableResult
+  open func show(_ viewController: UIKit.UIViewController) -> Material.Dialog
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class PresenterCard : Material.Card {
+  @_Concurrency.MainActor(unsafe) open var presenterViewEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var presenterViewEdgeInsets: UIKit.UIEdgeInsets {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var presenterView: UIKit.UIView? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) override open func reload()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+@objc(TabBarAlignment) public enum TabBarAlignment : Swift.Int {
+  case top
+  case bottom
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum TabBarThemingStyle {
+  case auto
+  case primary
+  case secondary
+  public static func == (a: Material.TabBarThemingStyle, b: Material.TabBarThemingStyle) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension UIKit.UIViewController {
+  @objc @_Concurrency.MainActor(unsafe) dynamic open var tabItem: Material.TabItem {
+    @objc get
+  }
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var tabsController: Material.TabsController? {
+    get
+  }
+}
+@objc(TabsControllerDelegate) public protocol TabsControllerDelegate {
+  @objc optional func tabsController(tabsController: Material.TabsController, shouldSelect viewController: UIKit.UIViewController) -> Swift.Bool
+  @objc optional func tabsController(tabsController: Material.TabsController, willSelect viewController: UIKit.UIViewController)
+  @objc optional func tabsController(tabsController: Material.TabsController, didSelect viewController: UIKit.UIViewController)
+  @objc optional func tabsController(tabsController: Material.TabsController, willCancelSelecting viewController: UIKit.UIViewController)
+  @objc optional func tabsController(tabsController: Material.TabsController, didCancelSelecting viewController: UIKit.UIViewController)
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) open class TabsController : Material.TransitionController {
+  @_Concurrency.MainActor(unsafe) open var displayStyle: Material.DisplayStyle {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) final public let tabBar: Material.TabBar
+  @_Concurrency.MainActor(unsafe) open var isSwipeEnabled: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) weak open var delegate: Material.TabsControllerDelegate?
+  @_Concurrency.MainActor(unsafe) open var viewControllers: [UIKit.UIViewController] {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var selectedIndex: Swift.Int {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var tabBarAlignment: Material.TabBarAlignment {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var tabBarThemingStyle: Material.TabBarThemingStyle
+  @_Concurrency.MainActor(unsafe) public var interactiveSwipeGesture: UIKit.UIPanGestureRecognizer? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) public init(viewControllers: [UIKit.UIViewController], selectedIndex: Swift.Int = 0)
+  @_Concurrency.MainActor(unsafe) override open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) override open func transition(to viewController: UIKit.UIViewController, completion: ((Swift.Bool) -> Swift.Void)?)
+  @_Concurrency.MainActor(unsafe) override open func apply(theme: Material.Theme)
+  @objc deinit
+}
+extension Material.TabsController {
+  @_Concurrency.MainActor(unsafe) open func select(at index: Swift.Int)
+}
+@objc(ChipItemStyle) public enum ChipItemStyle : Swift.Int {
+  case pill
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class ChipItem : Material.FlatButton {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) override public init(image: UIKit.UIImage?, tintColor: UIKit.UIColor? = nil)
+  @_Concurrency.MainActor(unsafe) override public init(title: Swift.String?, titleColor: UIKit.UIColor? = nil)
+  @objc deinit
+}
+@objc(ChipBarDelegate) public protocol ChipBarDelegate {
+  @objc optional func chipBar(chipBar: Material.ChipBar, willSelect chipItem: Material.ChipItem)
+  @objc optional func chipBar(chipBar: Material.ChipBar, didSelect chipItem: Material.ChipItem)
+}
+@objc(ChipBarStyle) public enum ChipBarStyle : Swift.Int {
+  case auto
+  case nonScrollable
+  case scrollable
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class ChipBar : Material.Bar {
+  @_Concurrency.MainActor(unsafe) open var chipBarStyle: Material.ChipBarStyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public let scrollView: UIKit.UIScrollView
+  @_Concurrency.MainActor(unsafe) open var isScrollBounceEnabled: Swift.Bool {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) weak open var delegate: Material.ChipBarDelegate?
+  @_Concurrency.MainActor(unsafe) open var selectedChipItem: Material.ChipItem? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var chipItemsContentEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var chipItemsContentEdgeInsets: Material.EdgeInsets {
+    @objc get
+    @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var chipItemsInterimSpacePreset: Material.InterimSpacePreset {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var chipItemsInterimSpace: Material.InterimSpace {
+    @objc get
+    @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var chipItems: [Material.ChipItem] {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc deinit
+}
+extension Material.ChipBar {
+  @_Concurrency.MainActor(unsafe) open func select(at index: Swift.Int, completion: ((Material.ChipItem) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) open func animate(to chipItem: Material.ChipItem, completion: ((Material.ChipItem) -> Swift.Void)? = nil)
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var cardCollectionViewController: Material.CardCollectionViewController? {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class CardCollectionViewController : Material.ViewController {
+  @_Concurrency.MainActor(unsafe) final public let collectionView: Material.CollectionView
+  @_Concurrency.MainActor(unsafe) open var dataSourceItems: [Material.DataSourceItem]
+  @_Concurrency.MainActor(unsafe) open var dataSourceItemsIndexPaths: [Foundation.IndexPath : Any]
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) override open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension Material.CardCollectionViewController : Material.CollectionViewDelegate {
+}
+extension Material.CardCollectionViewController : Material.CollectionViewDataSource {
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func numberOfSections(in collectionView: UIKit.UICollectionView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func collectionView(_ collectionView: UIKit.UICollectionView, numberOfItemsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func collectionView(_ collectionView: UIKit.UICollectionView, cellForItemAt indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewCell
+}
+@objc(ContentViewAlignment) public enum ContentViewAlignment : Swift.Int {
+  case full
+  case center
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class Bar : Material.View {
+  @_Concurrency.MainActor(unsafe) open var willLayout: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var intrinsicContentSize: CoreGraphics.CGSize {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) open var contentViewAlignment: Material.ContentViewAlignment {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var contentEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentEdgeInsets: Material.EdgeInsets {
+    @objc get
+    @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var interimSpacePreset: Material.InterimSpacePreset {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var interimSpace: Material.InterimSpace {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var gridFactor: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) final public let contentView: UIKit.UIView
+  @_Concurrency.MainActor(unsafe) open var leftViews: [UIKit.UIView] {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var rightViews: [UIKit.UIView] {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var centerViews: [UIKit.UIView] {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) convenience public init(leftViews: [UIKit.UIView]? = nil, rightViews: [UIKit.UIView]? = nil, centerViews: [UIKit.UIView]? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class Button : UIKit.UIButton, Material.Pulseable, Material.Themeable {
+  @_Concurrency.MainActor(unsafe) final public let visualLayer: QuartzCore.CAShapeLayer
+  @_Concurrency.MainActor(unsafe) open var pulseAnimation: Material.PulseAnimation {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var pulseColor: UIKit.UIColor {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var pulseOpacity: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @IBInspectable @_Concurrency.MainActor(unsafe) @objc override dynamic open var backgroundColor: UIKit.UIColor? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var contentEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var image: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var title: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var titleColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var selectedTitleColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) public init(image: UIKit.UIImage?, tintColor: UIKit.UIColor? = nil)
+  @_Concurrency.MainActor(unsafe) public init(title: Swift.String?, titleColor: UIKit.UIColor? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func pulse(point: CoreGraphics.CGPoint? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesEnded(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func touchesCancelled(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor(unsafe) open func bringImageViewToFront()
+  @_Concurrency.MainActor(unsafe) open func prepare()
+  @_Concurrency.MainActor(unsafe) open func apply(theme: Material.Theme)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class FABButton : Material.Button {
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) override open func apply(theme: Material.Theme)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) override public init(image: UIKit.UIImage?, tintColor: UIKit.UIColor? = nil)
+  @_Concurrency.MainActor(unsafe) override public init(title: Swift.String?, titleColor: UIKit.UIColor? = nil)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class FlatButton : Material.Button {
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) override open func apply(theme: Material.Theme)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) override public init(image: UIKit.UIImage?, tintColor: UIKit.UIColor? = nil)
+  @_Concurrency.MainActor(unsafe) override public init(title: Swift.String?, titleColor: UIKit.UIColor? = nil)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class ViewController : UIKit.UIViewController, Material.Themeable {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func apply(theme: Material.Theme)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class RaisedButton : Material.Button {
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) override open func apply(theme: Material.Theme)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) override public init(image: UIKit.UIImage?, tintColor: UIKit.UIColor? = nil)
+  @_Concurrency.MainActor(unsafe) override public init(title: Swift.String?, titleColor: UIKit.UIColor? = nil)
+  @objc deinit
+}
+open class ErrorTextFieldValidator {
+  public typealias ValidationClosure = (_ text: Swift.String) -> Swift.Bool
+  open var closures: [(code: Material.ErrorTextFieldValidator.ValidationClosure, message: Swift.String)]
+  weak open var textField: Material.ErrorTextField?
+  open var autoValidationType: Material.ErrorTextFieldValidator.AutoValidationType
+  open var isErrorShownOnce: Swift.Bool
+  public init(textField: Material.ErrorTextField)
+  open func prepare()
+  @discardableResult
+  open func isValid(isDeferred: Swift.Bool) -> Swift.Bool
+  @discardableResult
+  open func validate(message: Swift.String, when code: @escaping Material.ErrorTextFieldValidator.ValidationClosure) -> Self
+  public enum AutoValidationType {
+    case none
+    case `default`
+    case always
+    case custom((Material.ErrorTextField) -> Swift.Void)
+  }
+  @objc deinit
+}
+extension Material.ErrorTextField {
+  @_Concurrency.MainActor(unsafe) open var validator: Material.ErrorTextFieldValidator {
+    get
+    set(value)
+  }
+  @discardableResult
+  @_Concurrency.MainActor(unsafe) open func isValid(isDeferred: Swift.Bool = false) -> Swift.Bool
+}
+extension Material.ErrorTextFieldValidator {
+  @discardableResult
+  public func email(message: Swift.String) -> Self
+  @discardableResult
+  public func username(message: Swift.String) -> Self
+  @discardableResult
+  public func regex(message: Swift.String, pattern: Swift.String) -> Self
+  @discardableResult
+  public func min(length: Swift.Int, message: Swift.String, trimmingSet: Foundation.CharacterSet? = .whitespacesAndNewlines) -> Self
+  @discardableResult
+  public func max(length: Swift.Int, message: Swift.String, trimmingSet: Foundation.CharacterSet? = .whitespacesAndNewlines) -> Self
+  @discardableResult
+  public func notEmpty(message: Swift.String, trimmingSet: Foundation.CharacterSet? = .whitespacesAndNewlines) -> Self
+  @discardableResult
+  public func noWhitespaces(message: Swift.String) -> Self
+}
+extension UIKit.UIButton {
+  @_Concurrency.MainActor(unsafe) public var fontSize: CoreGraphics.CGFloat {
+    get
+    set(value)
+  }
+}
+public enum IconButtonThemingStyle {
+  case onBackground
+  case onPrimary
+  public static func == (a: Material.IconButtonThemingStyle, b: Material.IconButtonThemingStyle) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IconButton : Material.Button {
+  @_Concurrency.MainActor(unsafe) open var themingStyle: Material.IconButtonThemingStyle
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) override open func apply(theme: Material.Theme)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) override public init(image: UIKit.UIImage?, tintColor: UIKit.UIColor? = nil)
+  @_Concurrency.MainActor(unsafe) override public init(title: Swift.String?, titleColor: UIKit.UIColor? = nil)
+  @objc deinit
+}
+@objc(ColorPalette) public protocol ColorPalette {
+  @objc static var lighten5: UIKit.UIColor { get }
+  @objc static var lighten4: UIKit.UIColor { get }
+  @objc static var lighten3: UIKit.UIColor { get }
+  @objc static var lighten2: UIKit.UIColor { get }
+  @objc static var lighten1: UIKit.UIColor { get }
+  @objc static var base: UIKit.UIColor { get }
+  @objc static var darken1: UIKit.UIColor { get }
+  @objc static var darken2: UIKit.UIColor { get }
+  @objc static var darken3: UIKit.UIColor { get }
+  @objc static var darken4: UIKit.UIColor { get }
+  @objc optional static var accent1: UIKit.UIColor { get }
+  @objc optional static var accent2: UIKit.UIColor { get }
+  @objc optional static var accent3: UIKit.UIColor { get }
+  @objc optional static var accent4: UIKit.UIColor { get }
+}
+@objc @_inheritsConvenienceInitializers open class Color : UIKit.UIColor {
+  @_hasMissingDesignatedInitializers open class darkText {
+    public static let primary: UIKit.UIColor
+    public static let secondary: UIKit.UIColor
+    public static let others: UIKit.UIColor
+    public static let dividers: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class lightText {
+    public static let primary: UIKit.UIColor
+    public static let secondary: UIKit.UIColor
+    public static let others: UIKit.UIColor
+    public static let dividers: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class red : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class pink : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class purple : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class deepPurple : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class indigo : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class blue : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class lightBlue : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class cyan : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class teal : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class green : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class lightGreen : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class lime : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class yellow : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class amber : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class orange : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class deepOrange : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class brown : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class grey : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class blueGrey : Material.ColorPalette {
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc deinit
+  }
+  @objc override dynamic public init(white: CoreGraphics.CGFloat, alpha: CoreGraphics.CGFloat)
+  @objc override dynamic public init(hue: CoreGraphics.CGFloat, saturation: CoreGraphics.CGFloat, brightness: CoreGraphics.CGFloat, alpha: CoreGraphics.CGFloat)
+  @objc override dynamic public init(red: CoreGraphics.CGFloat, green: CoreGraphics.CGFloat, blue: CoreGraphics.CGFloat, alpha: CoreGraphics.CGFloat)
+  @available(iOS 10.0, *)
+  @objc override dynamic public init(displayP3Red: CoreGraphics.CGFloat, green: CoreGraphics.CGFloat, blue: CoreGraphics.CGFloat, alpha: CoreGraphics.CGFloat)
+  @objc override dynamic public init(cgColor: CoreGraphics.CGColor)
+  @objc override dynamic public init(patternImage image: UIKit.UIImage)
+  @available(iOS 5.0, *)
+  @objc override dynamic public init(ciColor: CoreImage.CIColor)
+  @objc override dynamic public init()
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @available(iOS 13.0, *)
+  @objc override dynamic public init(dynamicProvider: @escaping (UIKit.UITraitCollection) -> UIKit.UIColor)
+  @objc deinit
+}
+@objc(SpringDirection) public enum SpringDirection : Swift.Int {
+  case up
+  case down
+  case left
+  case right
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers open class SpringAnimation {
+  open var springDirection: Material.SpringDirection
+  open var isOpened: Swift.Bool
+  open var isEnabled: Swift.Bool
+  open var interimSpacePreset: Material.InterimSpacePreset {
+    get
+    set
+  }
+  open var interimSpace: Material.InterimSpace {
+    get
+    set
+  }
+  open var views: [UIKit.UIView] {
+    get
+    set
+  }
+  open var baseSize: CoreGraphics.CGSize {
+    get
+    set
+  }
+  open var itemSize: CoreGraphics.CGSize {
+    get
+    set
+  }
+  open func reload()
+  @objc deinit
+}
+extension Material.SpringAnimation {
+  open func expand(duration: Foundation.TimeInterval = 0.15, delay: Foundation.TimeInterval = 0, usingSpringWithDamping: CoreGraphics.CGFloat = 0.5, initialSpringVelocity: CoreGraphics.CGFloat = 0, options: UIKit.UIView.AnimationOptions = [], animations: ((UIKit.UIView) -> Swift.Void)? = nil, completion: ((UIKit.UIView) -> Swift.Void)? = nil)
+  open func contract(duration: Foundation.TimeInterval = 0.15, delay: Foundation.TimeInterval = 0, usingSpringWithDamping: CoreGraphics.CGFloat = 0.5, initialSpringVelocity: CoreGraphics.CGFloat = 0, options: UIKit.UIView.AnimationOptions = [], animations: ((UIKit.UIView) -> Swift.Void)? = nil, completion: ((UIKit.UIView) -> Swift.Void)? = nil)
+}
+extension UIKit.UILabel {
+  @_Concurrency.MainActor(unsafe) public var fontSize: CoreGraphics.CGFloat {
+    get
+    set(value)
+  }
+}
+public protocol LayoutAnchorable {
+}
+extension UIKit.UIView : Material.LayoutAnchorable {
+}
+extension Material.Layout : Material.LayoutAnchorable {
+}
+extension Material.LayoutAnchor : Material.LayoutAnchorable {
+}
+public struct LayoutAnchor {
+  weak public var constraintable: Material.Constraintable?
+  public let attributes: [Material.LayoutAttribute]
+  public init(constraintable: Material.Constraintable?, attributes: [Material.LayoutAttribute] = [])
+}
+extension Material.LayoutAnchor {
+  public var top: Material.LayoutAnchor {
+    get
+  }
+  public var bottom: Material.LayoutAnchor {
+    get
+  }
+  public var left: Material.LayoutAnchor {
+    get
+  }
+  public var right: Material.LayoutAnchor {
+    get
+  }
+  public var leading: Material.LayoutAnchor {
+    get
+  }
+  public var trailing: Material.LayoutAnchor {
+    get
+  }
+  public var topLeft: Material.LayoutAnchor {
+    get
+  }
+  public var topRight: Material.LayoutAnchor {
+    get
+  }
+  public var bottomLeft: Material.LayoutAnchor {
+    get
+  }
+  public var bottomRight: Material.LayoutAnchor {
+    get
+  }
+  public var topLeading: Material.LayoutAnchor {
+    get
+  }
+  public var topTrailing: Material.LayoutAnchor {
+    get
+  }
+  public var bottomLeading: Material.LayoutAnchor {
+    get
+  }
+  public var bottomTrailing: Material.LayoutAnchor {
+    get
+  }
+  public var topBottom: Material.LayoutAnchor {
+    get
+  }
+  public var leftRight: Material.LayoutAnchor {
+    get
+  }
+  public var leadingTrailing: Material.LayoutAnchor {
+    get
+  }
+  public var center: Material.LayoutAnchor {
+    get
+  }
+  public var centerX: Material.LayoutAnchor {
+    get
+  }
+  public var centerY: Material.LayoutAnchor {
+    get
+  }
+  public var edges: Material.LayoutAnchor {
+    get
+  }
+  public var width: Material.LayoutAnchor {
+    get
+  }
+  public var height: Material.LayoutAnchor {
+    get
+  }
+}
+@objc(DeviceModel) public enum DeviceModel : Swift.Int {
+  case iPodTouch5
+  case iPodTouch6
+  case iPhone4
+  case iPhone4s
+  case iPhone5
+  case iPhone5c
+  case iPhone5s
+  case iPhone6
+  case iPhone6Plus
+  case iPhone6s
+  case iPhone6sPlus
+  case iPhone7
+  case iPhone7Plus
+  case iPhone8
+  case iPhone8Plus
+  case iPhoneX
+  case iPhoneXS
+  case iPhoneXSMax
+  case iPhoneXR
+  case iPhoneSE
+  case iPad2
+  case iPad3
+  case iPad4
+  case iPadAir
+  case iPadAir2
+  case iPadMini
+  case iPadMini2
+  case iPadMini3
+  case iPadMini4
+  case iPadPro
+  case iPadProLarge
+  case iPad5
+  case iPadPro2
+  case iPadProLarge2
+  case iPad6
+  case iPadPro3
+  case iPadProLarge3
+  case appleTv
+  case appleTv4k
+  case homePod
+  case simulator
+  case unknown
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct Device {
+  public static var identifier: Swift.String {
+    get
+  }
+  public static var model: Material.DeviceModel {
+    get
+  }
+  public static var userInterfaceIdiom: UIKit.UIUserInterfaceIdiom {
+    get
+  }
+}
+public func == (lhs: Material.DeviceModel, rhs: Material.DeviceModel) -> Swift.Bool
+public func != (lhs: Material.DeviceModel, rhs: Material.DeviceModel) -> Swift.Bool
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class Toolbar : Material.Bar, Material.Themeable {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var title: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) final public let titleLabel: UIKit.UILabel
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var detail: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) final public let detailLabel: UIKit.UILabel
+  @_Concurrency.MainActor(unsafe) override open var leftViews: [UIKit.UIView] {
+    @_Concurrency.MainActor(unsafe) get
+    @_Concurrency.MainActor(unsafe) set
+  }
+  @_Concurrency.MainActor(unsafe) override open var centerViews: [UIKit.UIView] {
+    @_Concurrency.MainActor(unsafe) get
+    @_Concurrency.MainActor(unsafe) set
+  }
+  @_Concurrency.MainActor(unsafe) override open var rightViews: [UIKit.UIView] {
+    @_Concurrency.MainActor(unsafe) get
+    @_Concurrency.MainActor(unsafe) set
+  }
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) open func apply(theme: Material.Theme)
+}
+@objc(DividerAlignment) public enum DividerAlignment : Swift.Int {
+  case top
+  case left
+  case bottom
+  case right
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct Divider {
+  public var thickness: CoreGraphics.CGFloat {
+    get
+    set
+  }
+  public var contentEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set
+  }
+  public var contentEdgeInsets: UIKit.UIEdgeInsets {
+    get
+    set
+  }
+  public var color: UIKit.UIColor? {
+    get
+    set(value)
+  }
+  public var alignment: Material.DividerAlignment {
+    get
+    set
+  }
+  public func reload()
+}
+extension UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var divider: Material.Divider {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var dividerContentEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var dividerContentEdgeInsets: Material.EdgeInsets {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var dividerColor: UIKit.UIColor? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var isDividerHidden: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var dividerAlignment: Material.DividerAlignment {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var dividerThickness: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open func layoutDivider()
+}
+@objc(GridAxisDirection) public enum GridAxisDirection : Swift.Int {
+  case any
+  case horizontal
+  case vertical
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct GridAxis {
+  public var direction: Material.GridAxisDirection
+  public var rows: Swift.Int
+  public var columns: Swift.Int
+}
+public struct GridOffset {
+  public var rows: Swift.Int
+  public var columns: Swift.Int
+}
+public struct Grid {
+  public var isDeferred: Swift.Bool
+  public var rows: Swift.Int {
+    get
+    set
+  }
+  public var columns: Swift.Int {
+    get
+    set
+  }
+  public var offset: Material.GridOffset {
+    get
+    set
+  }
+  public var axis: Material.GridAxis {
+    get
+    set
+  }
+  public var layoutEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set
+  }
+  public var layoutEdgeInsets: UIKit.UIEdgeInsets {
+    get
+    set
+  }
+  public var contentEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set
+  }
+  public var contentEdgeInsets: UIKit.UIEdgeInsets {
+    get
+    set
+  }
+  public var interimSpacePreset: Material.InterimSpacePreset {
+    get
+    set
+  }
+  public var interimSpace: Material.InterimSpace {
+    get
+    set
+  }
+  public var views: [UIKit.UIView] {
+    get
+    set
+  }
+  public mutating func begin()
+  public mutating func commit()
+  public mutating func update(_ block: (Material.Grid) -> Swift.Void)
+  public func reload()
+}
+extension UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var grid: Material.Grid {
+    get
+    set(value)
+  }
+  @_Concurrency.MainActor(unsafe) open var layoutEdgeInsetsPreset: Material.EdgeInsetsPreset {
+    get
+    set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var layoutEdgeInsets: Material.EdgeInsets {
+    @objc get
+    @objc set(value)
+  }
+}
+public enum HeightPreset {
+  case none
+  case tiny
+  case xsmall
+  case small
+  case `default`
+  case normal
+  case medium
+  case large
+  case xlarge
+  case xxlarge
+  case custom(CoreGraphics.CGFloat)
+  public var rawValue: CoreGraphics.CGFloat {
+    get
+  }
+}
+public struct Application {
+  public static var shared: UIKit.UIApplication {
+    get
+  }
+  public static var keyWindow: UIKit.UIWindow? {
+    get
+  }
+  public static var rootViewController: UIKit.UIViewController? {
+    get
+  }
+  public static var isLandscape: Swift.Bool {
+    get
+  }
+  public static var isPortrait: Swift.Bool {
+    get
+  }
+  public static var orientation: UIKit.UIInterfaceOrientation {
+    get
+  }
+  public static var statusBarStyle: UIKit.UIStatusBarStyle {
+    get
+    set(value)
+  }
+  public static var isStatusBarHidden: Swift.Bool {
+    get
+    set(value)
+  }
+  public static var shouldStatusBarBeHidden: Swift.Bool {
+    get
+  }
+  public static var userInterfaceLayoutDirection: UIKit.UIUserInterfaceLayoutDirection {
+    get
+  }
+}
+public struct Icon {
+  public static var bundle: Foundation.Bundle {
+    get
+  }
+  public static func icon(_ name: Swift.String) -> UIKit.UIImage?
+  public static var add: UIKit.UIImage?
+  public static var addCircle: UIKit.UIImage?
+  public static var addCircleOutline: UIKit.UIImage?
+  public static var arrowBack: UIKit.UIImage?
+  public static var arrowDownward: UIKit.UIImage?
+  public static var audio: UIKit.UIImage?
+  public static var bell: UIKit.UIImage?
+  public static var cameraFront: UIKit.UIImage?
+  public static var cameraRear: UIKit.UIImage?
+  public static var check: UIKit.UIImage?
+  public static var clear: UIKit.UIImage?
+  public static var close: UIKit.UIImage?
+  public static var edit: UIKit.UIImage?
+  public static var email: UIKit.UIImage?
+  public static var favorite: UIKit.UIImage?
+  public static var favoriteBorder: UIKit.UIImage?
+  public static var flashAuto: UIKit.UIImage?
+  public static var flashOff: UIKit.UIImage?
+  public static var flashOn: UIKit.UIImage?
+  public static var history: UIKit.UIImage?
+  public static var home: UIKit.UIImage?
+  public static var image: UIKit.UIImage?
+  public static var menu: UIKit.UIImage?
+  public static var moreHorizontal: UIKit.UIImage?
+  public static var moreVertical: UIKit.UIImage?
+  public static var movie: UIKit.UIImage?
+  public static var pen: UIKit.UIImage?
+  public static var place: UIKit.UIImage?
+  public static var phone: UIKit.UIImage?
+  public static var photoCamera: UIKit.UIImage?
+  public static var photoLibrary: UIKit.UIImage?
+  public static var search: UIKit.UIImage?
+  public static var settings: UIKit.UIImage?
+  public static var share: UIKit.UIImage?
+  public static var star: UIKit.UIImage?
+  public static var starBorder: UIKit.UIImage?
+  public static var starHalf: UIKit.UIImage?
+  public static var videocam: UIKit.UIImage?
+  public static var visibility: UIKit.UIImage?
+  public static var visibilityOff: UIKit.UIImage?
+  public static var work: UIKit.UIImage?
+  public struct cm {
+    public static var add: UIKit.UIImage?
+    public static var arrowBack: UIKit.UIImage?
+    public static var arrowDownward: UIKit.UIImage?
+    public static var audio: UIKit.UIImage?
+    public static var audioLibrary: UIKit.UIImage?
+    public static var bell: UIKit.UIImage?
+    public static var check: UIKit.UIImage?
+    public static var clear: UIKit.UIImage?
+    public static var close: UIKit.UIImage?
+    public static var edit: UIKit.UIImage?
+    public static var image: UIKit.UIImage?
+    public static var menu: UIKit.UIImage?
+    public static var microphone: UIKit.UIImage?
+    public static var moreHorizontal: UIKit.UIImage?
+    public static var moreVertical: UIKit.UIImage?
+    public static var movie: UIKit.UIImage?
+    public static var pause: UIKit.UIImage?
+    public static var pen: UIKit.UIImage?
+    public static var photoCamera: UIKit.UIImage?
+    public static var photoLibrary: UIKit.UIImage?
+    public static var play: UIKit.UIImage?
+    public static var search: UIKit.UIImage?
+    public static var settings: UIKit.UIImage?
+    public static var share: UIKit.UIImage?
+    public static var shuffle: UIKit.UIImage?
+    public static var skipBackward: UIKit.UIImage?
+    public static var skipForward: UIKit.UIImage?
+    public static var star: UIKit.UIImage?
+    public static var videocam: UIKit.UIImage?
+    public static var volumeHigh: UIKit.UIImage?
+    public static var volumeMedium: UIKit.UIImage?
+    public static var volumeOff: UIKit.UIImage?
+  }
+}
+@objc(SearchBarAlignment) public enum SearchBarAlignment : Swift.Int {
+  case top
+  case bottom
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var searchBarController: Material.SearchBarController? {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class SearchBarController : Material.StatusBarController {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) final public let searchBar: Material.SearchBar
+  @_Concurrency.MainActor(unsafe) open var searchBarAlignment: Material.SearchBarAlignment {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) override open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) override public init(rootViewController: UIKit.UIViewController)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(Layer) open class Layer : QuartzCore.CAShapeLayer {
+  final public let visualLayer: QuartzCore.CAShapeLayer
+  @objc @IBInspectable open var image: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open var contentsRect: CoreGraphics.CGRect {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic open var contentsCenter: CoreGraphics.CGRect {
+    @objc get
+    @objc set
+  }
+  @IBInspectable @objc override dynamic open var contentsScale: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @IBInspectable @objc override dynamic open var contentsGravity: QuartzCore.CALayerContentsGravity {
+    @objc get
+    @objc set(value)
+  }
+  @IBInspectable @objc override dynamic open var cornerRadius: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc override dynamic public init(layer: Any)
+  @objc override dynamic public init()
+  convenience public init(frame: CoreGraphics.CGRect)
+  @objc override dynamic open func layoutSublayers()
+  @objc deinit
+}
+public protocol Constraintable : AnyObject {
+}
+@available(iOS 9.0, *)
+extension UIKit.UILayoutGuide : Material.Constraintable {
+}
+extension UIKit.UIView : Material.Constraintable {
+}
+extension UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public func layout(_ child: UIKit.UIView) -> Material.Layout
+  @_Concurrency.MainActor(unsafe) public var layout: Material.Layout {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var anchor: Material.LayoutAnchor {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var safeAnchor: Material.LayoutAnchor {
+    get
+  }
+}
+public struct Layout {
+  weak public var constraintable: Material.Constraintable?
+  public var view: UIKit.UIView? {
+    get
+  }
+}
+extension Material.Layout {
+  @discardableResult
+  public func multiply(_ multiplier: CoreGraphics.CGFloat) -> Material.Layout
+  @discardableResult
+  public func priority(_ value: Swift.Float) -> Material.Layout
+  @discardableResult
+  public func priority(_ priority: UIKit.UILayoutPriority) -> Material.Layout
+}
+extension Material.Layout {
+  @discardableResult
+  public func top(_ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func left(_ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func right(_ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func leading(_ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func trailing(_ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func bottom(_ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func topLeft(top: CoreGraphics.CGFloat = 0, left: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func topRight(top: CoreGraphics.CGFloat = 0, right: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func bottomLeft(bottom: CoreGraphics.CGFloat = 0, left: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func bottomRight(bottom: CoreGraphics.CGFloat = 0, right: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func leftRight(left: CoreGraphics.CGFloat = 0, right: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func topLeading(top: CoreGraphics.CGFloat = 0, leading: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func topTrailing(top: CoreGraphics.CGFloat = 0, trailing: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func bottomLeading(bottom: CoreGraphics.CGFloat = 0, leading: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func bottomTrailing(bottom: CoreGraphics.CGFloat = 0, trailing: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func leadingTrailing(leading: CoreGraphics.CGFloat = 0, trailing: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func topBottom(top: CoreGraphics.CGFloat = 0, bottom: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func center(offsetX: CoreGraphics.CGFloat = 0, offsetY: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func centerX(_ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func centerY(_ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func width(offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func height(offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func edges(top: CoreGraphics.CGFloat = 0, left: CoreGraphics.CGFloat = 0, bottom: CoreGraphics.CGFloat = 0, right: CoreGraphics.CGFloat = 0) -> Material.Layout
+}
+extension Material.Layout {
+  @discardableResult
+  public func topSafe(_ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func leftSafe(_ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func rightSafe(_ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func leadingSafe(_ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func trailingSafe(_ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func bottomSafe(_ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func topLeftSafe(top: CoreGraphics.CGFloat = 0, left: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func topRightSafe(top: CoreGraphics.CGFloat = 0, right: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func bottomLeftSafe(bottom: CoreGraphics.CGFloat = 0, left: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func bottomRightSafe(bottom: CoreGraphics.CGFloat = 0, right: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func leftRightSafe(left: CoreGraphics.CGFloat = 0, right: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func topLeadingSafe(top: CoreGraphics.CGFloat = 0, leading: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func topTrailingSafe(top: CoreGraphics.CGFloat = 0, trailing: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func bottomLeadingSafe(bottom: CoreGraphics.CGFloat = 0, leading: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func bottomTrailingSafe(bottom: CoreGraphics.CGFloat = 0, trailing: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func leadingTrailingSafe(leading: CoreGraphics.CGFloat = 0, trailing: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func topBottomSafe(top: CoreGraphics.CGFloat = 0, bottom: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func centerSafe(offsetX: CoreGraphics.CGFloat = 0, offsetY: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func centerXSafe(_ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func centerYSafe(_ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func widthSafe(offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func heightSafe(offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func edgesSafe(top: CoreGraphics.CGFloat = 0, left: CoreGraphics.CGFloat = 0, bottom: CoreGraphics.CGFloat = 0, right: CoreGraphics.CGFloat = 0) -> Material.Layout
+}
+extension Material.Layout {
+  @discardableResult
+  public func width(_ width: CoreGraphics.CGFloat, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func height(_ height: CoreGraphics.CGFloat, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func size(_ size: CoreGraphics.CGSize) -> Material.Layout
+}
+extension Material.Layout {
+  @discardableResult
+  public func top(_ anchor: Material.LayoutAnchorable, _ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func left(_ anchor: Material.LayoutAnchorable, _ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func right(_ anchor: Material.LayoutAnchorable, _ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func leading(_ anchor: Material.LayoutAnchorable, _ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func trailing(_ anchor: Material.LayoutAnchorable, _ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func bottom(_ anchor: Material.LayoutAnchorable, _ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func topLeading(_ anchor: Material.LayoutAnchorable, top: CoreGraphics.CGFloat = 0, leading: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func topTrailing(_ anchor: Material.LayoutAnchorable, top: CoreGraphics.CGFloat = 0, trailing: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func bottomLeading(_ anchor: Material.LayoutAnchorable, bottom: CoreGraphics.CGFloat = 0, leading: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func bottomTrailing(_ anchor: Material.LayoutAnchorable, bottom: CoreGraphics.CGFloat = 0, trailing: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func leadingTrailing(_ anchor: Material.LayoutAnchorable, leading: CoreGraphics.CGFloat = 0, trailing: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func topLeft(_ anchor: Material.LayoutAnchorable, top: CoreGraphics.CGFloat = 0, left: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func topRight(_ anchor: Material.LayoutAnchorable, top: CoreGraphics.CGFloat = 0, right: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func bottomLeft(_ anchor: Material.LayoutAnchorable, bottom: CoreGraphics.CGFloat = 0, left: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func bottomRight(_ anchor: Material.LayoutAnchorable, bottom: CoreGraphics.CGFloat = 0, right: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func leftRight(_ anchor: Material.LayoutAnchorable, left: CoreGraphics.CGFloat = 0, right: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func topBottom(_ anchor: Material.LayoutAnchorable, top: CoreGraphics.CGFloat = 0, bottom: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func center(_ anchor: Material.LayoutAnchorable, offsetX: CoreGraphics.CGFloat = 0, offsetY: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func centerX(_ anchor: Material.LayoutAnchorable, _ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func centerY(_ anchor: Material.LayoutAnchorable, _ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func width(_ anchor: Material.LayoutAnchorable, _ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func height(_ anchor: Material.LayoutAnchorable, _ offset: CoreGraphics.CGFloat = 0, _ relationer: (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation = LayoutRelationerStruct.equal) -> Material.Layout
+  @discardableResult
+  public func edges(_ anchor: Material.LayoutAnchorable, top: CoreGraphics.CGFloat = 0, left: CoreGraphics.CGFloat = 0, bottom: CoreGraphics.CGFloat = 0, right: CoreGraphics.CGFloat = 0) -> Material.Layout
+}
+extension Material.Layout {
+  @discardableResult
+  public func below(_ view: UIKit.UIView, _ offset: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func above(_ view: UIKit.UIView, _ offset: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func before(_ view: UIKit.UIView, _ offset: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func after(_ view: UIKit.UIView, _ offset: CoreGraphics.CGFloat = 0) -> Material.Layout
+  @discardableResult
+  public func aspect(_ ratio: CoreGraphics.CGFloat = 1) -> Material.Layout
+}
+public typealias LayoutRelationer = (Material.LayoutRelationerStruct, Material.LayoutRelationerStruct) -> Material.LayoutRelation
+public struct LayoutRelationerStruct {
+  public static func equal(left: Material.LayoutRelationerStruct, right: Material.LayoutRelationerStruct) -> Material.LayoutRelation
+}
+public func == (left: Material.LayoutRelationerStruct, right: Material.LayoutRelationerStruct) -> Material.LayoutRelation
+public func >= (left: Material.LayoutRelationerStruct, right: Material.LayoutRelationerStruct) -> Material.LayoutRelation
+public func <= (left: Material.LayoutRelationerStruct, right: Material.LayoutRelationerStruct) -> Material.LayoutRelation
+@objc(BorderWidthPreset) public enum BorderWidthPreset : Swift.Int {
+  case none
+  case border1
+  case border2
+  case border3
+  case border4
+  case border5
+  case border6
+  case border7
+  case border8
+  case border9
+  public var cgFloatValue: CoreGraphics.CGFloat {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(InterimSpacePreset) public enum InterimSpacePreset : Swift.Int {
+  case none
+  case interimSpace1
+  case interimSpace2
+  case interimSpace3
+  case interimSpace4
+  case interimSpace5
+  case interimSpace6
+  case interimSpace7
+  case interimSpace8
+  case interimSpace9
+  case interimSpace10
+  case interimSpace11
+  case interimSpace12
+  case interimSpace13
+  case interimSpace14
+  case interimSpace15
+  case interimSpace16
+  case interimSpace17
+  case interimSpace18
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public typealias InterimSpace = CoreGraphics.CGFloat
+public func InterimSpacePresetToValue(preset: Material.InterimSpacePreset) -> Material.InterimSpace
+public enum DepthPreset {
+  case none
+  case depth1
+  case depth2
+  case depth3
+  case depth4
+  case depth5
+  indirect case above(Material.DepthPreset)
+  indirect case below(Material.DepthPreset)
+  indirect case left(Material.DepthPreset)
+  indirect case right(Material.DepthPreset)
+  public var rawValue: Material.DepthPreset {
+    get
+  }
+}
+public struct Depth {
+  public var offset: Material.Offset
+  public var opacity: Swift.Float
+  public var radius: CoreGraphics.CGFloat
+  public var rawValue: (CoreGraphics.CGSize, Swift.Float, CoreGraphics.CGFloat) {
+    get
+  }
+  public var preset: Material.DepthPreset {
+    get
+    set
+  }
+  public init(offset: Material.Offset = .zero, opacity: Swift.Float = 0, radius: CoreGraphics.CGFloat = 0)
+  public init(preset: Material.DepthPreset)
+}
+public func DepthPresetToValue(preset: Material.DepthPreset) -> Material.Depth
+@objc(EdgeInsetsPreset) public enum EdgeInsetsPreset : Swift.Int {
+  case none
+  case square1
+  case square2
+  case square3
+  case square4
+  case square5
+  case square6
+  case square7
+  case square8
+  case square9
+  case square10
+  case square11
+  case square12
+  case square13
+  case square14
+  case square15
+  case wideRectangle1
+  case wideRectangle2
+  case wideRectangle3
+  case wideRectangle4
+  case wideRectangle5
+  case wideRectangle6
+  case wideRectangle7
+  case wideRectangle8
+  case wideRectangle9
+  case tallRectangle1
+  case tallRectangle2
+  case tallRectangle3
+  case tallRectangle4
+  case tallRectangle5
+  case tallRectangle6
+  case tallRectangle7
+  case tallRectangle8
+  case tallRectangle9
+  case horizontally1
+  case horizontally2
+  case horizontally3
+  case horizontally4
+  case horizontally5
+  case vertically1
+  case vertically2
+  case vertically3
+  case vertically4
+  case vertically5
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public typealias EdgeInsets = UIKit.UIEdgeInsets
+public func EdgeInsetsPresetToValue(preset: Material.EdgeInsetsPreset) -> Material.EdgeInsets
+extension UIKit.UIColor {
+  convenience public init(argb: Swift.UInt32)
+  convenience public init(rgb: Swift.UInt32)
+}
+@objc(CornerRadiusPreset) public enum CornerRadiusPreset : Swift.Int {
+  case none
+  case cornerRadius1
+  case cornerRadius2
+  case cornerRadius3
+  case cornerRadius4
+  case cornerRadius5
+  case cornerRadius6
+  case cornerRadius7
+  case cornerRadius8
+  case cornerRadius9
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public func CornerRadiusPresetToValue(preset: Material.CornerRadiusPreset) -> CoreGraphics.CGFloat
+@objc(SearchBarDelegate) public protocol SearchBarDelegate {
+  @objc optional func searchBar(searchBar: Material.SearchBar, didChange textField: UIKit.UITextField, with text: Swift.String?)
+  @objc optional func searchBar(searchBar: Material.SearchBar, willClear textField: UIKit.UITextField, with text: Swift.String?)
+  @objc optional func searchBar(searchBar: Material.SearchBar, didClear textField: UIKit.UITextField, with text: Swift.String?)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class SearchBar : Material.Bar {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) final public let textField: UIKit.UITextField
+  @_Concurrency.MainActor(unsafe) open var clearButton: Material.IconButton! {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) weak open var delegate: Material.SearchBarDelegate?
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var isClearButtonAutoHandleEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @IBInspectable @_Concurrency.MainActor(unsafe) @objc override dynamic open var tintColor: UIKit.UIColor? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var textColor: UIKit.UIColor? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var placeholder: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var placeholderColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @objc deinit
+}
+extension Material.SearchBar {
+  @_Concurrency.MainActor(unsafe) open func layoutTextField()
+  @_Concurrency.MainActor(unsafe) open func layoutLeftView()
+  @_Concurrency.MainActor(unsafe) open func layoutClearButton()
+}
+@objc(ShapePreset) public enum ShapePreset : Swift.Int {
+  case none
+  case square
+  case circle
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public typealias Offset = UIKit.UIOffset
+extension CoreGraphics.CGSize {
+  public var asOffset: Material.Offset {
+    get
+  }
+}
+extension UIKit.UIOffset {
+  public init(size: CoreGraphics.CGSize)
+}
+extension UIKit.UIOffset {
+  public var asSize: CoreGraphics.CGSize {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class View : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var intrinsicContentSize: CoreGraphics.CGSize {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) final public let visualLayer: QuartzCore.CAShapeLayer
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var image: UIKit.UIImage? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentsRect: CoreGraphics.CGRect {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentsCenter: CoreGraphics.CGRect {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentsScale: CoreGraphics.CGFloat {
+    @objc get
+    @objc set(value)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var contentsGravity: QuartzCore.CALayerContentsGravity {
+    @objc get
+    @objc set(value)
+  }
+  @IBInspectable @_Concurrency.MainActor(unsafe) @objc override dynamic open var backgroundColor: UIKit.UIColor? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) open func prepare()
+  @objc deinit
+}
+public enum FABMenuBacking {
+  case none
+  case fade
+  case blur
+  public static func == (a: Material.FABMenuBacking, b: Material.FABMenuBacking) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var fabMenuController: Material.FABMenuController? {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class FABMenuController : Material.TransitionController {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var fabMenu: Material.FABMenu
+  @_Concurrency.MainActor(unsafe) open var fabMenuBacking: Material.FABMenuBacking
+  @_Concurrency.MainActor(unsafe) open var fabMenuBackingBlurEffectStyle: UIKit.UIBlurEffect.Style
+  @_Concurrency.MainActor(unsafe) open var blurView: UIKit.UIView? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) override open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) override public init(rootViewController: UIKit.UIViewController)
+  @objc deinit
+}
+extension Material.FABMenuController : Material.FABMenuDelegate {
+}
+public protocol CollectionViewDelegate : UIKit.UICollectionViewDelegate {
+}
+public protocol CollectionViewDataSource : UIKit.UICollectionViewDataSource {
+  var dataSourceItems: [Material.DataSourceItem] { get }
+}
+extension UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var collectionViewController: Material.CollectionViewController? {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class CollectionViewController : Material.ViewController {
+  @_Concurrency.MainActor(unsafe) final public let collectionView: Material.CollectionView
+  @_Concurrency.MainActor(unsafe) open var dataSourceItems: [Material.DataSourceItem]
+  @_Concurrency.MainActor(unsafe) override open func prepare()
+  @_Concurrency.MainActor(unsafe) override open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension Material.CollectionViewController : Material.CollectionViewDelegate {
+}
+extension Material.CollectionViewController : Material.CollectionViewDataSource {
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func numberOfSections(in collectionView: UIKit.UICollectionView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func collectionView(_ collectionView: UIKit.UICollectionView, numberOfItemsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func collectionView(_ collectionView: UIKit.UICollectionView, cellForItemAt indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewCell
+}
+extension Material.NavigationDrawerPosition : Swift.Equatable {}
+extension Material.NavigationDrawerPosition : Swift.Hashable {}
+extension Material.NavigationDrawerPosition : Swift.RawRepresentable {}
+extension Material.DisplayStyle : Swift.Equatable {}
+extension Material.DisplayStyle : Swift.Hashable {}
+extension Material.DisplayStyle : Swift.RawRepresentable {}
+extension Material.SnackbarStatus : Swift.Equatable {}
+extension Material.SnackbarStatus : Swift.Hashable {}
+extension Material.SnackbarStatus : Swift.RawRepresentable {}
+extension Material.SnackbarAlignment : Swift.Equatable {}
+extension Material.SnackbarAlignment : Swift.Hashable {}
+extension Material.SnackbarAlignment : Swift.RawRepresentable {}
+extension Material.SwitchState : Swift.Equatable {}
+extension Material.SwitchState : Swift.Hashable {}
+extension Material.SwitchState : Swift.RawRepresentable {}
+extension Material.TabItemState : Swift.Equatable {}
+extension Material.TabItemState : Swift.Hashable {}
+extension Material.TabItemState : Swift.RawRepresentable {}
+extension Material.TabItemLineState : Swift.Equatable {}
+extension Material.TabItemLineState : Swift.Hashable {}
+extension Material.TabItemLineState : Swift.RawRepresentable {}
+extension Material.TabBarLineAlignment : Swift.Equatable {}
+extension Material.TabBarLineAlignment : Swift.Hashable {}
+extension Material.TabBarLineAlignment : Swift.RawRepresentable {}
+extension Material.TabBarStyle : Swift.Equatable {}
+extension Material.TabBarStyle : Swift.Hashable {}
+extension Material.TabBarStyle : Swift.RawRepresentable {}
+extension Material.TabBarCenteringStyle : Swift.Equatable {}
+extension Material.TabBarCenteringStyle : Swift.Hashable {}
+extension Material.EditorPlaceholderAnimation : Swift.Equatable {}
+extension Material.EditorPlaceholderAnimation : Swift.Hashable {}
+extension Material.TextFieldPlaceholderAnimation : Swift.Equatable {}
+extension Material.TextFieldPlaceholderAnimation : Swift.Hashable {}
+extension Material.TextFieldPlaceholderAnimation : Swift.RawRepresentable {}
+extension Material.FABMenuItemTitleLabelPosition : Swift.Equatable {}
+extension Material.FABMenuItemTitleLabelPosition : Swift.Hashable {}
+extension Material.FABMenuItemTitleLabelPosition : Swift.RawRepresentable {}
+extension Material.FABMenuDirection : Swift.Equatable {}
+extension Material.FABMenuDirection : Swift.Hashable {}
+extension Material.FABMenuDirection : Swift.RawRepresentable {}
+extension Material.ImageFormat : Swift.Equatable {}
+extension Material.ImageFormat : Swift.Hashable {}
+extension Material.ImageFormat : Swift.RawRepresentable {}
+extension Material.ChipBarAlignment : Swift.Equatable {}
+extension Material.ChipBarAlignment : Swift.Hashable {}
+extension Material.ChipBarAlignment : Swift.RawRepresentable {}
+extension Material.PulseAnimation : Swift.Equatable {}
+extension Material.PulseAnimation : Swift.Hashable {}
+extension Material.PulseAnimation : Swift.RawRepresentable {}
+extension Material.ToolbarAlignment : Swift.Equatable {}
+extension Material.ToolbarAlignment : Swift.Hashable {}
+extension Material.ToolbarAlignment : Swift.RawRepresentable {}
+extension Material.TabBarAlignment : Swift.Equatable {}
+extension Material.TabBarAlignment : Swift.Hashable {}
+extension Material.TabBarAlignment : Swift.RawRepresentable {}
+extension Material.TabBarThemingStyle : Swift.Equatable {}
+extension Material.TabBarThemingStyle : Swift.Hashable {}
+extension Material.ChipItemStyle : Swift.Equatable {}
+extension Material.ChipItemStyle : Swift.Hashable {}
+extension Material.ChipItemStyle : Swift.RawRepresentable {}
+extension Material.ChipBarStyle : Swift.Equatable {}
+extension Material.ChipBarStyle : Swift.Hashable {}
+extension Material.ChipBarStyle : Swift.RawRepresentable {}
+extension Material.ContentViewAlignment : Swift.Equatable {}
+extension Material.ContentViewAlignment : Swift.Hashable {}
+extension Material.ContentViewAlignment : Swift.RawRepresentable {}
+extension Material.IconButtonThemingStyle : Swift.Equatable {}
+extension Material.IconButtonThemingStyle : Swift.Hashable {}
+extension Material.SpringDirection : Swift.Equatable {}
+extension Material.SpringDirection : Swift.Hashable {}
+extension Material.SpringDirection : Swift.RawRepresentable {}
+extension Material.DeviceModel : Swift.Equatable {}
+extension Material.DeviceModel : Swift.Hashable {}
+extension Material.DeviceModel : Swift.RawRepresentable {}
+extension Material.DividerAlignment : Swift.Equatable {}
+extension Material.DividerAlignment : Swift.Hashable {}
+extension Material.DividerAlignment : Swift.RawRepresentable {}
+extension Material.GridAxisDirection : Swift.Equatable {}
+extension Material.GridAxisDirection : Swift.Hashable {}
+extension Material.GridAxisDirection : Swift.RawRepresentable {}
+extension Material.SearchBarAlignment : Swift.Equatable {}
+extension Material.SearchBarAlignment : Swift.Hashable {}
+extension Material.SearchBarAlignment : Swift.RawRepresentable {}
+extension Material.BorderWidthPreset : Swift.Equatable {}
+extension Material.BorderWidthPreset : Swift.Hashable {}
+extension Material.BorderWidthPreset : Swift.RawRepresentable {}
+extension Material.InterimSpacePreset : Swift.Equatable {}
+extension Material.InterimSpacePreset : Swift.Hashable {}
+extension Material.InterimSpacePreset : Swift.RawRepresentable {}
+extension Material.EdgeInsetsPreset : Swift.Equatable {}
+extension Material.EdgeInsetsPreset : Swift.Hashable {}
+extension Material.EdgeInsetsPreset : Swift.RawRepresentable {}
+extension Material.CornerRadiusPreset : Swift.Equatable {}
+extension Material.CornerRadiusPreset : Swift.Hashable {}
+extension Material.CornerRadiusPreset : Swift.RawRepresentable {}
+extension Material.ShapePreset : Swift.Equatable {}
+extension Material.ShapePreset : Swift.Hashable {}
+extension Material.ShapePreset : Swift.RawRepresentable {}
+extension Material.FABMenuBacking : Swift.Equatable {}
+extension Material.FABMenuBacking : Swift.Hashable {}
