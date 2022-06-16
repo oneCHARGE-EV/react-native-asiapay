@@ -53,7 +53,36 @@ export default function App() {
               memberPay_memberId: 'm2',
               memberId: 'm2',
             },
-            'H'
+            'N'
+          )
+            .then((s) => {
+              console.log(s);
+            })
+            .catch(({ code, message }) => {
+              console.log(code, message);
+            });
+        }}
+      />
+
+      <Button
+        title="Test Web view"
+        onPress={() => {
+          Asiapay.webView(
+            '1',
+            'HKD',
+            'VISA',
+            Date.now().toString(),
+            'Test',
+            {
+              addNewMember: true,
+              memberPay_service: 'T',
+              memberPay_memberId: 'm2',
+              memberId: 'm2',
+            },
+            'N',
+            true,
+            true,
+            'Do you want to close?'
           )
             .then((s) => {
               console.log(s);

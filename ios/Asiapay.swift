@@ -22,31 +22,36 @@ class Asiapay: NSObject, PaySDKDelegate {
     @objc(alipay:withCurrency:withOrderRef:withRemark:withResolve:withReject:)
     func alipay(amount: String, currency: String, orderRef: String, remark: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) -> Void {
 
-        makePayment(method: "ALIPAYHKAPP", amount: amount, currency: currency, orderRef: orderRef, remark: remark, resolve: resolve, reject: reject)
+        makePayment(channelType: PayChannel.DIRECT, method: "ALIPAYHKAPP", amount: amount, currency: currency, orderRef: orderRef, remark: remark, resolve: resolve, reject: reject)
     }
 
     @objc(octopus:withOrderRef:withRemark:withResolve:withReject:)
     func octopus(amount: String, orderRef: String, remark: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) -> Void {
 
-        makePayment(method: "OCTOPUS", amount: amount, currency: "HKD", orderRef: orderRef, remark: remark, resolve: resolve, reject: reject)
+        makePayment(channelType: PayChannel.DIRECT, method: "OCTOPUS", amount: amount, currency: "HKD", orderRef: orderRef, remark: remark, resolve: resolve, reject: reject)
     }
-    
+
     @objc(creditCard:withCurrency:withMethod:withOrderRef:withRemark:withCardDetails:withExtraData:withPayType:withResolve:withReject:)
     func creditCard(amount: String, currency: String, method: String, orderRef: String, remark: String, cardDetails: [String: String]?, extraData: [String: Any], payType: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) -> Void {
         var card: CardDetails? = nil
         if (cardDetails != nil) {
             card = CardDetails(cardHolderName: cardDetails!["cardHolder"]!, cardNo: cardDetails!["cardNo"]!, expMonth: cardDetails!["month"]!, expYear: cardDetails!["year"]!, securityCode: cardDetails!["cvc"]!)
         }
-        
-        makePayment(method: method, amount: amount, currency: currency, orderRef: orderRef, remark: remark, resolve: resolve, reject: reject, extraData: extraData, payType: getPayType(payTypeStr: payType), cardDetails: card)
+
+        makePayment(channelType: PayChannel.DIRECT, method: method, amount: amount, currency: currency, orderRef: orderRef, remark: remark, resolve: resolve, reject: reject, extraData: extraData, payType: getPayType(payTypeStr: payType), cardDetails: card)
+    }
+    
+    @objc(webView:withCurrency:withMethod:withOrderRef:withRemark:withExtraData:withPayType:withShowCloseButton:withShowToolbar:withClosePrompt:withResolve:withReject:)
+    func webView(amount: String, currency: String, method: String, orderRef: String, remark: String,  extraData: [String: Any], payType: String, showCloseButton: Bool, showToolbar: Bool, closePrompt: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) -> Void {
+        makePayment(channelType: PayChannel.WEBVIEW, method: method, amount: amount, currency: currency, orderRef: orderRef, remark: remark, resolve: resolve, reject: reject, extraData: extraData, payType: getPayType(payTypeStr: payType))
     }
 
-    func makePayment(method: String, amount: String, currency: String, orderRef: String, remark: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock, extraData: [String : Any] = ["": ""], payType: payType = payType.NORMAL_PAYMENT, cardDetails: CardDetails? = nil) -> Void {
+    func makePayment(channelType: PayChannel, method: String, amount: String, currency: String, orderRef: String, remark: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock, extraData: [String : Any] = ["": ""], payType: payType = payType.NORMAL_PAYMENT, cardDetails: CardDetails? = nil) -> Void {
         print("Pay \(method), order ref \(orderRef)")
         self.currentResolve = resolve
         self.currentReject = reject
 
-        paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
+        paySDK.paymentDetails = PayData(channelType: channelType,
                                         envType: self.environment,
                                         amount: amount,
                                         payGate: PayGate.PAYDOLLAR,
@@ -63,7 +68,7 @@ class Asiapay: NSObject, PaySDKDelegate {
         if let unwrappedCard = cardDetails {
             paySDK.paymentDetails.cardDetails = unwrappedCard
         }
-        
+
         paySDK.process()
     }
 
@@ -129,7 +134,7 @@ class Asiapay: NSObject, PaySDKDelegate {
 
         return payCurrencyCode
     }
-    
+
     func getPayType(payTypeStr: String) -> payType {
         if (payTypeStr == "N") {
             return payType.NORMAL_PAYMENT

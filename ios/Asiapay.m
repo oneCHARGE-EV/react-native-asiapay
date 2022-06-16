@@ -24,5 +24,16 @@ RCT_EXTERN_METHOD(creditCard: (NSString)amount
                   withPayType: (NSString)payType
                   withResolve: (RCTPromiseResolveBlock)resolve
                   withReject: (RCTPromiseRejectBlock)reject)
-
+RCT_EXTERN_METHOD(webView: (NSString)amount
+                  withCurrency: (NSString)currency
+                  withMethod: (NSString)method
+                  withOrderRef: (NSString)orderRef
+                  withRemark: (NSString)remark
+                  withExtraData: (NSDictionary)extraData
+                  withPayType: (NSString)payType
+                  withShowCloseButton: (BOOL)showCloseButton
+                  withShowToolbar: (BOOL)showToolbar
+                  withClosePrompt: (BOOL)webViewClosePrompt
+                  withResolve: (RCTPromiseResolveBlock)resolve
+                  withReject: (RCTPromiseRejectBlock)reject)
 @end

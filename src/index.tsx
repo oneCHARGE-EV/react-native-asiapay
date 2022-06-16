@@ -25,6 +25,18 @@ type AsiapayType = {
     extraData: { [key: string]: string | boolean | number },
     payType: string
   ): Promise<Map<string, string>>;
+  webView(
+    amount: string,
+    currency: string,
+    method: string,
+    orderRef: string,
+    remark: string,
+    extraData: { [key: string]: string | boolean | number },
+    payType: string,
+    showCloseButton: boolean,
+    showToolbar: boolean,
+    webViewClosePrompt: string
+  ): Promise<Map<string, string>>;
 };
 
 export default Asiapay as AsiapayType;
