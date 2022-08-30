@@ -27,18 +27,18 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
 
   @ReactMethod
   fun alipay(amount: String?, currency: String, orderRef: String?, remark: String?, promise: Promise) {
-    makePayment("ALIPAYHKAPP", amount, currency, orderRef, remark, promise, null)
+    makePayment(EnvBase.PayChannel.DIRECT,"ALIPAYHKAPP", amount, currency, orderRef, remark, promise, null)
   }
 
 
   @ReactMethod
   fun wechat(amount: String?, orderRef: String?, remark: String?, promise: Promise) {
-    makePayment("WECHAT", amount, "HKD", orderRef, remark, promise, null)
+    makePayment(EnvBase.PayChannel.DIRECT,"WECHAT", amount, "HKD", orderRef, remark, promise, null)
   }
 
   @ReactMethod
   fun octopus(amount: String?, orderRef: String?, remark: String?, promise: Promise) {
-    makePayment("OCTOPUS", amount, "HKD", orderRef, remark, promise, null)
+    makePayment(EnvBase.PayChannel.DIRECT,"OCTOPUS", amount, "HKD", orderRef, remark, promise, null)
   }
 
   @ReactMethod
@@ -51,13 +51,19 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     card.securityCode = cd["cvc"] as String
     card.cardHolder = cd["cardHolder"] as String
 
-    makePayment(method, amount, currency, orderRef, remark, promise, card, payType, toHashMapString(extraData))
+    makePayment(EnvBase.PayChannel.DIRECT, method, amount, currency, orderRef, remark, promise, card, payType, toHashMapString(extraData))
   }
 
-  private fun makePayment(method: String?, amount: String?, currency: String, orderRef: String?, remark: String?, promise: Promise, cardDetails: CardDetails?, payType: String = "N", extraData: HashMap<String, String> = hashMapOf()) {
+
+  @ReactMethod
+  fun webView(amount: String?, currency: String, method: String, orderRef: String, remark: String, extraData: ReadableMap, payType: String, showCloseButton: Boolean, showToolbar: Boolean, closePrompt: String, promise: Promise) {
+    makePayment(EnvBase.PayChannel.WEBVIEW, method, amount, currency, orderRef, remark, promise, null, payType, toHashMapString(extraData))
+  }
+
+  private fun makePayment(channel: EnvBase.PayChannel, method: String?, amount: String?, currency: String, orderRef: String?, remark: String?, promise: Promise, cardDetails: CardDetails?, payType: String = "N", extraData: HashMap<String, String> = hashMapOf()) {
     val payData = PayData()
     payData.envType = environment
-    payData.channel = EnvBase.PayChannel.DIRECT
+    payData.channel = channel
     payData.setPayGate(EnvBase.PayGate.PAYDOLLAR)
     payData.setCurrCode(EnvBase.Currency.valueOf(currency))
     payData.setPayType(if (payType == "N") EnvBase.PayType.NORMAL_PAYMENT else EnvBase.PayType.HOLD_PAYMENT)
