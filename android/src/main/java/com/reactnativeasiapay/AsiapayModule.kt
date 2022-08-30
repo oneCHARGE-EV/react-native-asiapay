@@ -3,8 +3,6 @@ package com.reactnativeasiapay
 import com.asiapay.sdk.PaySDK
 import com.asiapay.sdk.integration.*
 import com.facebook.react.bridge.*
-import com.google.gson.Gson
-
 
 class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
   private var paySDK: PaySDK = PaySDK(reactContext)
@@ -85,8 +83,23 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     paySDK.responseHandler(object : PaymentResponse() {
       override fun getResponse(payResult: PayResult) {
         if (payResult.successCode == "0") {
-          val gson = Gson()
-          promise.resolve(gson.toJson(payResult))
+          val map: WritableMap = WritableNativeMap()
+          map.putString("prc", payResult.prc)
+          map.putString("ord", payResult.ord)
+          map.putString("cur", payResult.cur)
+          map.putString("authId", payResult.authId)
+          map.putString("ref", payResult.ref)
+          map.putString("src", payResult.src)
+          map.putString("holder", payResult.holder)
+          map.putString("txTime", payResult.txTime)
+          map.putString("errMsg", payResult.errMsg)
+          map.putString("payRef", payResult.payRef)
+          map.putString("amount", payResult.amt)
+          map.putString("successCode", payResult.successCode)
+          map.putString("maskedCardNo", payResult.maskedCardNo)
+          map.putString("payMethod", payResult.payMethod)
+          map.putBoolean("isSuccess", payResult.isSuccess)
+          promise.resolve(map)
         } else {
           promise.reject("${payResult.prc}:${payResult.src}", payResult.errMsg)
         }
