@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.swift_version = "5.3.2"
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
-  s.vendored_frameworks = "*.framework"
 
-  s.dependency "React"
+  s.dependency "React-Core"
+  s.dependency "AP_PaySDK", "2.6.21"
 end
