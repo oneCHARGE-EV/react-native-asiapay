@@ -46,7 +46,7 @@ class Asiapay: NSObject, PaySDKDelegate {
         makePayment(channelType: PayChannel.WEBVIEW, method: method, amount: amount, currency: currency, orderRef: orderRef, remark: remark, closePrompt: closePrompt, showCloseButton: showCloseButton, showToolbar: showToolbar, resolve: resolve, reject: reject, extraData: extraData, payType: getPayType(payTypeStr: payType))
     }
 
-    func makePayment(channelType: PayChannel, method: String, amount: String, currency: String, orderRef: String, remark: String, closePrompt: String, showCloseButton: Boolean, showToolbar: Boolean, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock, extraData: [String : Any] = ["": ""], payType: payType = payType.NORMAL_PAYMENT, cardDetails: CardDetails? = nil) -> Void {
+    func makePayment(channelType: PayChannel, method: String, amount: String, currency: String, orderRef: String, remark: String, closePrompt: String, showCloseButton: Bool, showToolbar: Bool, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock, extraData: [String : Any] = ["": ""], payType: payType = payType.NORMAL_PAYMENT, cardDetails: CardDetails? = nil) -> Void {
         print("Pay \(method), order ref \(orderRef)")
         self.currentResolve = resolve
         self.currentReject = reject
