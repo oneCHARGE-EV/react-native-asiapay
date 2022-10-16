@@ -3462,7 +3462,7 @@ react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4:
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
 react-native-asiapay@../:
-  version "0.2.6"
+  version "0.2.7"
 
 react-native@0.63.4:
   version "0.63.4"
