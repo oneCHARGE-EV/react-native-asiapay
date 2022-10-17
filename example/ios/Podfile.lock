@@ -1,5 +1,5 @@
 PODS:
-  - AP_PaySDK (2.6.21)
+  - AP_PaySDK (2.6.20)
   - boost-for-react-native (1.63.0)
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
@@ -247,7 +247,7 @@ PODS:
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
   - react-native-asiapay (0.2.7):
-    - AP_PaySDK (= 2.6.21)
+    - AP_PaySDK (= 2.6.20)
     - React-Core
   - React-RCTActionSheet (0.63.4):
     - React-Core/RCTActionSheetHeaders (= 0.63.4)
@@ -436,7 +436,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  AP_PaySDK: c5f21367f4ecfcbe6bf2faf53cccb7a989dd8071
+  AP_PaySDK: eb9b4350ecefdcfa36bc8502d7ba0c60987ec162
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: cde416483dac037923206447da6e1454df403714
@@ -463,7 +463,7 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
-  react-native-asiapay: 5b3672786441cd7c61707ead89ab09374d3d4ac9
+  react-native-asiapay: 2c26202b3422ef33ea798656bb7d970032f13cfc
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
   React-RCTBlob: a97d378b527740cc667e03ebfa183a75231ab0f0
