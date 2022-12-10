@@ -41,13 +41,16 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
 
   @ReactMethod
   fun creditCard(amount: String, currency: String, method: String, orderRef: String, remark: String, cardDetails: ReadableMap, extraData: ReadableMap, payType: String, promise: Promise) {
-    val cd = cardDetails.toHashMap()
-    val card = CardDetails()
-    card.cardNo = cd["cardNo"] as String
-    card.epMonth = cd["month"] as String
-    card.epYear = cd["year"] as String
-    card.securityCode = cd["cvc"] as String
-    card.cardHolder = cd["cardHolder"] as String
+    var card = null
+    if (cardDetails != null) {
+      val cd = cardDetails.toHashMap()
+      card = CardDetails()
+      card.cardNo = cd["cardNo"] as String
+      card.epMonth = cd["month"] as String
+      card.epYear = cd["year"] as String
+      card.securityCode = cd["cvc"] as String
+      card.cardHolder = cd["cardHolder"] as String
+    }
 
     makePayment(EnvBase.PayChannel.DIRECT, method, amount, currency, orderRef, remark, promise, card, payType, toHashMapString(extraData))
   }
