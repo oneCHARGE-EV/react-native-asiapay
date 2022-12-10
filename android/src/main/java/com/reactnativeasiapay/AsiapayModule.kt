@@ -40,7 +40,7 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
   }
 
   @ReactMethod
-  fun creditCard(amount: String, currency: String, method: String, orderRef: String, remark: String, cardDetails: ReadableMap, extraData: ReadableMap, payType: String, promise: Promise) {
+  fun creditCard(amount: String, currency: String, method: String, orderRef: String, remark: String, cardDetails: ReadableMap?, extraData: ReadableMap, payType: String, promise: Promise) {
     var card = null
     if (cardDetails != null) {
       val cd = cardDetails.toHashMap()

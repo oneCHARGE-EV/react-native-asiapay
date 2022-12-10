@@ -21,7 +21,7 @@ type AsiapayType = {
     method: string,
     orderRef: string,
     remark: string,
-    cardDetails: { [key: string]: string },
+    cardDetails: { [key: string]: string } | null,
     extraData: { [key: string]: string | boolean | number },
     payType: string
   ): Promise<Map<string, string>>;
