@@ -136,9 +136,12 @@ dependencies {
   //wechat
   implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 
+  // for google pay
+  implementation 'com.google.android.gms:play-services-wallet:16.0.1'
+
   implementation 'com.google.code.gson:gson:2.3.1'
-  implementation 'com.google.android.gms:play-services-ads:11.8.0'
-  implementation 'com.google.android.gms:play-services-location:11.8.0'
+  implementation 'com.google.android.gms:play-services-ads:17.2.0'
+  implementation 'com.google.android.gms:play-services-location:16.0.0'
   implementation 'com.google.android.material:material:1.2.0-alpha04'
   implementation 'com.android.volley:volley:1.1.1'
   implementation 'org.bouncycastle:bcprov-jdk15on:1.60'
