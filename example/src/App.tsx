@@ -7,7 +7,7 @@ export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
 
   React.useEffect(() => {
-    Asiapay.setup('Sandbox', '88149885');
+    Asiapay.setup('Production', '88631092');
   }, []);
 
   return (
@@ -91,6 +91,46 @@ export default function App() {
               console.log(code, message);
             });
         }}
+      />
+
+      <Button
+        title="Test Apple Pay"
+        onPress={() =>
+          Asiapay.payment(
+            '1',
+            'direct',
+            'paydollar',
+            'HKD',
+            'APPLEPAY',
+            Date.now().toString(),
+            'Test',
+            '88631092',
+            'N',
+            '',
+            '',
+            'en',
+            false,
+            false,
+            'Do you want to close?',
+            {
+              apple_countryCode: 'HK',
+              apple_currencyCode: 'HKD',
+              apple_billingContactEmail: 'abc@gmail.com',
+              apple_billingContactPhone: '1234567890',
+              apple_billingContactGivenName: 'ABC',
+              apple_billingContactFamilyName: 'XYZ',
+              apple_requiredBillingAddressFields: '',
+              apple_merchant_name: 'AsiapayDemo',
+              apple_merchantId: 'merchant.com.sdmsc.evcharging',
+            }
+          )
+            .then((s) => {
+              console.log('ddd', s);
+            })
+            .catch(({ code, message }) => {
+              console.log('2222', code, message);
+            })
+        }
       />
     </View>
   );

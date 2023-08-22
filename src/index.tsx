@@ -37,6 +37,24 @@ type AsiapayType = {
     showToolbar: boolean,
     webViewClosePrompt: string
   ): Promise<Map<string, string>>;
+  payment(
+    amount: string,
+    channelType: string,
+    payGate: string,
+    currency: string,
+    method: string,
+    orderRef: string,
+    remark: string,
+    mId: string,
+    payType: string,
+    payRef: string,
+    resultPage: string,
+    lang: string,
+    showCloseButton: boolean,
+    showToolbar: boolean,
+    webViewClosePrompt: string,
+    extraData: { [key: string]: string | boolean | number }
+  ): Promise<Map<string, string>>;
 };
 
 export default Asiapay as AsiapayType;
