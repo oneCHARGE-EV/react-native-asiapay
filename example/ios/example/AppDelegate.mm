@@ -1,6 +1,10 @@
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
+#import <React/RCTLinkingManager.h>
+#import <PassKit/PassKit.h>
+#import <StoreKit/StoreKit.h>
+#import <AP_PaySDK/AP_PaySDK-Swift.h>
 
 @implementation AppDelegate
 
@@ -21,6 +25,14 @@
 #else
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
+}
+
+- (BOOL)application:(UIApplication *)application
+   openURL:(NSURL *)url
+   options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+  [[PaySDK shared] processOrderWithUrl:url];
+  return [RCTLinkingManager application:application openURL:url options:options];
 }
 
 @end
