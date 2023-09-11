@@ -1,16 +1,49 @@
 package com.reactnativeasiapay
 
+import android.app.Activity
+import android.content.Intent
+import android.util.Log
 import com.asiapay.sdk.PaySDK
+import com.asiapay.sdk.PaySDK.LOAD_PAYMENT_DATA_REQUEST_CODE
 import com.asiapay.sdk.integration.*
+import com.asiapay.sdk.integration.EnvBase.GPayBrand
+import com.asiapay.sdk.integration.googlepay.GooglePay
+import com.asiapay.sdk.integration.googlepay.PaymentsUtil
 import com.facebook.react.bridge.*
+import com.google.android.gms.wallet.AutoResolveHelper
+import com.google.android.gms.wallet.PaymentData
+import com.google.android.gms.wallet.PaymentDataRequest
+import com.google.android.gms.wallet.PaymentsClient
+import org.json.JSONObject
+import java.util.*
 
-class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext), ActivityEventListener {
   private var paySDK: PaySDK = PaySDK(reactContext)
   private var merchantId: String? = null
   private var environment: EnvBase.EnvType = EnvBase.EnvType.SANDBOX
+  private var mPaymentsClient: PaymentsClient? = null
+  private var nativePayData: PayData? = null
 
   override fun getName(): String {
     return "Asiapay"
+  }
+
+  override fun onActivityResult(p0: Activity?, requestCode: Int, resultCode: Int, data: Intent?) {
+    when (requestCode) {
+      LOAD_PAYMENT_DATA_REQUEST_CODE -> when (resultCode) {
+        Activity.RESULT_OK -> {
+          val paymentData = PaymentData.getFromIntent(data!!)
+          val paymentInfo = paymentData!!.toJson() ?: return
+
+          //When Result Come pass to PaySDK
+          handleGooglePay(paymentInfo)
+        }
+        else -> {}
+      }
+    }
+  }
+
+  override fun onNewIntent(p0: Intent?) {
   }
 
   // Only Alipay , wechat pay and octupus
@@ -21,6 +54,7 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     if (envType == "Production") {
       environment = EnvBase.EnvType.PRODUCTION
     }
+    mPaymentsClient = PaymentsUtil.createPaymentsClient(currentActivity, environment)
   }
 
   @ReactMethod
@@ -55,10 +89,50 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     makePayment(EnvBase.PayChannel.DIRECT, method, amount, currency, orderRef, remark, promise, card, payType, toHashMapString(extraData))
   }
 
-
   @ReactMethod
   fun webView(amount: String?, currency: String, method: String, orderRef: String, remark: String, extraData: ReadableMap, payType: String, showCloseButton: Boolean, showToolbar: Boolean, closePrompt: String, promise: Promise) {
     makePayment(EnvBase.PayChannel.WEBVIEW, method, amount, currency, orderRef, remark, promise, null, payType, toHashMapString(extraData))
+  }
+
+  @ReactMethod
+  fun nativePay(amount: String, currency: String, countryCode: String, priceLabel: String, orderRef: String, remark: String, payType: String, nativePayMerchantId: String) {
+    nativePayData = PayData()
+    nativePayData!!.envType = environment
+    nativePayData!!.channel = EnvBase.PayChannel.DIRECT
+    nativePayData!!.setPayGate(EnvBase.PayGate.PAYDOLLAR)
+    nativePayData!!.setCurrCode(EnvBase.Currency.valueOf(currency))
+    nativePayData!!.setPayType(if (payType == "N") EnvBase.PayType.NORMAL_PAYMENT else EnvBase.PayType.HOLD_PAYMENT)
+    nativePayData!!.setLang(EnvBase.Language.ENGLISH)
+    nativePayData!!.googlePayAuth = EnvBase.GooglePayAuth.CRYPTOGRAM_3DS
+    nativePayData!!.amount = amount
+    nativePayData!!.payMethod = "GOOGLE"
+    nativePayData!!.merchantId = merchantId!!
+    nativePayData!!.orderRef = orderRef
+    nativePayData!!.remark = remark
+    nativePayData!!.activity = currentActivity
+
+    // Set card network
+    val brands = ArrayList<GPayBrand>()
+    brands.add(GPayBrand.VISA)
+    brands.add(GPayBrand.MASTERCARD)
+    brands.add(GPayBrand.AMERICANEXPRESS)
+    nativePayData!!.gpayBrands = brands
+
+    val paymentDataRequestJson: Optional<JSONObject> = GooglePay.getPaymentDataRequest(nativePayData)
+
+    if (mPaymentsClient == null) {
+      return
+    }
+
+    if (!paymentDataRequestJson.isPresent) {
+      return
+    }
+    val request = PaymentDataRequest.fromJson(paymentDataRequestJson.get().toString())
+    if (request != null) {
+      AutoResolveHelper.resolveTask(
+        mPaymentsClient!!.loadPaymentData(request), currentActivity!!, LOAD_PAYMENT_DATA_REQUEST_CODE
+      )
+    }
   }
 
   private fun makePayment(channel: EnvBase.PayChannel, method: String?, amount: String?, currency: String, orderRef: String?, remark: String?, promise: Promise, cardDetails: CardDetails?, payType: String = "N", extraData: HashMap<String, String> = hashMapOf()) {
@@ -266,5 +340,31 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
         });
     }*/
 
+  private fun handleGooglePay(strResp: String?) {
+    var base64encodedString: String? = null
+    try {
+      base64encodedString = paySDK.encodeData(strResp)
+    } catch (e: Exception) {
+      e.printStackTrace()
+    }
+    val extraDataGP: MutableMap<String, String?> = HashMap()
+    extraDataGP["eWalletPaymentData"] = base64encodedString
+    extraDataGP["eWalletService"] = "T"
+    extraDataGP["eWalletBrand"] = "GOOGLE"
+    nativePayData!!.extraData = extraDataGP
+    paySDK.requestData = nativePayData
+    paySDK.process()
+
+    //Here you will get Payment response.
+    paySDK.responseHandler(object : PaymentResponse() {
+      override fun getResponse(payResult: PayResult) {
+        Log.d("paysdk", payResult.successCode)
+      }
+
+      override fun onError(data: Data) {
+        Log.d("paysdk", "pay error")
+      }
+    })
+  }
 }
 

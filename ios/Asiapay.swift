@@ -4,15 +4,13 @@ import PassKit
 
 @objc(Asiapay)
 class Asiapay: NSObject, PaySDKDelegate, PKPaymentAuthorizationViewControllerDelegate {
-    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
-        print("authorize view did finish")
-    }
-
     var environment: EnvType = EnvType.SANDBOX
     var merchantId: String = ""
     var paySDK = PaySDK.shared
     var currentResolve: RCTPromiseResolveBlock?
     var currentReject: RCTPromiseRejectBlock?
+    var completion: ((PKPaymentAuthorizationResult) -> Void)? = nil
+    var nativePayDetails: [String: Any]? = nil
 
     @objc(setup:withMId:)
     func setup(environment: String, mId: String) -> Void {
@@ -51,14 +49,41 @@ class Asiapay: NSObject, PaySDKDelegate, PKPaymentAuthorizationViewControllerDel
         makePayment(channelType: PayChannel.WEBVIEW, method: method, amount: amount, currency: currency, orderRef: orderRef, remark: remark, closePrompt: closePrompt, showCloseButton: showCloseButton, showToolbar: showToolbar, lang: Language.ENGLISH, resolve: resolve, reject: reject, extraData: extraData, payType: getPayType(payTypeStr: payType))
     }
 
-    @objc(payment:withChannelType:withPayGate:withCurrency:withMethod:withOrderRef:withRemark:withMId:withPayType:withPayRef:withResultPage:withLang:withShowCloseButton:withShowToolbar:withClosePrompt:withExtraData:withResolve:withReject:)
-    func payment(amount: String, channelType: String, payGate: String, currency: String, method: String, orderRef: String, remark: String, mId: String, payType: String, payRef: String, resultPage: String, lang: String, showCloseButton: Bool, showToolbar: Bool, closePrompt: String, extraData: [String: Any], resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) -> Void {
-        if (mId != "") {
-            self.merchantId = mId
+    @objc(nativePay:withCurrency:withCountryCode:withPriceLabel:withOrderRef:withRemark:withPayType:withNativePayMerchantId:withResolve:withReject:)
+    func nativePay(amount: String, currency: String, countryCode: String, priceLabel: String, orderRef: String, remark: String, payType: String, nativePayMerchantId: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) -> Void {
+        self.nativePayDetails = [
+            "amount": amount,
+            "currCode": getCurrencyCode(currencyCode: currency),
+            "payType": getPayType(payTypeStr: payType),
+            "orderRef": orderRef,
+            "remark": remark
+        ]
+
+        if PKPaymentAuthorizationViewController.canMakePayments() {
+            let req = PKPaymentRequest()
+            req.currencyCode = currency
+            req.countryCode = countryCode
+            req.merchantIdentifier = nativePayMerchantId
+            req.merchantCapabilities = PKMerchantCapability.capability3DS
+            req.supportedNetworks = [PKPaymentNetwork.visa, PKPaymentNetwork.masterCard]
+            req.paymentSummaryItems = [PKPaymentSummaryItem(label: priceLabel, amount: NSDecimalNumber(string: amount))]
+            guard let paymentVC = PKPaymentAuthorizationViewController(paymentRequest: req) else {
+                print("cannot start apple pay")
+                reject("cannot start apple pay", nil, nil)
+                return
+            }
+            paymentVC.delegate = self
+            let viewController = RCTPresentedViewController()
+            if (viewController != nil) {
+                DispatchQueue.main.async {
+                    viewController!.present(paymentVC, animated: true, completion: nil)
+                }
+            } else {
+                reject("something went wrong", nil, nil)
+            }
+        } else {
+            reject("noNativePay", nil, nil)
         }
-        let payChannel = getPayChannel(channelType: channelType)
-        let language = getLanguage(lang: lang)
-        makePayment(channelType: payChannel, method: method, amount: amount, currency: currency, orderRef: orderRef, remark: remark, closePrompt: closePrompt, showCloseButton: showCloseButton, showToolbar: showToolbar, lang: language, resolve: resolve, reject: reject, extraData: extraData, payType: getPayType(payTypeStr: payType))
     }
 
     func makePayment(channelType: PayChannel, method: String, amount: String, currency: String, orderRef: String, remark: String, closePrompt: String, showCloseButton: Bool, showToolbar: Bool, lang: Language, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock, extraData: [String : Any] = ["": ""], payType: payType = payType.NORMAL_PAYMENT, cardDetails: CardDetails? = nil) -> Void {
@@ -210,6 +235,13 @@ class Asiapay: NSObject, PaySDKDelegate, PKPaymentAuthorizationViewControllerDel
         print(result)
         let dictResult = self.toDict(result: result)
         print(dictResult)
+        if (result.successCode != "0" && self.completion != nil) {
+            self.completion!(PKPaymentAuthorizationResult(status: .failure, errors: nil))
+        }
+        if (result.successCode == "0" && self.completion != nil) {
+            self.completion!(PKPaymentAuthorizationResult(status: .success, errors: nil))
+        }
+
         if (result.successCode != "0" && self.currentReject != nil) {
             self.currentReject!("\(result.prc ?? ""):\(result.src ?? "")", result.errMsg, nil)
         }
@@ -278,28 +310,57 @@ class Asiapay: NSObject, PaySDKDelegate, PKPaymentAuthorizationViewControllerDel
     }
 
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
-            print("payment authorization view did authorize payment")
-            do {
-                let paymentDataDic = try JSONSerialization.jsonObject(with: payment.token.paymentData, options:[]) as! [String : Any]
-                let paymentDataJson = ["token": ["paymentData":paymentDataDic,
-                                                 "transactionIdentifier":payment.token.transactionIdentifier,
-                                                 "paymentMethod" : [
-                                                 "displayName":payment.token.paymentMethod.displayName,
-                                                 "network":payment.token.paymentMethod.network?.rawValue,
-                                                 "type":"\(payment.token.paymentMethod.type.rawValue)"]]] as [String : Any]
+        print("payment authorization view did authorize payment")
+        self.completion = completion
+        do {
+            let paymentDataDic = try JSONSerialization.jsonObject(with: payment.token.paymentData, options:[]) as! [String : Any]
+            let paymentDataJson = ["token": ["paymentData":paymentDataDic,
+                                             "transactionIdentifier":payment.token.transactionIdentifier,
+                                             "paymentMethod" : [
+                                             "displayName":payment.token.paymentMethod.displayName,
+                                             "network":payment.token.paymentMethod.network?.rawValue,
+                                             "type":"\(payment.token.paymentMethod.type.rawValue)"]]] as [String : Any]
 
-                let b64TokenStr = try! JSONSerialization.data(withJSONObject: paymentDataJson, options: []).base64EncodedString()
-                print(b64TokenStr)
-                if (b64TokenStr != "" && self.currentReject != nil) {
-                    self.currentReject!("failed authorize", nil, nil)
-                }
+            let b64TokenStr = try! JSONSerialization.data(withJSONObject: paymentDataJson, options: []).base64EncodedString()
+            print(b64TokenStr)
+            if (b64TokenStr != "" && self.currentReject != nil) {
+                self.currentReject!("failed authorize", nil, nil)
+            }
 
-                if (b64TokenStr != "" && self.currentResolve != nil) {
-                    self.currentResolve!(b64TokenStr)
-                }
+            if (self.nativePayDetails != nil) {
+                self.paySDK.paymentDetails = PayData(channelType: PayChannel.DIRECT,
+                                                     envType: self.environment,
+                                                     amount: self.nativePayDetails!["amount"] as! String,
+                                                     payGate: PayGate.PAYDOLLAR,
+                                                     currCode: self.nativePayDetails!["currCode"] as! CurrencyCode,
+                                                     payType: self.nativePayDetails!["payType"] as! payType,
+                                                     orderRef: self.nativePayDetails!["orderRef"] as! String,
+                                                     payMethod: "ALL",
+                                                     lang: Language.ENGLISH,
+                                                     merchantId: self.merchantId,
+                                                     remark: self.nativePayDetails!["remark"] as! String,
+                                                     payRef: "",
+                                                     resultpage: "F",
+                                                     showCloseButton: false,
+                                                     showToolbar: false,
+                                                     webViewClosePrompt: "",
+                                                     extraData: [
+                                                        "eWalletPaymentData" : b64TokenStr,
+                                                        "eWalletService": "T",
+                                                        "eWalletBrand": "APPLEPAY"
+                                                     ])
 
-                self.currentReject = nil
-                self.currentResolve = nil
-           } catch _ { }
+                self.paySDK.process()
+            }
+       } catch _ {
+           completion(PKPaymentAuthorizationResult(status: .failure, errors: nil))
+           self.currentReject!("failed authorize", nil, nil)
+       }
+    }
+
+    func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
+        print("Did finish")
+        let viewController = RCTPresentedViewController()
+        viewController?.dismiss(animated: true)
     }
 }

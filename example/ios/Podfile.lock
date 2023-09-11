@@ -1,5 +1,5 @@
 PODS:
-  - AP_PaySDK (2.6.18)
+  - AP_PaySDK (2.6.24)
   - boost (1.76.0)
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
@@ -376,8 +376,8 @@ PODS:
   - React-jsinspector (0.72.4)
   - React-logger (0.72.4):
     - glog
-  - react-native-asiapay (0.2.9):
-    - AP_PaySDK (= 2.6.18)
+  - react-native-asiapay (0.3.2):
+    - AP_PaySDK (= 2.6.24)
     - React-Core
   - React-NativeModulesApple (0.72.4):
     - hermes-engine
@@ -662,7 +662,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  AP_PaySDK: 2e64c664151bec8acc1921225cb2b203e54b8049
+  AP_PaySDK: c9b9e61bb60da7353ddeedea677face8ee5c71c6
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
@@ -696,7 +696,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: c7f826e40fa9cab5d37cab6130b1af237332b594
   React-jsinspector: aaed4cf551c4a1c98092436518c2d267b13a673f
   React-logger: da1ebe05ae06eb6db4b162202faeafac4b435e77
-  react-native-asiapay: 91129386c984b602e77d98348e087d36ae6b38a9
+  react-native-asiapay: b595ebac429c47cb60a84235ffe57fcdf3942399
   React-NativeModulesApple: edb5ace14f73f4969df6e7b1f3e41bef0012740f
   React-perflogger: 496a1a3dc6737f964107cb3ddae7f9e265ddda58
   React-RCTActionSheet: 02904b932b50e680f4e26e7a686b33ebf7ef3c00

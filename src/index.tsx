@@ -37,23 +37,15 @@ type AsiapayType = {
     showToolbar: boolean,
     webViewClosePrompt: string
   ): Promise<Map<string, string>>;
-  payment(
+  nativePay(
     amount: string,
-    channelType: string,
-    payGate: string,
     currency: string,
-    method: string,
+    countryCode: string,
+    priceLabel: string,
     orderRef: string,
     remark: string,
-    mId: string,
     payType: string,
-    payRef: string,
-    resultPage: string,
-    lang: string,
-    showCloseButton: boolean,
-    showToolbar: boolean,
-    webViewClosePrompt: string,
-    extraData: { [key: string]: string | boolean | number }
+    nativePayMerchantId: string
   ): Promise<Map<string, string>>;
 };
 
