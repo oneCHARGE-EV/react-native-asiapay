@@ -5705,7 +5705,7 @@ react-is@^17.0.1:
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
 react-native-asiapay@../:
-  version "0.2.9"
+  version "0.3.2"
 
 react-native@0.72.4:
   version "0.72.4"

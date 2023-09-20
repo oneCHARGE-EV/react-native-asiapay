@@ -37,6 +37,17 @@ type AsiapayType = {
     showToolbar: boolean,
     webViewClosePrompt: string
   ): Promise<Map<string, string>>;
+  nativePay(
+    amount: string,
+    currency: string,
+    countryCode: string,
+    priceLabel: string,
+    orderRef: string,
+    remark: string,
+    payType: string,
+    nativePayMerchantId: string
+  ): Promise<Map<string, string>>;
+  canMakeNativePay(): Promise<boolean>;
 };
 
 export default Asiapay as AsiapayType;

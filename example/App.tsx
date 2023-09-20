@@ -24,7 +24,7 @@ function App(): JSX.Element {
   const [result, setResult] = useState<number | undefined>();
 
   useEffect(() => {
-    Asiapay.setup('Sandbox', '88149885');
+    Asiapay.setup('Sandbox', '88158985');
   });
 
   const isDarkMode = useColorScheme() === 'dark';
@@ -111,6 +111,28 @@ function App(): JSX.Element {
               true,
               true,
               'Do you want to close?',
+            )
+              .then(s => {
+                console.log(s);
+              })
+              .catch(({code, message}) => {
+                console.log(code, message);
+              });
+          }}
+        />
+
+        <Button
+          title="Test Apple Pay"
+          onPress={() => {
+            Asiapay.nativePay(
+              '1',
+              'HKD',
+              'HK',
+              'Charging fee',
+              Date.now().toString(),
+              'Test',
+              'H',
+              'merchant.com.sdmsc.evcharging',
             )
               .then(s => {
                 console.log(s);

@@ -36,4 +36,14 @@ RCT_EXTERN_METHOD(webView: (NSString)amount
                   withClosePrompt: (BOOL)webViewClosePrompt
                   withResolve: (RCTPromiseResolveBlock)resolve
                   withReject: (RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(nativePay: (NSString)amount
+                  withCurrency: (NSString)currency
+                  withCountryCode: (NSString)countryCode
+                  withPriceLabel: (NSString)priceLabel
+                  withOrderRef: (NSString)orderRef
+                  withRemark: (NSString)remark
+                  withPayType: (NSString)payType
+                  withNativePayMerchantId: (NSString)nativePayMerchantId
+                  withResolve: (RCTPromiseResolveBlock)resolve
+                  withReject: (RCTPromiseRejectBlock)reject)
 @end
