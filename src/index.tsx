@@ -47,6 +47,7 @@ type AsiapayType = {
     payType: string,
     nativePayMerchantId: string
   ): Promise<Map<string, string>>;
+  canMakeNativePay(): Promise<boolean>;
 };
 
 export default Asiapay as AsiapayType;

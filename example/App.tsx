@@ -24,7 +24,7 @@ function App(): JSX.Element {
   const [result, setResult] = useState<number | undefined>();
 
   useEffect(() => {
-    Asiapay.setup('Production', '88631092');
+    Asiapay.setup('Sandbox', '88158985');
   });
 
   const isDarkMode = useColorScheme() === 'dark';

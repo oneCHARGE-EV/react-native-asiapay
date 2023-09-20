@@ -5,45 +5,73 @@ import android.content.Intent
 import android.util.Log
 import com.asiapay.sdk.PaySDK
 import com.asiapay.sdk.PaySDK.LOAD_PAYMENT_DATA_REQUEST_CODE
-import com.asiapay.sdk.integration.*
+import com.asiapay.sdk.integration.CardDetails
+import com.asiapay.sdk.integration.Data
+import com.asiapay.sdk.integration.EnvBase
 import com.asiapay.sdk.integration.EnvBase.GPayBrand
+import com.asiapay.sdk.integration.PayData
+import com.asiapay.sdk.integration.PayResult
+import com.asiapay.sdk.integration.PaymentResponse
 import com.asiapay.sdk.integration.googlepay.GooglePay
 import com.asiapay.sdk.integration.googlepay.PaymentsUtil
-import com.facebook.react.bridge.*
+import com.asiapay.sdk.integration.googlepay.PaymentsUtil.ICheckGooglePay
+import com.facebook.react.bridge.BaseActivityEventListener
+import com.facebook.react.bridge.Promise
+import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.ReactContextBaseJavaModule
+import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.bridge.ReadableArray
+import com.facebook.react.bridge.ReadableMap
+import com.facebook.react.bridge.ReadableType
+import com.facebook.react.bridge.WritableMap
+import com.facebook.react.bridge.WritableNativeMap
 import com.google.android.gms.wallet.AutoResolveHelper
 import com.google.android.gms.wallet.PaymentData
 import com.google.android.gms.wallet.PaymentDataRequest
 import com.google.android.gms.wallet.PaymentsClient
 import org.json.JSONObject
-import java.util.*
+import java.util.Optional
 
-class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext), ActivityEventListener {
+class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
   private var paySDK: PaySDK = PaySDK(reactContext)
   private var merchantId: String? = null
   private var environment: EnvBase.EnvType = EnvBase.EnvType.SANDBOX
   private var mPaymentsClient: PaymentsClient? = null
   private var nativePayData: PayData? = null
+  private var nativePayPromise: Promise? = null
 
   override fun getName(): String {
     return "Asiapay"
   }
 
-  override fun onActivityResult(p0: Activity?, requestCode: Int, resultCode: Int, data: Intent?) {
-    when (requestCode) {
-      LOAD_PAYMENT_DATA_REQUEST_CODE -> when (resultCode) {
-        Activity.RESULT_OK -> {
-          val paymentData = PaymentData.getFromIntent(data!!)
-          val paymentInfo = paymentData!!.toJson() ?: return
+  private val activityEventListener =
+    object : BaseActivityEventListener() {
 
-          //When Result Come pass to PaySDK
-          handleGooglePay(paymentInfo)
+      override fun onActivityResult(
+        p0: Activity?,
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?
+      ) {
+        Log.d("Payment", "on activity result ${resultCode}")
+        when (requestCode) {
+          LOAD_PAYMENT_DATA_REQUEST_CODE -> when (resultCode) {
+            Activity.RESULT_OK -> {
+              val paymentData = PaymentData.getFromIntent(data!!)
+              val paymentInfo = paymentData!!.toJson() ?: return
+
+              // When Result Come pass to PaySDK
+              handleGooglePay(paymentInfo)
+            }
+
+            else -> {}
+          }
         }
-        else -> {}
       }
     }
-  }
 
-  override fun onNewIntent(p0: Intent?) {
+  init {
+    reactContext.addActivityEventListener(activityEventListener)
   }
 
   // Only Alipay , wechat pay and octupus
@@ -61,7 +89,6 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
   fun alipay(amount: String?, currency: String, orderRef: String?, remark: String?, promise: Promise) {
     makePayment(EnvBase.PayChannel.DIRECT,"ALIPAYHKAPP", amount, currency, orderRef, remark, promise, null)
   }
-
 
   @ReactMethod
   fun wechat(amount: String?, orderRef: String?, remark: String?, promise: Promise) {
@@ -95,7 +122,9 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
   }
 
   @ReactMethod
-  fun nativePay(amount: String, currency: String, countryCode: String, priceLabel: String, orderRef: String, remark: String, payType: String, nativePayMerchantId: String) {
+  fun nativePay(amount: String, currency: String, countryCode: String, priceLabel: String, orderRef: String, remark: String, payType: String, nativePayMerchantId: String, promise: Promise) {
+    Log.d("Payment", "native pay")
+    nativePayPromise = promise
     nativePayData = PayData()
     nativePayData!!.envType = environment
     nativePayData!!.channel = EnvBase.PayChannel.DIRECT
@@ -121,18 +150,37 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     val paymentDataRequestJson: Optional<JSONObject> = GooglePay.getPaymentDataRequest(nativePayData)
 
     if (mPaymentsClient == null) {
+      Log.d("Payment", "No client")
+      promise.reject("payment error")
       return
     }
 
     if (!paymentDataRequestJson.isPresent) {
+      Log.d("Payment", "no json")
+      promise.reject("payment error")
       return
     }
+
     val request = PaymentDataRequest.fromJson(paymentDataRequestJson.get().toString())
     if (request != null) {
+      Log.d("Payment", "load payment")
       AutoResolveHelper.resolveTask(
         mPaymentsClient!!.loadPaymentData(request), currentActivity!!, LOAD_PAYMENT_DATA_REQUEST_CODE
       )
     }
+  }
+
+  @ReactMethod
+  fun canMakeNativePay(promise: Promise) {
+    PaymentsUtil.isGooglePayAvailable(currentActivity, mPaymentsClient, object : ICheckGooglePay {
+      override fun success() {
+        promise.resolve(true)
+      }
+
+      override fun error() {
+        promise.resolve(false)
+      }
+    })
   }
 
   private fun makePayment(channel: EnvBase.PayChannel, method: String?, amount: String?, currency: String, orderRef: String?, remark: String?, promise: Promise, cardDetails: CardDetails?, payType: String = "N", extraData: HashMap<String, String> = hashMapOf()) {
@@ -159,27 +207,7 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     paySDK.process()
     paySDK.responseHandler(object : PaymentResponse() {
       override fun getResponse(payResult: PayResult) {
-        if (payResult.successCode == "0") {
-          val map: WritableMap = WritableNativeMap()
-          map.putString("prc", payResult.prc)
-          map.putString("ord", payResult.ord)
-          map.putString("cur", payResult.cur)
-          map.putString("authId", payResult.authId)
-          map.putString("ref", payResult.ref)
-          map.putString("src", payResult.src)
-          map.putString("holder", payResult.holder)
-          map.putString("txTime", payResult.txTime)
-          map.putString("errMsg", payResult.errMsg)
-          map.putString("payRef", payResult.payRef)
-          map.putString("amount", payResult.amt)
-          map.putString("successCode", payResult.successCode)
-          map.putString("maskedCardNo", payResult.maskedCardNo)
-          map.putString("payMethod", payResult.payMethod)
-          map.putBoolean("isSuccess", payResult.isSuccess)
-          promise.resolve(map)
-        } else {
-          promise.reject("${payResult.prc}:${payResult.src}", payResult.errMsg)
-        }
+        handlePayResult(payResult, promise)
       }
 
       override fun onError(data: Data) {
@@ -188,7 +216,7 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     })
   }
 
-  fun toHashMap(map: ReadableMap?): HashMap<String, Any?>? {
+  private fun toHashMap(map: ReadableMap?): HashMap<String, Any?>? {
     val hashMap: HashMap<String, Any?> = HashMap()
     val iterator = map!!.keySetIterator()
     while (iterator.hasNextKey()) {
@@ -206,7 +234,7 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     return hashMap
   }
 
-  fun toHashMapString(map: ReadableMap?): HashMap<String, String> {
+  private fun toHashMapString(map: ReadableMap?): HashMap<String, String> {
     val hashMap: HashMap<String, String> = HashMap()
     val iterator = map!!.keySetIterator()
     while (iterator.hasNextKey()) {
@@ -222,7 +250,7 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     return hashMap
   }
 
-  fun toArrayList(array: ReadableArray?): ArrayList<Any?>? {
+  private fun toArrayList(array: ReadableArray?): ArrayList<Any?>? {
     val arrayList: ArrayList<Any?> = ArrayList(array!!.size())
     var i = 0
     val size = array!!.size()
@@ -340,12 +368,41 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
         });
     }*/
 
+  private fun handlePayResult(payResult: PayResult, promise: Promise) {
+    if (payResult.successCode == "0") {
+      val map: WritableMap = WritableNativeMap()
+      map.putString("prc", payResult.prc)
+      map.putString("ord", payResult.ord)
+      map.putString("cur", payResult.cur)
+      map.putString("authId", payResult.authId)
+      map.putString("ref", payResult.ref)
+      map.putString("src", payResult.src)
+      map.putString("holder", payResult.holder)
+      map.putString("txTime", payResult.txTime)
+      map.putString("errMsg", payResult.errMsg)
+      map.putString("payRef", payResult.payRef)
+      map.putString("amount", payResult.amt)
+      map.putString("successCode", payResult.successCode)
+      map.putString("maskedCardNo", payResult.maskedCardNo)
+      map.putString("payMethod", payResult.payMethod)
+      map.putBoolean("isSuccess", payResult.isSuccess)
+      promise.resolve(map)
+    } else {
+      promise.reject("${payResult.prc}:${payResult.src}", payResult.errMsg)
+    }
+  }
+
   private fun handleGooglePay(strResp: String?) {
+    Log.d("Payment", "handle google pay ${strResp}")
     var base64encodedString: String? = null
     try {
       base64encodedString = paySDK.encodeData(strResp)
+      Log.d("Payment", "cc ${base64encodedString}")
     } catch (e: Exception) {
+      Log.d("Payment", "failed encode")
       e.printStackTrace()
+
+      nativePayPromise!!.reject("failed to encode")
     }
     val extraDataGP: MutableMap<String, String?> = HashMap()
     extraDataGP["eWalletPaymentData"] = base64encodedString
@@ -359,10 +416,16 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     paySDK.responseHandler(object : PaymentResponse() {
       override fun getResponse(payResult: PayResult) {
         Log.d("paysdk", payResult.successCode)
+        if (nativePayPromise !== null) {
+          handlePayResult(payResult, nativePayPromise!!)
+        }
       }
 
       override fun onError(data: Data) {
         Log.d("paysdk", "pay error")
+        if (nativePayPromise !== null) {
+          nativePayPromise!!.reject(data.error + data.message)
+        }
       }
     })
   }
