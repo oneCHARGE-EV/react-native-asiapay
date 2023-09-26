@@ -132,7 +132,7 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     nativePayData!!.setCurrCode(EnvBase.Currency.valueOf(currency))
     nativePayData!!.setPayType(if (payType == "N") EnvBase.PayType.NORMAL_PAYMENT else EnvBase.PayType.HOLD_PAYMENT)
     nativePayData!!.setLang(EnvBase.Language.ENGLISH)
-    nativePayData!!.googlePayAuth = EnvBase.GooglePayAuth.CRYPTOGRAM_3DS
+    nativePayData!!.googlePayAuth = EnvBase.GooglePayAuth.PAN_CRYPTO
     nativePayData!!.amount = amount
     nativePayData!!.payMethod = "GOOGLE"
     nativePayData!!.merchantId = merchantId!!

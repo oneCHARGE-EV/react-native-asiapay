@@ -353,8 +353,10 @@ class Asiapay: NSObject, PaySDKDelegate, PKPaymentAuthorizationViewControllerDel
                 self.paySDK.process()
             }
        } catch _ {
-           completion(PKPaymentAuthorizationResult(status: .failure, errors: nil))
-           self.currentReject!("failed authorize", nil, nil)
+            completion(PKPaymentAuthorizationResult(status: .failure, errors: nil))
+            if let currentReject = self.currentReject {
+                currentReject("failed authorize", nil, nil)
+            }
        }
     }
 
