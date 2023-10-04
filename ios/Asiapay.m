@@ -44,6 +44,7 @@ RCT_EXTERN_METHOD(nativePay: (NSString)amount
                   withRemark: (NSString)remark
                   withPayType: (NSString)payType
                   withNativePayMerchantId: (NSString)nativePayMerchantId
+                  withGooglePayAuth: (NSString)googlePayAuth
                   withResolve: (RCTPromiseResolveBlock)resolve
                   withReject: (RCTPromiseRejectBlock)reject)
 @end
