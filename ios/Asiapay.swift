@@ -71,7 +71,6 @@ class Asiapay: NSObject, PaySDKDelegate, PKPaymentAuthorizationViewControllerDel
             req.supportedNetworks = [PKPaymentNetwork.visa, PKPaymentNetwork.masterCard]
             req.paymentSummaryItems = [PKPaymentSummaryItem(label: priceLabel, amount: NSDecimalNumber(string: amount))]
             guard let paymentVC = PKPaymentAuthorizationViewController(paymentRequest: req) else {
-                print("cannot start apple pay")
                 reject("cannot start apple pay", nil, nil)
                 return
             }
@@ -235,9 +234,7 @@ class Asiapay: NSObject, PaySDKDelegate, PKPaymentAuthorizationViewControllerDel
     }
 
     func paymentResult(result: PayResult) {
-        print(result)
         let dictResult = self.toDict(result: result)
-        print(dictResult)
         if (result.successCode != "0" && self.completion != nil) {
             self.completion!(PKPaymentAuthorizationResult(status: .failure, errors: nil))
         }
@@ -313,7 +310,6 @@ class Asiapay: NSObject, PaySDKDelegate, PKPaymentAuthorizationViewControllerDel
     }
 
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
-        print("payment authorization view did authorize payment")
         self.completion = completion
         do {
             let paymentDataDic = try JSONSerialization.jsonObject(with: payment.token.paymentData, options:[]) as! [String : Any]
@@ -325,9 +321,9 @@ class Asiapay: NSObject, PaySDKDelegate, PKPaymentAuthorizationViewControllerDel
                                              "type":"\(payment.token.paymentMethod.type.rawValue)"]]] as [String : Any]
 
             let b64TokenStr = try! JSONSerialization.data(withJSONObject: paymentDataJson, options: []).base64EncodedString()
-            print(b64TokenStr)
-            if (b64TokenStr != "" && self.currentReject != nil) {
+            if (b64TokenStr == "" && self.currentReject != nil) {
                 self.currentReject!("failed authorize", nil, nil)
+                return
             }
 
             if (self.nativePayDetails != nil) {
@@ -364,7 +360,6 @@ class Asiapay: NSObject, PaySDKDelegate, PKPaymentAuthorizationViewControllerDel
     }
 
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
-        print("Did finish")
         let viewController = RCTPresentedViewController()
         viewController?.dismiss(animated: true)
     }
