@@ -51,7 +51,10 @@ class Asiapay: NSObject, PaySDKDelegate, PKPaymentAuthorizationViewControllerDel
 
     @objc(nativePay:withCurrency:withCountryCode:withPriceLabel:withOrderRef:withRemark:withPayType:withNativePayMerchantId:withGooglePayAuth:withResolve:withReject:)
     func nativePay(amount: String, currency: String, countryCode: String, priceLabel: String, orderRef: String, remark: String, payType: String, nativePayMerchantId: String, googlePayAuth: String,resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) -> Void {
-        self.nativePayDetails = [
+      self.currentResolve = resolve
+      self.currentReject = reject
+      
+      self.nativePayDetails = [
             "amount": amount,
             "currCode": getCurrencyCode(currencyCode: currency),
             "payType": getPayType(payTypeStr: payType),
