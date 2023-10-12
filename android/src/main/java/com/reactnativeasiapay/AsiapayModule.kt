@@ -122,7 +122,7 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
   }
 
   @ReactMethod
-  fun nativePay(amount: String, currency: String, countryCode: String, priceLabel: String, orderRef: String, remark: String, payType: String, nativePayMerchantId: String, promise: Promise) {
+  fun nativePay(amount: String, currency: String, countryCode: String, priceLabel: String, orderRef: String, remark: String, payType: String, nativePayMerchantId: String, googlePayAuth: String?, promise: Promise) {
     Log.d("Payment", "native pay")
     nativePayPromise = promise
     nativePayData = PayData()
@@ -132,7 +132,11 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     nativePayData!!.setCurrCode(EnvBase.Currency.valueOf(currency))
     nativePayData!!.setPayType(if (payType == "N") EnvBase.PayType.NORMAL_PAYMENT else EnvBase.PayType.HOLD_PAYMENT)
     nativePayData!!.setLang(EnvBase.Language.ENGLISH)
-    nativePayData!!.googlePayAuth = EnvBase.GooglePayAuth.CRYPTOGRAM_3DS
+    nativePayData!!.googlePayAuth = when (googlePayAuth) {
+    "PAN_ONLY" -> EnvBase.GooglePayAuth.PAN_ONLY
+    "CRYPTOGRAM_3DS" -> EnvBase.GooglePayAuth.CRYPTOGRAM_3DS
+    else -> EnvBase.GooglePayAuth.PAN_CRYPTO
+    }
     nativePayData!!.amount = amount
     nativePayData!!.payMethod = "GOOGLE"
     nativePayData!!.merchantId = merchantId!!
