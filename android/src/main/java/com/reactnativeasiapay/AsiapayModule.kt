@@ -64,7 +64,10 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
               handleGooglePay(paymentInfo)
             }
 
-            else -> {}
+            else -> {
+              Log.d("Payment", "Gpay return failed")
+              nativePayPromise!!.reject("Gpay response failed")
+            }
           }
         }
       }
@@ -401,7 +404,6 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     var base64encodedString: String? = null
     try {
       base64encodedString = paySDK.encodeData(strResp)
-      Log.d("Payment", "cc ${base64encodedString}")
     } catch (e: Exception) {
       Log.d("Payment", "failed encode")
       e.printStackTrace()
@@ -426,7 +428,7 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
       }
 
       override fun onError(data: Data) {
-        Log.d("paysdk", "pay error")
+        Log.d("paysdk", "pay error ${data.error}, ${data.message}")
         if (nativePayPromise !== null) {
           nativePayPromise!!.reject(data.error + data.message)
         }
