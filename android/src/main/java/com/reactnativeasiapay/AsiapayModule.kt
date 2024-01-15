@@ -205,6 +205,7 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     payData.remark = remark
     payData.activity = currentActivity
     payData.extraData = extraData
+    payData.showToolbar = false
 
     if (cardDetails != null) {
       payData.cardDetails = cardDetails
