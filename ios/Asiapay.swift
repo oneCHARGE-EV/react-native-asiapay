@@ -44,7 +44,7 @@ class Asiapay: NSObject, PaySDKDelegate, PKPaymentAuthorizationViewControllerDel
         makePayment(channelType: PayChannel.DIRECT, method: method, amount: amount, currency: currency, orderRef: orderRef, remark: remark, closePrompt: "", showCloseButton: true, showToolbar: true, lang: Language.ENGLISH, resolve: resolve, reject: reject, extraData: extraData, payType: getPayType(payTypeStr: payType), cardDetails: card)
     }
 
-    @objc(webView:withCurrency:withMethod:withOrderRef:withRemark:withExtraData:withPayType:withShowCloseButton:withShowToolbar:withClosePrompt:withResolve:withReject:)
+    @objc(webView:withCurrency:withMethod:withOrderRef:withRemark:withExtraData:withPayType:withShowCloseButton:withShowToolbar:withClosePrompt:withLanguage:withResolve:withReject:)
     func webView(amount: String, currency: String, method: String, orderRef: String, remark: String,  extraData: [String: Any], payType: String, showCloseButton: Bool, showToolbar: Bool, closePrompt: String, language: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) -> Void {
         makePayment(channelType: PayChannel.WEBVIEW, method: method, amount: amount, currency: currency, orderRef: orderRef, remark: remark, closePrompt: closePrompt, showCloseButton: showCloseButton, showToolbar: showToolbar, lang: getLanguage(lang: language), resolve: resolve, reject: reject, extraData: extraData, payType: getPayType(payTypeStr: payType))
     }
