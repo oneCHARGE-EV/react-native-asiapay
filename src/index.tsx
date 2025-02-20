@@ -35,7 +35,8 @@ type AsiapayType = {
     payType: string,
     showCloseButton: boolean,
     showToolbar: boolean,
-    webViewClosePrompt: string
+    webViewClosePrompt: string,
+    language: string
   ): Promise<Map<string, string>>;
   nativePay(
     amount: string,

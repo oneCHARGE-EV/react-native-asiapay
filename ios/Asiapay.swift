@@ -45,15 +45,15 @@ class Asiapay: NSObject, PaySDKDelegate, PKPaymentAuthorizationViewControllerDel
     }
 
     @objc(webView:withCurrency:withMethod:withOrderRef:withRemark:withExtraData:withPayType:withShowCloseButton:withShowToolbar:withClosePrompt:withResolve:withReject:)
-    func webView(amount: String, currency: String, method: String, orderRef: String, remark: String,  extraData: [String: Any], payType: String, showCloseButton: Bool, showToolbar: Bool, closePrompt: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) -> Void {
-        makePayment(channelType: PayChannel.WEBVIEW, method: method, amount: amount, currency: currency, orderRef: orderRef, remark: remark, closePrompt: closePrompt, showCloseButton: showCloseButton, showToolbar: showToolbar, lang: Language.ENGLISH, resolve: resolve, reject: reject, extraData: extraData, payType: getPayType(payTypeStr: payType))
+    func webView(amount: String, currency: String, method: String, orderRef: String, remark: String,  extraData: [String: Any], payType: String, showCloseButton: Bool, showToolbar: Bool, closePrompt: String, language: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) -> Void {
+        makePayment(channelType: PayChannel.WEBVIEW, method: method, amount: amount, currency: currency, orderRef: orderRef, remark: remark, closePrompt: closePrompt, showCloseButton: showCloseButton, showToolbar: showToolbar, lang: getLanguage(language: language), resolve: resolve, reject: reject, extraData: extraData, payType: getPayType(payTypeStr: payType))
     }
 
     @objc(nativePay:withCurrency:withCountryCode:withPriceLabel:withOrderRef:withRemark:withPayType:withNativePayMerchantId:withGooglePayAuth:withResolve:withReject:)
     func nativePay(amount: String, currency: String, countryCode: String, priceLabel: String, orderRef: String, remark: String, payType: String, nativePayMerchantId: String, googlePayAuth: String,resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) -> Void {
       self.currentResolve = resolve
       self.currentReject = reject
-      
+
       self.nativePayDetails = [
             "amount": amount,
             "currCode": getCurrencyCode(currencyCode: currency),
@@ -137,25 +137,25 @@ class Asiapay: NSObject, PaySDKDelegate, PKPaymentAuthorizationViewControllerDel
     func getLanguage(lang: String) -> Language {
         var language: Language = Language.ENGLISH
         switch lang {
-        case "en":
+        case "E":
             language = Language.ENGLISH
-        case "zh_tw":
+        case "C":
             language = Language.CHINESE_TRADITIONAL
-        case "zh_cn":
+        case "X":
             language = Language.CHINESE_SIMPLIFIED
-        case "ja":
+        case "J":
             language = Language.JAPANESE
-        case "th":
+        case "T":
             language = Language.THAI
-        case "fr":
+        case "F":
             language = Language.FRENCH
-        case "de":
+        case "G":
             language = Language.GERMAN
-        case "ru":
+        case "R":
             language = Language.RUSSIAN
-        case "es":
+        case "S":
             language = Language.SPANISH
-        case "vi":
+        case "V":
             language = Language.VIETNAMESE
         default:
             language = Language.ENGLISH
