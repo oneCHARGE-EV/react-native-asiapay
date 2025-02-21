@@ -120,8 +120,8 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
   }
 
   @ReactMethod
-  fun webView(amount: String?, currency: String, method: String, orderRef: String, remark: String, extraData: ReadableMap, payType: String, showCloseButton: Boolean, showToolbar: Boolean, closePrompt: String, promise: Promise) {
-    makePayment(EnvBase.PayChannel.WEBVIEW, method, amount, currency, orderRef, remark, promise, null, payType, toHashMapString(extraData))
+  fun webView(amount: String?, currency: String, method: String, orderRef: String, remark: String, extraData: ReadableMap, payType: String, showCloseButton: Boolean, showToolbar: Boolean, closePrompt: String, language: String, promise: Promise) {
+    makePayment(EnvBase.PayChannel.WEBVIEW, method, amount, currency, orderRef, remark, promise, null, payType, toHashMapString(extraData), language)
   }
 
   @ReactMethod
@@ -190,14 +190,16 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     })
   }
 
-  private fun makePayment(channel: EnvBase.PayChannel, method: String?, amount: String?, currency: String, orderRef: String?, remark: String?, promise: Promise, cardDetails: CardDetails?, payType: String = "N", extraData: HashMap<String, String> = hashMapOf()) {
+  private fun makePayment(channel: EnvBase.PayChannel, method: String?, amount: String?, currency: String, orderRef: String?, remark: String?, promise: Promise, cardDetails: CardDetails?, payType: String = "N", extraData: HashMap<String, String> = hashMapOf(), language: String = "E") {
+    val lang = EnvBase.Language.valueOf(language) ?: EnvBase.Language.ENGLISH
+
     val payData = PayData()
     payData.envType = environment
     payData.channel = channel
     payData.setPayGate(EnvBase.PayGate.PAYDOLLAR)
     payData.setCurrCode(EnvBase.Currency.valueOf(currency))
     payData.setPayType(if (payType == "N") EnvBase.PayType.NORMAL_PAYMENT else EnvBase.PayType.HOLD_PAYMENT)
-    payData.setLang(EnvBase.Language.ENGLISH)
+    payData.setLang(lang)
     payData.amount = amount
     payData.payMethod = method
     payData.merchantId = merchantId!!

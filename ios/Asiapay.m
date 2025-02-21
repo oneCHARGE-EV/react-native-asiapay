@@ -34,6 +34,7 @@ RCT_EXTERN_METHOD(webView: (NSString)amount
                   withShowCloseButton: (BOOL)showCloseButton
                   withShowToolbar: (BOOL)showToolbar
                   withClosePrompt: (BOOL)webViewClosePrompt
+                  withLanguage: (NSString)language
                   withResolve: (RCTPromiseResolveBlock)resolve
                   withReject: (RCTPromiseRejectBlock)reject)
 RCT_EXTERN_METHOD(nativePay: (NSString)amount
