@@ -191,15 +191,13 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
   }
 
   private fun makePayment(channel: EnvBase.PayChannel, method: String?, amount: String?, currency: String, orderRef: String?, remark: String?, promise: Promise, cardDetails: CardDetails?, payType: String = "N", extraData: HashMap<String, String> = hashMapOf(), language: String = "E") {
-    val lang = EnvBase.Language.valueOf(language) ?: EnvBase.Language.ENGLISH
-
     val payData = PayData()
     payData.envType = environment
     payData.channel = channel
     payData.setPayGate(EnvBase.PayGate.PAYDOLLAR)
     payData.setCurrCode(EnvBase.Currency.valueOf(currency))
     payData.setPayType(if (payType == "N") EnvBase.PayType.NORMAL_PAYMENT else EnvBase.PayType.HOLD_PAYMENT)
-    payData.setLang(lang)
+    payData.setLang(language)
     payData.amount = amount
     payData.payMethod = method
     payData.merchantId = merchantId!!
