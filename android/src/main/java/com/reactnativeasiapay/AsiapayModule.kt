@@ -191,13 +191,21 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
   }
 
   private fun makePayment(channel: EnvBase.PayChannel, method: String?, amount: String?, currency: String, orderRef: String?, remark: String?, promise: Promise, cardDetails: CardDetails?, payType: String = "N", extraData: HashMap<String, String> = hashMapOf(), language: String = "E") {
+    var langResult: EnvBase.Language? = null
+    for (lang in EnvBase.Language.entries) {
+      if (lang.toString() == language) {
+        langResult = lang
+        break
+      }
+    }
+
     val payData = PayData()
     payData.envType = environment
     payData.channel = channel
     payData.setPayGate(EnvBase.PayGate.PAYDOLLAR)
     payData.setCurrCode(EnvBase.Currency.valueOf(currency))
     payData.setPayType(if (payType == "N") EnvBase.PayType.NORMAL_PAYMENT else EnvBase.PayType.HOLD_PAYMENT)
-    payData.setLang(language)
+    payData.setLang(langResult ?: EnvBase.Language.ENGLISH)
     payData.amount = amount
     payData.payMethod = method
     payData.merchantId = merchantId!!
@@ -276,105 +284,6 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     }
     return arrayList
   }
-  /*   @ReactMethod
-    public void octupus(String amount, String merchantId, String orderRef, String remark) {
-        PayData payData = new PayData();
-        payData = new PayData();
-        payData.setChannel(EnvBase.PayChannel.DIRECT);
-        payData.setPayGate(EnvBase.PayGate.PAYDOLLAR);
-        payData.setCurrCode(EnvBase.Currency.HKD);
-        payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
-        payData.setLang(EnvBase.Language.ENGLISH);
-        payData.setAmount(textAmount.getEditText().getText().toString());
-        payData.setPayMethod("OCTOPUS");
-        payData.setMerchantId(textMerchantId.getEditText().getText().toString());
-        payData.setOrderRef(getOrderRef());
-        payData.setRemark("test remark");
-        payData.setActivity(reactContext);
-
-        paySDK.setRequestData(payData);
-        paySDK.process();
-
-        paySDK.responseHandler(new PaymentResponse() {
-            @Override
-            public void getResponse(PayResult payResult) {
-
-                cancelProgressDialog();
-
-                try {
-
-                    // method to get the URI
-                    String octopusuri = paySDK.decodeData(payResult.getErrMsg());
-
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri
-                            .parse(octopusuri));
-                    startActivityForResult(intent, OCTOPUS_APP_REQUEST_CODE);
-
-                }catch (Exception e){
-
-                    Log.d(TAG, "octopus: exp "+e.getMessage());
-                }
-
-            }
-
-            @Override
-            public void onError(Data data) {
-
-                cancelProgressDialog();
-                //showAlert(data.getMessage()+data.getError());
-            }
-        });
-    }*/
-
-  /*   @ReactMethod
-    public void octupus(String amount, String merchantId, String orderRef, String remark) {
-        PayData payData = new PayData();
-        payData = new PayData();
-        payData.setChannel(EnvBase.PayChannel.DIRECT);
-        payData.setPayGate(EnvBase.PayGate.PAYDOLLAR);
-        payData.setCurrCode(EnvBase.Currency.HKD);
-        payData.setPayType(EnvBase.PayType.NORMAL_PAYMENT);
-        payData.setLang(EnvBase.Language.ENGLISH);
-        payData.setAmount(textAmount.getEditText().getText().toString());
-        payData.setPayMethod("OCTOPUS");
-        payData.setMerchantId(textMerchantId.getEditText().getText().toString());
-        payData.setOrderRef(getOrderRef());
-        payData.setRemark("test remark");
-        payData.setActivity(reactContext);
-
-        paySDK.setRequestData(payData);
-        paySDK.process();
-
-        paySDK.responseHandler(new PaymentResponse() {
-            @Override
-            public void getResponse(PayResult payResult) {
-
-                cancelProgressDialog();
-
-                try {
-
-                    // method to get the URI
-                    String octopusuri = paySDK.decodeData(payResult.getErrMsg());
-
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri
-                            .parse(octopusuri));
-                    startActivityForResult(intent, OCTOPUS_APP_REQUEST_CODE);
-
-                }catch (Exception e){
-
-                    Log.d(TAG, "octopus: exp "+e.getMessage());
-                }
-
-            }
-
-            @Override
-            public void onError(Data data) {
-
-                cancelProgressDialog();
-                //showAlert(data.getMessage()+data.getError());
-            }
-        });
-    }*/
 
   private fun handlePayResult(payResult: PayResult, promise: Promise) {
     if (payResult.successCode == "0") {
