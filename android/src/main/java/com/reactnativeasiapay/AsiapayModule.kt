@@ -85,7 +85,9 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     if (envType == "Production") {
       environment = EnvBase.EnvType.PRODUCTION
     }
-    mPaymentsClient = PaymentsUtil.createPaymentsClient(currentActivity, environment)
+    Thread {
+      mPaymentsClient = PaymentsUtil.createPaymentsClient(currentActivity, environment)
+    }.start()
   }
 
   @ReactMethod
