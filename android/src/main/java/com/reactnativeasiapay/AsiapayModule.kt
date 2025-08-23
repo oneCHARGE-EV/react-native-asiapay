@@ -33,7 +33,7 @@ import org.json.JSONObject
 import java.util.Optional
 
 class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
-  private var paySDK: PaySDK = PaySDK(reactContext)
+  private var paySDK: PaySDK? = null
   private var merchantId: String? = null
   private var environment: EnvBase.EnvType = EnvBase.EnvType.SANDBOX
   private var mPaymentsClient: PaymentsClient? = null
@@ -85,6 +85,12 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     if (envType == "Production") {
       environment = EnvBase.EnvType.PRODUCTION
     }
+    
+    // Initialize PaySDK when setup is called to avoid ANR during module import
+    if (paySDK == null) {
+      paySDK = PaySDK(reactContext)
+    }
+    
     Thread {
       mPaymentsClient = PaymentsUtil.createPaymentsClient(currentActivity, environment)
     }.start()
@@ -193,6 +199,10 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
   }
 
   private fun makePayment(channel: EnvBase.PayChannel, method: String?, amount: String?, currency: String, orderRef: String?, remark: String?, promise: Promise, cardDetails: CardDetails?, payType: String = "N", extraData: HashMap<String, String> = hashMapOf(), language: String = "E") {
+    if (paySDK == null) {
+      promise.reject("payment error", "PaySDK not initialized. Please call setup() first.")
+      return
+    }
     var langResult: EnvBase.Language? = null
     for (lang in EnvBase.Language.entries) {
       if (lang.toString() == language) {
@@ -221,9 +231,9 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
       payData.cardDetails = cardDetails
     }
 
-    paySDK.requestData = payData
-    paySDK.process()
-    paySDK.responseHandler(object : PaymentResponse() {
+    paySDK?.requestData = payData
+    paySDK?.process()
+    paySDK?.responseHandler(object : PaymentResponse() {
       override fun getResponse(payResult: PayResult) {
         handlePayResult(payResult, promise)
       }
@@ -313,9 +323,13 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
 
   private fun handleGooglePay(strResp: String?) {
     Log.d("Payment", "handle google pay ${strResp}")
+    if (paySDK == null) {
+      nativePayPromise?.reject("payment error", "PaySDK not initialized")
+      return
+    }
     var base64encodedString: String? = null
     try {
-      base64encodedString = paySDK.encodeData(strResp)
+      base64encodedString = paySDK?.encodeData(strResp)
     } catch (e: Exception) {
       Log.d("Payment", "failed encode")
       e.printStackTrace()
@@ -327,11 +341,11 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     extraDataGP["eWalletService"] = "T"
     extraDataGP["eWalletBrand"] = "GOOGLE"
     nativePayData!!.extraData = extraDataGP
-    paySDK.requestData = nativePayData
-    paySDK.process()
+    paySDK?.requestData = nativePayData
+    paySDK?.process()
 
     //Here you will get Payment response.
-    paySDK.responseHandler(object : PaymentResponse() {
+    paySDK?.responseHandler(object : PaymentResponse() {
       override fun getResponse(payResult: PayResult) {
         Log.d("paysdk", payResult.successCode)
         if (nativePayPromise !== null) {
