@@ -85,13 +85,12 @@ class AsiapayModule(private val reactContext: ReactApplicationContext) : ReactCo
     if (envType == "Production") {
       environment = EnvBase.EnvType.PRODUCTION
     }
-    
-    // Initialize PaySDK when setup is called to avoid ANR during module import
-    if (paySDK == null) {
-      paySDK = PaySDK(reactContext)
-    }
-    
+
     Thread {
+      // Initialize PaySDK when setup is called to avoid ANR during module import
+      if (paySDK == null) {
+        paySDK = PaySDK(reactContext)
+      }
       mPaymentsClient = PaymentsUtil.createPaymentsClient(currentActivity, environment)
     }.start()
   }
